@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const { STRING, TEXT, DOUBLE } = Sequelize;
 const db = require('../conn');
 
-const Lambo = db.define('lambo', {
+const Product = db.define('product', {
   modelName: {
     type: STRING,
     allowNull: false,
@@ -36,4 +36,4 @@ const Lambo = db.define('lambo', {
   },
 });
 
-module.exports = Lambo;
+module.exports = Product;
