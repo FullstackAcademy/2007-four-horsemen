@@ -1,5 +1,5 @@
 const db =require('../server/db');
-const {User, Model, Order, Lambo}=require('../server/db/models');
+const {User, Model, Order, Lambo,OrderedCar}=require('../server/db/models');
 
 async function seed(){
 await db.sync({force:true})
@@ -149,6 +149,12 @@ const models = await Promise.all([
       isDebit: true
     })
   ])
+  const orderedcars = await Promise.all([
+    OrderedCar.create({
+      orderId:1,
+      carId:1,
+      price: 475000,
+    })])
 
   await Promise.all([
     lambos[0].addModel(models[0]),
@@ -172,7 +178,6 @@ const models = await Promise.all([
   await Promise.all([
     orders[0].addCar(lambos[0]),
     orders[1].addCar(lambos[2]),
-    orders[0].addCar(lambos[3]),
     orders[2].addCar(lambos[4]),
     orders[3].addCar(lambos[5])
   ])
