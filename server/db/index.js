@@ -1,14 +1,24 @@
 
 const db = require('./conn');
-const {
-  Cart,
-  Customer,
-  Order,
-  Payment,
-  Product,
-  Shipment,
-  User,
-} = require('../db/models');
+// const {
+//   Cart,
+//   Customer,
+//   Order,
+//   Payment,
+//   Product,
+//   Shipment,
+//   User,
+// } = require('../db/models');
+// throw Error: Cannot find module '../db/models'
+
+const Cart = require('./models/Cart')
+const Customer = require('./models/Customer')
+const Order = require('./models/Order')
+const Payment = require('./models/Payment')
+const Product = require('./models/Product')
+const Shipment = require('./models/Shipment')
+const User = require('./models/User')
+//debug/////////////////////////////
 
 User.hasMany(Customer);
 Customer.belongsTo(User);
