@@ -1,3 +1,4 @@
+
 const app = require('./index')
 const PORT = 3000;
 const {db} = require('./db')
@@ -15,3 +16,4 @@ db.sync()
 })}
 
 init()
+
