@@ -1,15 +1,19 @@
-const PORT = 5432;
-const server = require('./index');
-const { syncAndSeed } = require('./db');
 
-// syncAndSeed().then(() => {
-//   server.listen(PORT, () =>
-//     console.log(`
-//         listening on port: ${PORT}
+const app = require('./index')
+const PORT = 3000;
+const {db} = require('./db')
 
-//         listening on http://localhost:${PORT}
+const init = () => {
+db.sync()
+    .then(()=>{
+  app.listen(PORT, () =>
+    console.log(`
+        listening on port: ${PORT}
+        listening on http://localhost:${PORT}
+        listening on http://127.0.0.1:${PORT}
+        `)
+    )
+})}
 
-//         listening on http://127.0.0.1:${PORT}
-//         `)
-//   );
-// });
+init()
+
