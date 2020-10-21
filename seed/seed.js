@@ -1,5 +1,7 @@
+
 const {db} =require('../server/db');
 const {User, Model, Order, Product}=require('../server/db/').models;
+
 
 
 async function seed(){
@@ -136,6 +138,12 @@ const Products = await Promise.all([
       isDebit: true
     })
   ])
+  const orderedcars = await Promise.all([
+    OrderedCar.create({
+      orderId:1,
+      carId:1,
+      price: 475000,
+    })])
 
   await Promise.all([
     Products[0].addModel(models[0]),
@@ -159,7 +167,6 @@ const Products = await Promise.all([
   await Promise.all([
     orders[0].addCar(lambos[0]),
     orders[1].addCar(lambos[2]),
-    orders[0].addCar(lambos[3]),
     orders[2].addCar(lambos[4]),
     orders[3].addCar(lambos[5])
   ])
