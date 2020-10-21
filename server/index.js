@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname + '..' + 'public')));
 
 //routes access via AJAX are prepended with /api, so as to avoid the GET /* wildcard
-app.use('/api', require('./api'));
+//app.use('/api', require('./api'));
 
 //sends index.html(single-page SPA)
 app.use('/', (req, res, next) => {
