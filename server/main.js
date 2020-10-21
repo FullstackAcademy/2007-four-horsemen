@@ -2,6 +2,7 @@ const app = require('./index')
 const PORT = 3000;
 const {db} = require('./db')
 
+const init = () => {
 db.sync()
     .then(()=>{
   app.listen(PORT, () =>
@@ -10,8 +11,7 @@ db.sync()
         listening on http://localhost:${PORT}
         listening on http://127.0.0.1:${PORT}
         `)
-
     )
-})
+})}
 
-
+init()
