@@ -6,7 +6,7 @@ const {User, Order, Product,Shipment,Cart,Customer,Payment}=require('../server/d
 
 async function seed(){
 await db.sync({force:true})
-console.log("It works!")
+try{
 
 const users =await Promise.all([
     User.create({name: 'Lary', email: 'lary@email.com', password: 'password'}),
@@ -71,7 +71,7 @@ const products = await Promise.all([
     model: 'Huracan Evo RWD Spyder',
     description: 'The Huracán EVO RWD Spyder is dedicated to those who believe in the pure pleasure and excitement of driving, an experience heightened by the adrenaline that comes from open-top performance. Discovering new roads with the wind in your hair, heart racing with the sound of the engine, gives you an unparalleled feeling of freedom as you accelerate toward new emotions. The magic unfolds as you “return to rear-wheel drive” and immerse yourself in the tactile sensations and the mechanical purity of a Lamborghini.',
     price: 250000,
-    image: ''
+    image: 'download.jpeg'
   }),
   Product.create({
     id:9,
@@ -101,13 +101,13 @@ const products = await Promise.all([
     price: 3150000,
     image: 'download.jpeg'
   }),
-  Product.create({
-    id:13,
-    name: 'Sian Roadster',
-    description: 'The first open-top hybrid Lamborghini super sports car to feature a supercapacitor, the Sián Roadster roars with electrified intensity, resonating with the inimitable V12 sound from the most powerful Lamborghini engine to date. Limited to only 19 examples, the Sián Roadster advances hybrid technology with the world’s first use of a supercapacitor in a materials-science application unique to the industry.',
-    price: 3500000,
-    image: 'download.jpeg'
-  }),
+  // Product.create({
+  //   id:13,
+  //   name: 'Sian Roadster',
+  //   description: 'The first open-top hybrid Lamborghini super sports car to feature a supercapacitor, the Sián Roadster roars with electrified intensity, resonating with the inimitable V12 sound from the most powerful Lamborghini engine to date. Limited to only 19 examples, the Sián Roadster advances hybrid technology with the world’s first use of a supercapacitor in a materials-science application unique to the industry.',
+  //   price: 3500000,
+  //   image: 'download.jpeg'
+  // }),
 
 ])
 
@@ -121,33 +121,6 @@ const products = await Promise.all([
       date:11/24/2020,
       isDebit: false
 
-    }),
-    User.create({
-      name: 'Peter',
-      email: 'peter@email.com',
-      password: 'password',
-    }),
-    User.create({
-      name: 'Oscar',
-      email: 'oscar@email.com',
-      quantity:1,
-      date:08/23/2020,
-      isDebit: true
-    }),
-    User.create({
-      name: 'Quinwei',
-      email: 'quinwei@email.com',
-      quantity:1,
-      date:10/24/2020,
-      isDebit: false
-
-    }),
-    User.create({
-      name: 'Laziz',
-      email: 'laziz@email.com',
-      quantity:1,
-      date:09/15/2020,
-      isDebit: true
     })
   ])
 
@@ -213,19 +186,19 @@ const products = await Promise.all([
   
   
   
-  await Promise.all([
-    orders[0].addCar(products[0]),
-    orders[1].addCar(products[2]),
-    orders[2].addCar(products[4]),
-    orders[3].addCar(products[5])
-  ])
+  // await Promise.all([
+  //   orders[0].addCar(products[0]),
+  //   orders[1].addCar(products[2]),
+  //   orders[2].addCar(products[4]),
+  //   orders[3].addCar(products[5])
+  // ])
   
-  await Promise.all([
-    orders[0].setUser(users[3]),
-    orders[1].setUser(users[2]),
-    orders[2].setUser(users[4]),
-    orders[3].setUser(users[5])
-  ])
+  // await Promise.all([
+  //   orders[0].setUser(users[3]),
+  //   orders[1].setUser(users[2]),
+  //   orders[2].setUser(users[4]),
+  //   orders[3].setUser(users[5])
+  // ])
 
   //   const orders = await Promise.all([
   //     Order.create({
@@ -291,21 +264,20 @@ const products = await Promise.all([
   //     orders[3].setUser(users[5])
   //   ])
 }
-
-async function syncAndSeed() {
-  console.log('seeding...');
-  try {
-    // await db.sync({force:true})
-    await seed();
-  } catch (err) {
-    console.error(err);
-    process.exitCode = 1;
-  } finally {
-    await db.close();
-    console.log('connection closed');
-  }
+catch(err){
+  console.log(err)
 }
-
-if (module === require.main) {
-  syncAndSeed();
+}
+module.exports = seed;
+if (require.main === module) {
+  seed()
+    .then(() => {
+      console.log('Seeding success!');
+      db.close();
+    })
+    .catch((err) => {
+      console.error('Oh noes! Something went wrong!');
+      console.error(err);
+      db.close();
+    });
 }
