@@ -10,6 +10,15 @@ const User = db.define('user', {
       notEmpty: true,
     },
   },
+
+  email: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+      isEmail: true,
+      notEmpty: true,
+    },
+  },
   //we would need to use bcrypt later to hash the userpassword in our db
   password: {
     type: STRING,

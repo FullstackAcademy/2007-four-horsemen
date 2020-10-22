@@ -1,8 +1,7 @@
 const express = require('express');
 const app = express();
 const volleyball = require('volleyball');
-const path = require('path'); 
-
+const path = require('path');
 
 //logging middleware
 app.use(volleyball);
@@ -22,13 +21,10 @@ app.use('*', (req, res, next) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-
-
 //error middleware
 app.use((err, req, res, next) => {
-  if (process.env.NODE_ENV !== 'test') console.error(err.stack)
-  res.status(err.status || 500).send(err.message || 'Internal server error')
-})
+  if (process.env.NODE_ENV !== 'test') console.error(err.stack);
+  res.status(err.status || 500).send(err.message || 'Internal server error');
+});
 
 module.exports = app;
-
