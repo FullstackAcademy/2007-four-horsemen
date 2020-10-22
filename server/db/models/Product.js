@@ -3,7 +3,7 @@ const { STRING, TEXT, DOUBLE } = Sequelize;
 const db = require('../conn');
 
 const Product = db.define('product', {
-  modelName: {
+  model: {
     type: STRING,
     allowNull: false,
     validate: {
