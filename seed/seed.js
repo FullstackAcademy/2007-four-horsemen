@@ -120,25 +120,29 @@ const products = await Promise.all([
       quantity:1,
       date:11/24/2020,
       isDebit: false
+
     }),
-    Order.create({
-      status: 'APPROVED',
+    User.create({
+      name: 'Peter',
+      email: 'peter@email.com',
+      password: 'password',
+    }),
+    User.create({
       name: 'Oscar',
       email: 'oscar@email.com',
       quantity:1,
       date:08/23/2020,
       isDebit: true
     }),
-    Order.create({
-      status: 'APPROVED',
+    User.create({
       name: 'Quinwei',
       email: 'quinwei@email.com',
       quantity:1,
       date:10/24/2020,
       isDebit: false
+
     }),
-    Order.create({
-      status: 'APPROVED',
+    User.create({
       name: 'Laziz',
       email: 'laziz@email.com',
       quantity:1,
@@ -222,24 +226,86 @@ const products = await Promise.all([
     orders[2].setUser(users[4]),
     orders[3].setUser(users[5])
   ])
+
+  //   const orders = await Promise.all([
+  //     Order.create({
+  //       status: 'PROCESSING',
+  //       name: 'Lary',
+  //       email: 'lary@email.com',
+  //       isDebit: false
+  //     }),
+  //     Order.create({
+  //       status: 'APPROVED',
+  //       name: 'Oscar',
+  //       email: 'oscar@email.com',
+  //       isDebit: true
+  //     }),
+  //     Order.create({
+  //       status: 'APPROVED',
+  //       name: 'Quinwei',
+  //       email: 'quinwei@email.com',
+  //       isDebit: false
+  //     }),
+  //     Order.create({
+  //       status: 'APPROVED',
+  //       name: 'Laziz',
+  //       email: 'laziz@email.com',
+  //       isDebit: true
+  //     })
+  //   ])
+  //   const orderedcars = await Promise.all([
+  //     OrderedCar.create({
+  //       orderId:1,
+  //       carId:1,
+  //       price: 475000,
+  //     })])
+
+  //   await Promise.all([
+  //     Products[0].addModel(models[0]),
+  //     Products[1].addModel(models[0]),
+  //     Products[2].addModel(models[0]),
+  //     Products[3].addModel(models[0]),
+  //     Products[4].addModel(models[1]),
+  //     Products[5].addModel(models[1]),
+  //     Products[6].addModel(models[1]),
+  //     Products[7].addModel(models[1]),
+  //     Products[8].addModel(models[2]),
+  //     Products[9].addModel(models[2]),
+  //     Products[10].addModel(models[2]),
+  //     Products[11].addModel(models[3]),
+  //     Products[12].addModel(models[3]),
+
+  //   ])
+
+  //   await Promise.all([
+  //     orders[0].addCar(lambos[0]),
+  //     orders[1].addCar(lambos[2]),
+  //     orders[2].addCar(lambos[4]),
+  //     orders[3].addCar(lambos[5])
+  //   ])
+
+  //   await Promise.all([
+  //     orders[0].setUser(users[3]),
+  //     orders[1].setUser(users[2]),
+  //     orders[2].setUser(users[4]),
+  //     orders[3].setUser(users[5])
+  //   ])
 }
 
 async function syncAndSeed() {
-    console.log('seeding...')
-    try {
-      // await db.sync({force:true})
-      await seed()
-    } catch (err) {
-      console.error(err)
-      process.exitCode = 1
-    } finally {
-      await db.close()
-      console.log('connection closed')
-    }
+  console.log('seeding...');
+  try {
+    // await db.sync({force:true})
+    await seed();
+  } catch (err) {
+    console.error(err);
+    process.exitCode = 1;
+  } finally {
+    await db.close();
+    console.log('connection closed');
   }
-  
- 
-  if (module === require.main) {
-    syncAndSeed()
-  }
-  
+}
+
+if (module === require.main) {
+  syncAndSeed();
+}
