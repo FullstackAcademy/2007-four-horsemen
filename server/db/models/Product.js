@@ -3,14 +3,16 @@ const { STRING, TEXT, DOUBLE } = Sequelize;
 const db = require('../conn');
 
 const Product = db.define('product', {
-  modelName: {
+  carName: {
     type: STRING,
     allowNull: false,
     validate: {
       notEmpty: true,
     },
   },
-
+  models:{
+    type:   Sequelize.ENUM,
+  },///finish this part/////
   description: {
     type: TEXT,
     allowNull: false,
