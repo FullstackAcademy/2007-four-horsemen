@@ -4,7 +4,7 @@ const db = require('../conn');
 
 const Payment = db.define('payment', {
   payment_type: {
-    type: ENUM('credit', 'bitcoin', 'venmo'),
+    type: ENUM('credit', 'bitcoin', 'venmo','debit'),
     allowNull: false,
     validate: {
       notEmpty: true,

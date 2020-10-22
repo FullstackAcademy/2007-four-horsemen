@@ -3,7 +3,7 @@ const { STRING, BOOLEAN } = Sequelize;
 const db = require('../conn');
 
 const User = db.define('user', {
-  username: {
+  name: {
     type: STRING,
     allowNull: false,
     validate: {
@@ -11,6 +11,14 @@ const User = db.define('user', {
     },
   },
 
+  email: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+      isEmail: true,
+      notEmpty: true,
+    },
+  },
   //we would need to use bcrypt later to hash the userpassword in our db
   password: {
     type: STRING,

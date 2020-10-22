@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build-watch & npm run start-server",
+    "start-dev": "npm run build-watch & npm run start-server",
     "build-watch": "webpack -w --mode development",
-    "start-server": "nodemon server/main.js --ignore client/ --ignore server/"
+    "start-server": "nodemon server/main.js --ignore client/ --ignore server/",
+    "seed": "node ./seed/seed.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/FullstackAcademy/2007-four-horsemen#readme",
   "dependencies": {
+    "dayjs": "^1.9.3",
     "express": "^4.17.1",
     "node": "^14.14.0",
     "pg": "^8.4.1",
