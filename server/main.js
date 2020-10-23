@@ -3,7 +3,7 @@ const PORT = 3000;
 const { db } = require('./db');
 
 const init = async () => {
-  await db.sync({force: true}).then(() => {
+  await db.sync({ force: true }).then(() => {
     app.listen(PORT, () =>
       console.log(`
         listening on port: ${PORT}
