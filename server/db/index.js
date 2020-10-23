@@ -20,7 +20,7 @@ const Shipment = require('./models/Shipment')
 const User = require('./models/User')
 //debug/////////////////////////////
 
-User.hasMany(Customer);
+User.hasMany(Customer);  //why user has many customers??
 Customer.belongsTo(User);
 
 Customer.hasMany(Order);
