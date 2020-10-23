@@ -1,5 +1,5 @@
 const express = require('express');
-const app = express();
+const router = express();
 const User=require('../db/models/User');
 
 router.post('/login', async (req, res, next) => {
@@ -44,4 +44,4 @@ router.post('/login', async (req, res, next) => {
   })
 
 
-mmodule.exports=app;
+mmodule.exports=router;
