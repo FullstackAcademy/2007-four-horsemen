@@ -151,14 +151,7 @@ async function seed() {
         tracking_num: '11111',
         shipment_date: '09/23/2020',
       }),
-      Shipment.create({
-        tracking_num: '22222',
-        shipment_date: '11/24/2020',
-      }),
-      Shipment.create({
-        tracking_num: '33333',
-        shipment_date: '10/15/2020',
-      }),
+     
     ]);
     const carts = await Promise.all([
       Cart.create({
@@ -172,18 +165,7 @@ async function seed() {
         payment_type: 'credit',
         payment_date: 11 / 24 / 2020,
       }),
-      Payment.create({
-        payment_type: 'debit',
-        payment_date: '08/23/2020',
-      }),
-      Payment.create({
-        payment_type: 'bitcoin',
-        payment_date: '10/24/2020',
-      }),
-      Payment.create({
-        payment_type: 'debit',
-        payment_date: '09/15/2020',
-      }),
+      
     ]);
 
 

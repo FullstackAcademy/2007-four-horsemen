@@ -1,32 +1,44 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
+import Model from './Model'
 
-import {fetchProducts} from '../store/redux/products'
-import {Link} from 'react-router-dom'
-
-export class Models extends React.Component {
-    componentDidMount(){
-      this.props.getProducts()
-    }
-  
+class Models extends React.Component {
+  constructor(props){
+    super(props)
+  }
     render() {
+      const {products}=this.props;
       console.log(this.props)
-      return <div>
-        <nav>Here is Models page</nav>
+
+return (
+  <div>
+      {products.length?
+          <div >
+              
+              {
+                  products.map(product => {
+                      return(
+                          <Model  key={product.id} product={product}/>
+                      )
+                      })
+              }
+             
+          </div>
+          :<div>
+          <h3>DataBase is empty</h3>
         </div>
+          }                                     
+  </div>
+)
   }
   }
 
-
-  const mapState = ({products}) => {
+  const mapStateToProps = ({products}) => {
     return {products};
   };
   
-  const mapDispatch = (dispatch) => {
-    return {
-      getProducts: ()=> dispatch(fetchProducts()),
-    };
-  };
   
-  export default connect(mapState, mapDispatch)(Models);
+  
+  export default connect(mapStateToProps)(Models);
 
