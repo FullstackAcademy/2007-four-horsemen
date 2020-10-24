@@ -12,10 +12,13 @@ import Cart from './Cart';
 import Login from './Login';
 import Header from './Header';
 import Footer from './Footer'
+import SingleModel from './SingleModel';
 
 
 
-export default class Routes extends React.Component {
+class Routes extends React.Component {
+
+
   render() {
     return (
       <Router>
@@ -23,6 +26,7 @@ export default class Routes extends React.Component {
           <Header />
           <main>
             <Route path="/models" exact component={Models} />
+            <Route path="/models/:id" exact component={SingleModel}/>
             <Route path="/cart" exact component={Cart} />
             <Route path="/login" exact component={Login} />
             {/* <Route path="/signup" exact component={Signup} /> */}
@@ -35,3 +39,6 @@ export default class Routes extends React.Component {
     );
   }
 }
+
+
+export default Routes;
