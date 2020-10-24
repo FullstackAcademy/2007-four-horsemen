@@ -10,35 +10,28 @@ import {
 import Models from './Models';
 import Cart from './Cart';
 import Login from './Login';
+import Header from './Header';
+import Footer from './Footer'
 
-function Home() {
-  return (
-    <div>
-      <h3>here is homepage</h3>
-    </div>
-  );
-}
+
 
 export default class Routes extends React.Component {
   render() {
     return (
       <Router>
         <div>
-          <nav>
-            LamBo Shop
-            <Link to="/">Home</Link>
-            <Link to="/models">MODELS</Link>
-            <Link to="/cart">CART</Link>
-            <Link to="/login">lOGIN</Link>
-          </nav>
+          <Header />
           <main>
             <Route path="/models" exact component={Models} />
             <Route path="/cart" exact component={Cart} />
             <Route path="/login" exact component={Login} />
-            <Route path="/" exact component={Home} />
+            {/* <Route path="/signup" exact component={Signup} /> */}
           </main>
         </div>
+        <Footer/>
+
       </Router>
+  
     );
   }
 }
