@@ -8,6 +8,7 @@ const Payment = require('./models/Payment')
 const Product = require('./models/Product')
 const Shipment = require('./models/Shipment')
 const User = require('./models/User')
+const OrderItem = require('./models/OrderItem')
 
 /////customer view:
 User.hasMany(Order);

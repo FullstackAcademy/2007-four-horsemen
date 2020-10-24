@@ -11,14 +11,9 @@ import Models from './Models';
 import Cart from './Cart';
 import Login from './Login';
 import Header from './Header';
+import Footer from './Footer'
 
-function Home() {
-  return (
-    <div>
-      <h3>Welcome to Authorized Lamborghini Dealer Shop</h3>
-    </div>
-  );
-}
+
 
 export default class Routes extends React.Component {
   render() {
@@ -31,10 +26,12 @@ export default class Routes extends React.Component {
             <Route path="/cart" exact component={Cart} />
             <Route path="/login" exact component={Login} />
             {/* <Route path="/signup" exact component={Signup} /> */}
-            <Route path="/" exact component={Home} />
           </main>
         </div>
+        <Footer/>
+
       </Router>
+  
     );
   }
 }
