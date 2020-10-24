@@ -1,8 +1,14 @@
 const Sequelize = require('sequelize');
-const { STRING, TEXT, DOUBLE } = Sequelize;
+const { STRING, TEXT, DOUBLE, INTEGER } = Sequelize;
 const db = require('../conn');
 
 const Product = db.define('product', {
+  id: {
+    type: INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+  },
+
   model: {
     type: STRING,
     allowNull: false,

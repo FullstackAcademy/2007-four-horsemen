@@ -1,36 +1,23 @@
 const Sequelize = require('sequelize');
-const { STRING, INTEGER, DATE } = Sequelize;
+const { DATEONLY, ENUM } = Sequelize;
 const db = require('../conn');
-const moment = require('moment');
 
 const Order = db.define('order', {
-  name: {
-    type: STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-    },
-  },
-
-  quantity: {
-    type: INTEGER,
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-    },
+  //important parts in order would be customerid which would link to another model called orderItem
+  //changed date type to dateonly in order to filterout the unnecessary chars attached to date
+  order_status: {
+    type: ENUM('processing', 'cancelled', 'completed'),
   },
 
   date: {
-    type: DATE,
+    type: DATEONLY,
     allowNull: false,
     validate: {
       notEmpty: true,
-      isDate: true,
-    },
-    get: function () {
-      return moment(this.getDataValue('date')).format('MM/DD/YYYY');
     },
   },
 });
 
 module.exports = Order;
+
+//add status with ENUM('PROCESSING', 'CANCELLED', 'COMPLETED')

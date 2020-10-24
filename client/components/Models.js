@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import {fetchProducts} from '../store/redux/products'
 import {Link} from 'react-router-dom'
 
@@ -28,3 +29,4 @@ export class Models extends React.Component {
   };
   
   export default connect(mapState, mapDispatch)(Models);
+

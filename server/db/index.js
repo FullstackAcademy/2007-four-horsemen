@@ -1,15 +1,5 @@
-
 const db = require('./conn');
-// const {
-//   Cart,
-//   Customer,
-//   Order,
-//   Payment,
-//   Product,
-//   Shipment,
-//   User,
-// } = require('../db/models');
-// throw Error: Cannot find module '../db/models'
+
 
 const Cart = require('./models/Cart')
 const Customer = require('./models/Customer')
@@ -23,6 +13,7 @@ const User = require('./models/User')
 User.hasMany(Order);
 User.hasOne(Cart);
 Cart.belongsTo(User);
+
 
 
 ////order view:
@@ -48,10 +39,10 @@ module.exports = {
     Cart,
     Customer,
     Order,
+    OrderItem,
     Payment,
     Product,
     Shipment,
     User,
   },
 };
-
