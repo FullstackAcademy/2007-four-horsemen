@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { STRING, DATE } = Sequelize;
+const { STRING, DATEONLY } = Sequelize;
 const db = require('../conn');
 
 const Shipment = db.define('shipment', {
@@ -11,7 +11,8 @@ const Shipment = db.define('shipment', {
     },
   },
   shipment_date: {
-    type: DATE,
+    //again using dateonly would simplify the date removing unnecessary chars
+    type: DATEONLY,
   },
 });
 

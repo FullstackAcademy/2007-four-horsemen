@@ -3,8 +3,9 @@ const { DATE, INTEGER, ENUM } = Sequelize;
 const db = require('../conn');
 
 const Payment = db.define('payment', {
+  //move to order model
   payment_type: {
-    type: ENUM('credit', 'bitcoin', 'venmo'),
+    type: ENUM('credit', 'bitcoin', 'venmo', 'debit'),
     allowNull: false,
     validate: {
       notEmpty: true,

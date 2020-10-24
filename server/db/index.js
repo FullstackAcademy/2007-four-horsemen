@@ -1,15 +1,5 @@
-
 const db = require('./conn');
-// const {
-//   Cart,
-//   Customer,
-//   Order,
-//   Payment,
-//   Product,
-//   Shipment,
-//   User,
-// } = require('../db/models');
-// throw Error: Cannot find module '../db/models'
+
 
 const Cart = require('./models/Cart')
 const Customer = require('./models/Customer')
@@ -18,25 +8,31 @@ const Payment = require('./models/Payment')
 const Product = require('./models/Product')
 const Shipment = require('./models/Shipment')
 const User = require('./models/User')
-//debug/////////////////////////////
+const OrderItem = require('./models/OrderItem')
 
-User.hasMany(Customer);
-Customer.belongsTo(User);
+/////customer view:
+User.hasMany(Order);
+User.hasOne(Cart);
+Cart.belongsTo(User);
 
-Customer.hasMany(Order);
-Order.belongsTo(Customer);
 
+
+////order view:
+Order.belongsTo(User);
 Order.hasMany(Product);
 Product.belongsTo(Order);
 
-Shipment.hasMany(Order);
-Order.belongsTo(Shipment);
+Order.hasMany(OrderItem);
+OrderItem.belongsTo(Order);
 
-Customer.hasMany(Payment);
-Payment.belongsTo(Customer);
+Product.hasMany(OrderItem);
+OrderItem.belongsTo(Product);
 
-User.hasOne(Cart);
-Cart.belongsTo(User);
+Order.hasOne(Shipment)
+Shipment.belongsTo(Order);
+Order.hasMany(Payment);
+Payment.belongsTo(Order);
+
 
 module.exports = {
   db,
@@ -44,10 +40,10 @@ module.exports = {
     Cart,
     Customer,
     Order,
+    OrderItem,
     Payment,
     Product,
     Shipment,
     User,
   },
 };
-
