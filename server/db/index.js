@@ -18,25 +18,29 @@ const Payment = require('./models/Payment')
 const Product = require('./models/Product')
 const Shipment = require('./models/Shipment')
 const User = require('./models/User')
-//debug/////////////////////////////
 
-User.hasMany(Customer);  //why user has many customers??
-Customer.belongsTo(User);
+/////customer view:
+User.hasMany(Order);
+User.hasOne(Cart);
+Cart.belongsTo(User);
 
-Customer.hasMany(Order);
-Order.belongsTo(Customer);
 
+////order view:
+Order.belongsTo(User);
 Order.hasMany(Product);
 Product.belongsTo(Order);
 
-Shipment.hasMany(Order);
-Order.belongsTo(Shipment);
+Order.hasMany(OrderItem);
+OrderItem.belongsTo(Order);
 
-Customer.hasMany(Payment);
-Payment.belongsTo(Customer);
+Product.hasMany(OrderItem);
+OrderItem.belongsTo(Product);
 
-User.hasOne(Cart);
-Cart.belongsTo(User);
+Order.hasOne(Shipment)
+Shipment.belongsTo(Order);
+Order.hasMany(Payment);
+Payment.belongsTo(Order);
+
 
 module.exports = {
   db,

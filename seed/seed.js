@@ -101,13 +101,13 @@ const products = await Promise.all([
     price: 3150000,
     image: 'download.jpeg'
   }),
-  // Product.create({
-  //   id:13,
-  //   name: 'Sian Roadster',
-  //   description: 'The first open-top hybrid Lamborghini super sports car to feature a supercapacitor, the Sián Roadster roars with electrified intensity, resonating with the inimitable V12 sound from the most powerful Lamborghini engine to date. Limited to only 19 examples, the Sián Roadster advances hybrid technology with the world’s first use of a supercapacitor in a materials-science application unique to the industry.',
-  //   price: 3500000,
-  //   image: 'download.jpeg'
-  // }),
+  Product.create({
+    id:13,
+    model: 'Sian Roadster',
+    description: 'The first open-top hybrid Lamborghini super sports car to feature a supercapacitor, the Sián Roadster roars with electrified intensity, resonating with the inimitable V12 sound from the most powerful Lamborghini engine to date. Limited to only 19 examples, the Sián Roadster advances hybrid technology with the world’s first use of a supercapacitor in a materials-science application unique to the industry.',
+    price: 3500000,
+    image: 'download.jpeg'
+  }),
 
 ])
 
