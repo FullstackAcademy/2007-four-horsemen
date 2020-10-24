@@ -15,7 +15,7 @@ import Header from './Header';
 function Home() {
   return (
     <div>
-      <h3>here is homepage</h3>
+      <h3>Welcome to Authorized Lamborghini Dealer Shop</h3>
     </div>
   );
 }
@@ -30,6 +30,7 @@ export default class Routes extends React.Component {
             <Route path="/models" exact component={Models} />
             <Route path="/cart" exact component={Cart} />
             <Route path="/login" exact component={Login} />
+            {/* <Route path="/signup" exact component={Signup} /> */}
             <Route path="/" exact component={Home} />
           </main>
         </div>

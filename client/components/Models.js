@@ -6,7 +6,7 @@ export default class Models extends React.Component {
   render() {
     return (
       <div>
-        <nav>Here is Models page</nav>
+        <h3>Here is Models page</h3>
       </div>
     );
   }

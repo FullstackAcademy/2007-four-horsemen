@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
+import productsReducer from './products';
 const appReducer = combineReducers({
-
-  });
-  export default appReducer;
-  
+  products: productsReducer,
+});
+export default appReducer;

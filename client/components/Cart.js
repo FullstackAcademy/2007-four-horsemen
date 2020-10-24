@@ -6,7 +6,7 @@ export default class Cart extends React.Component {
   render() {
     return (
       <div>
-        <nav>Here is Cart page</nav>
+        <h3>Here is Cart page</h3>
       </div>
     );
   }
