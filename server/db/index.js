@@ -1,16 +1,23 @@
 const db = require('./conn');
-const Cart = require('./models/Cart');
-const Customer = require('./models/Customer');
-const Order = require('./models/Order');
-const OrderItem = require('./models/OrderItem');
-const Payment = require('./models/Payment');
-const Product = require('./models/Product');
-const Shipment = require('./models/Shipment');
-const User = require('./models/User');
 
-Customer.hasMany(Order);
-Order.belongsTo(Customer);
 
+const Cart = require('./models/Cart')
+const Customer = require('./models/Customer')
+const Order = require('./models/Order')
+const Payment = require('./models/Payment')
+const Product = require('./models/Product')
+const Shipment = require('./models/Shipment')
+const User = require('./models/User')
+
+/////customer view:
+User.hasMany(Order);
+User.hasOne(Cart);
+Cart.belongsTo(User);
+
+
+
+////order view:
+Order.belongsTo(User);
 Order.hasMany(Product);
 Product.belongsTo(Order);
 
@@ -20,14 +27,11 @@ OrderItem.belongsTo(Order);
 Product.hasMany(OrderItem);
 OrderItem.belongsTo(Product);
 
-Shipment.hasMany(Order);
-Order.belongsTo(Shipment);
+Order.hasOne(Shipment)
+Shipment.belongsTo(Order);
+Order.hasMany(Payment);
+Payment.belongsTo(Order);
 
-Customer.hasMany(Payment);
-Payment.belongsTo(Customer);
-
-User.hasOne(Cart);
-Cart.belongsTo(User);
 
 module.exports = {
   db,
