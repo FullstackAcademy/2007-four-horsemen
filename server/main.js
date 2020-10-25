@@ -1,10 +1,12 @@
 const app = require('./index');
 const PORT = 3000;
-const { db, models: {Product} } = require('./db');
+const {
+  db,
+  models: { Product },
+} = require('./db');
 
 const init = async () => {
   await db.sync({ force: true }).then(() => {
-
     app.listen(PORT, () =>
       console.log(`
         listening on port: ${PORT}
@@ -100,8 +102,6 @@ const init = async () => {
       image: 'download.jpeg',
     }),
   ]);
-
 };
 
 init();
-
