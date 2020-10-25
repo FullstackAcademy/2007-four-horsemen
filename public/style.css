@@ -7,9 +7,9 @@
 body {
   font-family: sans-serif;
   font-size: 16px;
-    background-image: url('./lambo-background.jpg');
+    /* background-image: url('./lambo-background.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
 }
 
 nav {
@@ -31,7 +31,7 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   list-style-type: none;
-  padding: 1rem;
+  padding: 0;
 }
 
 .home-models li a {
@@ -40,8 +40,15 @@ a:hover {
 }
 
 .logo {
-  flex: 5;
-  font-size: 20px;
+  flex:3;
+  padding:0;
+
+}
+.lo{
+  width:2rem;
+  height:auto;
+  padding: 0;
+  margin-right: 5rem;
 }
 
 .nav-item {

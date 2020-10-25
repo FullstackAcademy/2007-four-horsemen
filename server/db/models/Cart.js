@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { DATE, STRING } = Sequelize;
+const { DATE, STRING, INTEGER } = Sequelize;
 const db = require('../conn');
 
 const Cart = db.define('cart', {
@@ -9,6 +9,10 @@ const Cart = db.define('cart', {
 
   created_date: {
     type: DATE,
+  },
+
+  quantity: {
+    type: INTEGER,
   },
 });
 

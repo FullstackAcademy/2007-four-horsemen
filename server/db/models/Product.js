@@ -40,6 +40,11 @@ const Product = db.define('product', {
     type: STRING,
     defaultValue: '',
   },
+
+  inventory_quantity: {
+    type: INTEGER,
+    defaultValue: 0,
+  },
 });
 
 module.exports = Product;
