@@ -31,8 +31,12 @@ class Routes extends React.Component {
             <Route path="/login" exact component={Login} />
             {/* <Route path="/signup" exact component={Signup} /> */}
           </main>
+          <div>
+            <img className='white-ride' src='lambo-background.jpg' alt='white lamborghini at nite'></img>
+          </div>
+          <Footer/>
         </div>
-        <Footer/>
+        
 
       </Router>
   

@@ -15,36 +15,58 @@ async function seed() {
     const users = await Promise.all([
       User.create({
         name: 'Lary',
+        address: 'Fulton',
+        phoneNum: 222333222,
+        username: 'lary77',
         email: 'lary@email.com',
+        hasAccount: true,
         password: 'password',
       }),
       User.create({
         name: 'Peter',
+        address: 'Fulton',
+        phoneNum: 222333222,
         email: 'peter@email.com',
-        password: 'password',
+        hasAccount: false,
       }),
       User.create({
         name: 'Oscar',
+        address: 'Queens',
+        phoneNum: 222333222,
+        username: 'oscar77',
         email: 'oscar@email.com',
         password: 'password',
+        hasAccount: true,
         isAdmin: true,
       }),
       User.create({
         name: 'Quinwei',
+        address: 'Queens',
+        phoneNum: 222333222,
+        username: 'qin88',
         email: 'quinwei@email.com',
         password: 'password',
+        hasAccount: true,
         isAdmin: true,
       }),
       User.create({
         name: 'Laziz',
+        address: 'Brooklyn',
+        phoneNum: 222333222,
+        username: 'lathis26',
         email: 'laziz@email.com',
         password: 'password',
+        hasAccount: true,
         isAdmin: true,
       }),
       User.create({
         name: 'Dmitry',
+        address: 'Manhattan',
+        phoneNum: 222333222,
+        username: 'dakul1',
         email: 'dmitry@email.com',
         password: 'password',
+        hasAccount: true,
         isAdmin: true,
       }),
     ]);
@@ -137,12 +159,11 @@ async function seed() {
 
     const orders = await Promise.all([
       Order.create({
-        status: 'PROCESSING',
-        name: 'Lary',
-        email: 'lary@email.com',
-        quantity: 1,
-        date: '11/03/2018',
-        isDebit: false,
+        payment_date: '12/04/2019',
+        order_date: '12/04/2019',
+        shipping_date: '12/10/2019',
+        shipping_method: 'UPS',
+        order_status: 'processing',
       }),
     ]);
 
@@ -151,7 +172,6 @@ async function seed() {
         tracking_num: '11111',
         shipment_date: '09/23/2020',
       }),
-     
     ]);
     const carts = await Promise.all([
       Cart.create({
@@ -162,13 +182,13 @@ async function seed() {
 
     const payments = await Promise.all([
       Payment.create({
-        payment_type: 'credit',
-        payment_date: 11 / 24 / 2020,
+        card_type: 'Visa',
+        card_number: 42423332222444,
+        card_exp_month: 11,
+        card_exp_year: 25,
+        card_security_code: 222,
       }),
-      
     ]);
-
-
   } catch (err) {
     console.log(err);
   }

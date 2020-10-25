@@ -67,3 +67,12 @@ a:hover {
   border: none;
   background: none;
 }
+
+.white-ride {
+  height: auto;
+  width: 100%;
+}
+
+.footer-text{
+  text-align: center;
+}
