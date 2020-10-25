@@ -7,7 +7,7 @@ const Header = () => {
     <nav>
       <ul className="home-models">
         <li className="logo">
-          <NavLink to="/">Logo</NavLink>
+          <NavLink to="/"><img className ='lo' src='lambo-logo.png'></img></NavLink>
         </li>
         <li className="nav-item">
           <NavLink to="/">Home</NavLink>

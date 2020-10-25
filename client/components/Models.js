@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
-import Model from './Model'
+//import Model from './Model'
 
 class Models extends React.Component {
   constructor(props){
