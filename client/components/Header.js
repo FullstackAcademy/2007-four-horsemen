@@ -7,7 +7,9 @@ const Header = () => {
     <nav>
       <ul className="home-models">
         <li className="logo">
-          <NavLink to="/"><img className ='lo' src='lambo-logo.png'></img></NavLink>
+          <NavLink to="/">
+            <img className="lo" src="lambo-logo.png"></img>
+          </NavLink>
         </li>
         <li className="nav-item">
           <NavLink to="/">Home</NavLink>
@@ -45,19 +47,6 @@ const Header = () => {
         </li>
       </ul>
     </nav>
-
-    /*
-     <nav>
-      <div className="home-models">
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/models">Models</NavLink>
-      </div>
-      <div className="login-cart">
-        <NavLink to="/Login">Login</NavLink>
-        <NavLink to="/cart">Cart</NavLink>
-      </div>
-    </nav>
-    */
   );
 };
 

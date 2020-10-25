@@ -1,20 +1,42 @@
 const Sequelize = require('sequelize');
-const { DATEONLY, ENUM } = Sequelize;
+const { DATE, ENUM } = Sequelize;
 const db = require('../conn');
 
 const Order = db.define('order', {
-  //important parts in order would be customerid which would link to another model called orderItem
-  //changed date type to dateonly in order to filterout the unnecessary chars attached to date
-  order_status: {
-    type: ENUM('processing', 'cancelled', 'completed'),
-  },
-
-  date: {
-    type: DATEONLY,
+  payment_date: {
+    type: DATE(6),
     allowNull: false,
     validate: {
       notEmpty: true,
     },
+  },
+
+  order_date: {
+    type: DATE(6),
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
+
+  shipping_date: {
+    type: DATE(6),
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
+
+  shipping_method: {
+    type: ENUM('FedEx', 'USPS', 'UPS'),
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
+
+  order_status: {
+    type: ENUM('processing', 'cancelled', 'completed'),
   },
 });
 
