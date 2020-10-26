@@ -6,11 +6,14 @@ const Product = require('./models/Product');
 const Shipment = require('./models/Shipment');
 const User = require('./models/User');
 const Review = require('./models/Review');
+const Session = require('./models/Session');
 
 //users
 User.hasMany(Order);
 User.hasOne(Cart);
 Cart.belongsTo(User);
+User.hasMany(Session);
+Session.belongsTo(User);
 
 //orders
 Order.belongsTo(User);
@@ -49,5 +52,6 @@ module.exports = {
     Shipment,
     User,
     Review,
+    Session
   },
 };
