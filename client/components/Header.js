@@ -30,7 +30,13 @@ const Header = () => {
           </button>
         </li>
         <li className="nav-cart">
-          <button className="cart-button" type="submit">
+          <button className="cart-button" type="submit" >
+          {/* {(props.cart.length && props.cart.reduce((a, b) => {
+                if(typeof b === 'object'){
+                  return a + b.quantity
+                }
+                return a + b}, 0)
+              )} */}
             <NavLink to="/cart">
               <i className="fas fa-shopping-cart"></i>
             </NavLink>

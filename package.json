@@ -23,6 +23,7 @@
   "dependencies": {
     "dayjs": "^1.9.3",
     "express": "^4.17.1",
+    "history": "^5.0.0",
     "node": "^14.14.0",
     "pg": "^8.4.1",
     "pg-hstore": "^2.3.3",
