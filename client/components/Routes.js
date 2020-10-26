@@ -12,7 +12,9 @@ import Login from './Login';
 import Header from './Header';
 import Footer from './Footer';
 import SingleModel from './SingleModel';
+import Checkout from './Checkout';
 import Home from './Home';
+
 
 class Routes extends React.Component {
   render() {
@@ -20,6 +22,7 @@ class Routes extends React.Component {
       <Router>
         <div>
           <Header />
+
           <Switch>
             <main>
               <Route path="/" exact component={Home} />
@@ -27,10 +30,12 @@ class Routes extends React.Component {
               <Route path="/models/:id" exact component={SingleModel} />
               <Route path="/cart" exact component={Cart} />
               <Route path="/login" exact component={Login} />
+              <Route path="/checkout" exact component={Checkout} />
               {/* <Route path="/signup" exact component={Signup} /> */}
             </main>
           </Switch>
           <Footer />
+
         </div>
       </Router>
     );

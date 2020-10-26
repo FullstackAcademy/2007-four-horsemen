@@ -20,5 +20,7 @@ export default function productsReducer(state = [], action) {
   if (action.type === SET_PRODUCTS) {
     return action.products;
   }
+
   return state;
 }
+
