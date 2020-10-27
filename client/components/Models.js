@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
 import { fetchProducts } from '../store/redux/products';
 import Model from './Model';
 
@@ -11,11 +10,11 @@ class Models extends React.Component {
   }
 
   render() {
-
+    //console.log(this.props)
     return (
-      <div>
+      <div >
         {this.props.products.length ? (
-          <div>
+          <div className="cars">
             {this.props.products.map((product) => {
               return (
                 <Link to={`/models/${product.id}`}>

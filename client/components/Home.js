@@ -6,7 +6,7 @@ const Home = () => {
       <img
         className="white-ride"
         src="lambo.jpg"
-        alt="grey lamborghini"
+        alt="lamborghini"
       ></img>
     </div>
   );

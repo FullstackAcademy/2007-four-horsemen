@@ -2,7 +2,7 @@ import React from 'react';
 
 const Model = (props) => {
   const model = props.product;
-  console.log(model);
+  //console.log(model);
   return (
     <div>
       <figure className="image is-64x64">
