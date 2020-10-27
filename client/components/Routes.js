@@ -24,7 +24,7 @@ class Routes extends React.Component {
           <Header />
 
           <Switch>
-            <main>
+            
               <Route path="/" exact component={Home} />
               <Route path="/models" exact component={Models} />
               <Route path="/models/:id" exact component={SingleModel} />
@@ -32,7 +32,7 @@ class Routes extends React.Component {
               <Route path="/login" exact component={Login} />
               {/*<Route path="/checkout" exact component={Checkout} /> */}
               {/* <Route path="/signup" exact component={Signup} /> */}
-            </main>
+            
           </Switch>
           <Footer />
 
