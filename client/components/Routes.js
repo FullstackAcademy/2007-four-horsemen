@@ -14,7 +14,7 @@ import Footer from './Footer';
 import SingleModel from './SingleModel';
 import Checkout from './Checkout';
 import Home from './Home';
-
+import Model from './Model';
 
 class Routes extends React.Component {
   render() {
@@ -22,20 +22,16 @@ class Routes extends React.Component {
       <Router>
         <div>
           <Header />
-
           <Switch>
-            
-              <Route path="/" exact component={Home} />
-              <Route path="/models" exact component={Models} />
-              <Route path="/models/:id" exact component={SingleModel} />
-              <Route path="/cart" exact component={Cart} />
-              <Route path="/login" exact component={Login} />
-              {/*<Route path="/checkout" exact component={Checkout} /> */}
-              {/* <Route path="/signup" exact component={Signup} /> */}
-            
+            <Route path="/" exact component={Home} />
+            <Route path="/models" exact component={Models} />
+            <Route path="/models/:id" exact component={SingleModel} />
+            <Route path="/cart" exact component={Cart} />
+            <Route path="/login" exact component={Login} />
+            {/*<Route path="/checkout" exact component={Checkout} /> */}
+            {/* <Route path="/signup" exact component={Signup} /> */}
           </Switch>
           <Footer />
-
         </div>
       </Router>
     );

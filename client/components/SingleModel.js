@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { moneyFormatter} from '../utils';
 
 class SingleModel extends React.Component {
   constructor() {
@@ -25,16 +26,17 @@ class SingleModel extends React.Component {
   render() {
     //console.log('Hi ',this.state)
     const { model, description, price, image } = this.state;
-    console.log(image)
+    //console.log(image)
+    const mulah = moneyFormatter.format(price);
     return (
       <div className='single-car'>
         <div className='inner'>
-          <figure className="image is-64x64">
-            <img src={image} alt={model} />
-          </figure>
+          <div className="image-is-64x64">
+          <img src={image} alt={model}></img>
+          </div>
           <div className='single-model'>{model}</div>
           <div className='single-description'>{description}</div>
-          <div className='single-price'>${price}</div>
+          <div className='single-price'>{mulah}</div>
         </div>
         <button className='add-car-cart'>Add to Cart</button>
       </div>
