@@ -28,8 +28,7 @@ class Cart extends React.Component {
 	}
 
 	render(){
-		//const orderedProducts = this.props.cart//.cart
-      // const products = this.props.products
+	
       const{products,orderedProducts}=this.props
 		
 
@@ -43,7 +42,7 @@ class Cart extends React.Component {
 	            { orderedProducts.map(orderedProduct =>
 	            	
 	            		<div key={orderedProduct.productId}>
-	            		<ProductInCart product={products.find(product => product.id === orderedProduct.productId)} porderedProduct={orderedProduct} handleClick={this.handleClick} />
+	            		<ProductInCart product={products.find(product => product.id === orderedProduct.productId)} orderedProduct={orderedProduct} handleClick={this.handleClick} />
 	            		<form>
 					      <label>Quantity</label>
 					      <select  onChange={(event) => this.handleChange(event, event.target.value,orderedProduct.productId)}>
@@ -68,8 +67,7 @@ const mapStateToProps = ({orderedProducts,products})=> {
 	return {
     orderedProducts,
     products
-		// cart: state.cart,
-		// products: state.product//.list,
+	
 	}
 }
 

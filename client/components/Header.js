@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import productsReducer from '../store/redux/products';
 
 const Header = () => {
   return (
@@ -30,7 +31,7 @@ const Header = () => {
           </button>
         </li>
         <li className="nav-cart">
-          <button className="cart-button" type="submit" >
+          <button className="cart-button" type="submit"  /*key={product.id} */>
           {/* {(props.cart.length && props.cart.reduce((a, b) => {
                 if(typeof b === 'object'){
                   return a + b.quantity

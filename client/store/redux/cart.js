@@ -2,46 +2,48 @@ import axios from 'axios'
 
 
 
+
 const initialState = {
     cart: [],
 
 }
 
-
-export const GET_CART_ITEMS = 'GET_CART_ITEMS'
+ const GET_CART_ITEMS = 'GET_CART_ITEMS'
 const UPDATE_CART = 'UPDATE_CART'
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 
 
 
-const getCartItems = (cartItems) => ({
-    type: GET_CART_ITEMS,
+const getCartItems = (cartItems) => {
+    return{
+        type: GET_CART_ITEMS,
     cartItems
-})
+    }
+}
 
 
-
-export const loadingCart = () => ({
-	type: LOADING_CART
-})
-
-const updateCart = (cart) => ({
+const updateCart = (cart) => {
+    return {
     type: UPDATE_CART,
     cart
-})
+    }
+}
 
-const remove = (productId) => ({
+const remove = (productId) => {
+    return{
     type: REMOVE_FROM_CART,
     productId
-})
+}
+}
 
 
-export const fetchCart = () => async dispatch => {
+export const fetchCart = ()   => {
     try {
-       
+       return async(dispatch)=>{
         const res = await axios.get('/api/cart')
         dispatch(getCartItems(res.data))
-    } catch(err) {
+    } 
+}catch(err) {
         dispatch(cartError())
         console.log(err)
     }
@@ -78,18 +80,30 @@ export const removeFromCart = (productId) => async(dispatch) => {
 
 
 export default function(state=initialState, action){
-    switch(action.type) {
-        case GET_CART_ITEMS: {
-            return {...state, cart:action.cartItems}
-        }
-        case UPDATE_CART: {
-            return {...state, cart: action.cart}
-        }
-        case REMOVE_FROM_CART: {
-            return {...state, cart: state.cart.filter(entry => entry.productId !== action.productId) }
-        }
+    // switch(action.type) {
+    //     case GET_CART_ITEMS: {
+    //         return {...state, cart:action.cartItems}
+    //     }
+    //     case UPDATE_CART: {
+    //         return {...state, cart: action.cart}
+    //     }
+    //     case REMOVE_FROM_CART: {
+    //         return {...state, cart: state.cart.filter(entry => entry.productId !== action.productId) }
+    //     }
        
-        default:
-            return state
-    }
+    //     default:
+    //         return state
+    // }
+
+    if(action.type === GET_CART_ITEMS){
+        state = action.projects
+      }
+      if(action.type === UPDATE_CART){
+        state = state.map(project => project.id === action.project.id*1 ? action.project : project); 
+      }
+      if(action.type === REMOVE_FROM_CART){
+        state = state.filter(project => project.id !== action.id*1); 
+      }
+    
+      return state;
 }
