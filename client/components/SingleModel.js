@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { moneyFormatter } from '../utils';
+import AddToCart from './AddToCart'
 
 class SingleModel extends React.Component {
   constructor() {
@@ -49,7 +50,8 @@ class SingleModel extends React.Component {
           <div className="single-description">{description}</div>
           <div className="single-price">{mulah}</div>
         </div>
-        <button className="add-car-cart" onClick={() => this.setState({basket: [...this.state.basket, auto]})}>Add to Cart</button>
+        <AddToCart model={model}/>
+        {/* <button className="add-car-cart" onClick={() => this.setState({basket: [...this.state.basket, auto]})}>Add to Cart</button> */}
       </div>
     );
   }

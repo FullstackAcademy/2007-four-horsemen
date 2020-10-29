@@ -5,7 +5,6 @@ import ProductInCart from './ProductInCart';
 import {
   fetchCart,
   quantityOfProducts,
-  addToCart,
   removeFromCart,
 } from '../store/redux/cart';
 import { fetchProducts } from '../store/redux/products';

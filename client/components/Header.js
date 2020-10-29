@@ -39,7 +39,7 @@ const Header = () => {
                 }
                 return a + b}, 0)
               )} */}
-            <NavLink to="/cart">
+            <NavLink to="/orders/cart">
               <i className="fas fa-shopping-cart"></i>
             </NavLink>
           </button>
