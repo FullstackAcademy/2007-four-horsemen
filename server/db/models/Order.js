@@ -1,7 +1,6 @@
 const Sequelize = require('sequelize');
-const { DATE, ENUM, STRING } = Sequelize;
+const { DATE, ENUM, STRING, INTEGER } = Sequelize;
 const db = require('../conn');
-const { INTEGER } = require('sequelize');
 
 const Order = db.define('order', {
   total: {
@@ -25,10 +24,8 @@ const Order = db.define('order', {
 
   order_status: {
     type: ENUM('cart', 'created', 'processing', 'cancelled', 'completed'),
+    allowNull: false,
   },
-  allowNull: false,
 });
 
 module.exports = Order;
-
-//add status with ENUM('PROCESSING', 'CANCELLED', 'COMPLETED')
