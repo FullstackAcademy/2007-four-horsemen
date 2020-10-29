@@ -1,12 +1,19 @@
 import axios from 'axios';
 
+
 const initialState = {
+
   cart: [],
 };
+
+
+
+
 
 export const GET_CART_ITEMS = 'GET_CART_ITEMS';
 const UPDATE_CART = 'UPDATE_CART';
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+
 
 const getCartItems = (cartItems) => ({
   type: GET_CART_ITEMS,
@@ -71,6 +78,7 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case GET_CART_ITEMS: {
       return { ...state, cart: action.cartItems };
+
     }
     case UPDATE_CART: {
       return { ...state, cart: action.cart };
@@ -84,7 +92,11 @@ export default function (state = initialState, action) {
       };
     }
 
+
     default:
       return state;
   }
-}
+
+
+
+
