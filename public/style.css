@@ -69,8 +69,8 @@ a:hover {
 }
 
 .white-ride {
-  height: auto;
   width: 100%;
+  
 }
 
 .footer-text{
@@ -109,4 +109,28 @@ a:hover {
   height: auto;
   padding: .3rem;
 
+}
+
+.hot-cars{
+  padding:4rem;
+  width: 100%;
+  height: auto;
+}
+
+.hot-car-name{
+  font-family: fantasy;
+  font-size: 2rem;
+  padding: .25rem;
+  text-align: center;
+}
+
+.hot-car-money{
+  padding: .25rem;
+  text-align: center;
+
+}
+
+footer{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }

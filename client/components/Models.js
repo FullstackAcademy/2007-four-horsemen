@@ -18,7 +18,7 @@ class Models extends React.Component {
           <div className="cars">
             {this.props.products.map((product) => {
               return (
-                <Link key ={product.id}to={`/models/${product.id}`}>
+                <Link product={product} key={product.id}to={`/models/${product.id}`}>
                   <Model product={product} />
                 </Link>
               );
