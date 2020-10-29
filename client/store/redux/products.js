@@ -12,6 +12,7 @@ export const setProducts = (products) => {
 export const fetchProducts = () => {
   return async (dispatch) => {
     const products = await axios.get('/api/products');
+
     dispatch(setProducts(products.data));
   };
 };

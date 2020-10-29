@@ -58,9 +58,7 @@ router.post('/login', async (req, res) => {
 
   router.get('/whoami', (req, res, next) => {
     if (req.user) {
-      res.send({
-        username: req.user.username,
-      });
+      res.send(req.user);
     } else {
       res.sendStatus(401);
     }

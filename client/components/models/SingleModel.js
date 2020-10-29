@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 class SingleModel extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       model: '',
       description: '',
@@ -12,9 +12,11 @@ class SingleModel extends React.Component {
     };
   }
   componentDidMount() {
+
     const model = this.props.products.find(
       (e) => e.id === this.props.match.params.id * 1
     );
+    if(model){
     this.setState({
       model: model.model,
       description: model.description,
@@ -22,15 +24,16 @@ class SingleModel extends React.Component {
       image: model.image,
     });
   }
+  }
   render() {
-    //console.log('Hi ',this.state)
+
     const { model, description, price, image } = this.state;
-    console.log(image)
+
     return (
       <div className='single-car'>
         <div className='inner'>
           <figure className="image is-64x64">
-            <img src={image} alt={model} />
+            <img src={`https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/model_gw/urus/s/s_gateway_urus_02_m.jpg`} alt={model} />
           </figure>
           <div className='single-model'>{model}</div>
           <div className='single-description'>{description}</div>
@@ -41,6 +44,7 @@ class SingleModel extends React.Component {
     );
   }
 }
+
 const mapStateToProps = ({ products }) => {
   return { products };
 };
