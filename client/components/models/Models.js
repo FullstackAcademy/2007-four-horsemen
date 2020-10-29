@@ -6,10 +6,6 @@ import Model from './Model';
 
 class Models extends React.Component {
 
-  // componentDidMount() {
-  //   this.props.getProducts();
-  // }
-
   render() {
     console.log(this.props)
     return (
@@ -18,7 +14,7 @@ class Models extends React.Component {
           <div className="cars">
             {this.props.products.map((product) => {
               return (
-                <Link key={product.id} to={`/models/${product.id}`}>
+                <Link product={product} key={product.id}to={`/models/${product.id}`}>
                   <Model product={product} />
                 </Link>
               );

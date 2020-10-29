@@ -1,15 +1,21 @@
 import React from 'react';
+import { moneyFormatter } from '../../utils';
 
 const Model = (props) => {
   const model = props.product;
 
+  const pic = model.image;
+  const mulah = moneyFormatter.format(model.price);
+  if (!model) {
+    return <h1>Loading...</h1>;
+  }
   return (
     <div>
-      <figure className="image is-64x64">
-        <img src={'https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/model_gw/urus/s/s_gateway_urus_02_m.jpg'} alt={model.model} />
-      </figure>
-      <div>{model.model}</div>
-      <div>{model.price}</div>
+      <div className="image-is-64x64">
+        <img className = 'hot-cars' src={pic} alt={model.model}></img>
+      </div>
+      <div className='hot-car-name'>{model.model}</div>
+      <div className='hot-car-money'>{mulah}</div>
     </div>
   );
 };
