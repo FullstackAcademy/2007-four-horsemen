@@ -40,53 +40,53 @@ class Cart extends React.Component {
     //const orderedProducts = this.props.cart//.cart
     // const products = this.props.products
     const { products, orderedProducts } = this.props;
-    return (<h1>hello</h1>)
-    // return (
-    //   <div>
-    //     <h1>Your orders</h1>
-    //     <Link to="/checkout">
-    //       <button>Proceed To Checkout</button>
-    //     </Link>
-    //     <ul>
-    //       {orderedProducts.map((orderedProduct) => (
-    //         <div key={orderedProduct.productId}>
-    //           <ProductInCart
-    //             product={products.find(
-    //               (product) => product.id === orderedProduct.productId
-    //             )}
-    //             porderedProduct={orderedProduct}
-    //             handleClick={this.handleClick}
-    //           />
-    //           <form>
-    //             <label>Quantity</label>
-    //             <select
-    //               onChange={(event) =>
-    //                 this.handleChange(
-    //                   event,
-    //                   event.target.value,
-    //                   orderedProduct.productId
-    //                 )
-    //               }
-    //             >
-    //               <option value={product.quantity}>{product.quantity}</option>
-    //               {[
-    //                 ...Array(
-    //                   products.find(
-    //                     (product) => product.id === orderedProduct.productId
-    //                   ).quantity + 1
-    //                 ).keys(),
-    //               ].map((num) => (
-    //                 <option key={num} value={num}>
-    //                   {num}
-    //                 </option>
-    //               ))}
-    //             </select>
-    //           </form>
-    //         </div>
-    //       ))}
-    //     </ul>
-    //   </div>
-    // );
+    //return (<h1>hello</h1>)
+    return (
+      <div>
+        <h1>Your orders</h1>
+        <Link to="/checkout">
+          <button>Proceed To Checkout</button>
+        </Link>
+        <ul>
+          {orderedProducts.map((orderedProduct) => (
+            <div key={orderedProduct.productId}>
+              <ProductInCart
+                product={products.find(
+                  (product) => product.id === orderedProduct.productId
+                )}
+                orderedProduct={orderedProduct}
+                handleClick={this.handleClick}
+              />
+              <form>
+                <label>Quantity</label>
+                <select
+                  onChange={(event) =>
+                    this.handleChange(
+                      event,
+                      event.target.value,
+                      orderedProduct.productId
+                    )
+                  }
+                >
+                  <option value={product.quantity}>{product.quantity}</option>
+                  {[
+                    ...Array(
+                      products.find(
+                        (product) => product.id === orderedProduct.productId
+                      ).quantity + 1
+                    ).keys(),
+                  ].map((num) => (
+                    <option key={num} value={num}>
+                      {num}
+                    </option>
+                  ))}
+                </select>
+              </form>
+            </div>
+          ))}
+        </ul>
+      </div>
+    );
   }
 }
 
