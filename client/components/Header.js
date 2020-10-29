@@ -8,7 +8,7 @@ const Header = () => {
       <ul className="home-models">
         <li className="logo">
           <NavLink to="/">
-            <img className="lo" src="lambo-logo.png"></img>
+            <img className="lo" src="lambo-logo.png" alt='lamborghini logo'></img>
           </NavLink>
         </li>
         <li className="nav-item">
@@ -31,8 +31,21 @@ const Header = () => {
             </NavLink>
           </button>
         </li>
+        <li className="nav-login">
+          <button className="login-button" type="submit">
+            <NavLink to="/user">
+              <i className="fas fa-user"></i>
+            </NavLink>
+          </button>
+        </li>
         <li className="nav-cart">
-          <button className="cart-button" type="submit">
+          <button className="cart-button" type="submit" >
+          {/* {(props.cart.length && props.cart.reduce((a, b) => {
+                if(typeof b === 'object'){
+                  return a + b.quantity
+                }
+                return a + b}, 0)
+              )} */}
             <NavLink to="/cart">
               <i className="fas fa-shopping-cart"></i>
             </NavLink>

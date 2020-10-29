@@ -1,13 +1,44 @@
-import React from 'react';
+import React,{ useState } from 'react';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-export default class Login extends React.Component {
-  render() {
+  const Login = () => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    const onLoginSubmit = (e) => {
+      e.preventDefault();
+  
+      return axios.post('/api/auth/login', { username, password })
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
     return (
-      <div>
-        <h3>Here is Login page</h3>
-      </div>
-    );
-  }
-}
+      <>
+      <h1>Login</h1>
+      <form onSubmit={onLoginSubmit}>
+        <label>
+          Username
+          <input
+            onChange={({ target: { value } }) => setUsername(value)}
+          />
+        </label>
+        <label>
+          Password
+          <input
+            onChange={({ target: { value } }) => setPassword(value)}
+            type="password"
+          />
+        </label>
+        <button>Login</button>
+      </form>
+    </>
+  )
+    }
+
+    export default Login
