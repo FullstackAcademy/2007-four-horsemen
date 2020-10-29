@@ -7,15 +7,15 @@ import Model from './Model';
 class Models extends React.Component {
 
   render() {
-    console.log(this.props)
+    //console.log(this.props)
     return (
       <div >
         {this.props.products.length ? (
           <div className="cars">
             {this.props.products.map((product) => {
               return (
-                <Link product={product} key={product.id}to={`/models/${product.id}`}>
-                  <Model product={product} />
+                <Link to={`/models/${product.id}`} key={product.id}>
+                <Model product={product} />
                 </Link>
               );
             })}

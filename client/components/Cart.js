@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import ProductInCart from './ProductInCart';
+//import ProductInCart from './ProductInCart';
 import {
   fetchCart,
   quantityOfProducts,
@@ -90,23 +90,23 @@ class Cart extends React.Component {
   }
 }
 
-const mapStateToProps = ({ orderedProducts, products }) => {
-  return {
-    orderedProducts,
-    products,
-    // cart: state.cart,
-    // products: state.product//.list,
-  };
-};
+// const mapStateToProps = ({ orderedProducts, products }) => {
+//   return {
+//     orderedProducts,
+//     products,
+//     // cart: state.cart,
+//     // products: state.product//.list,
+//   };
+// };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchCart: () => dispatch(fetchCart()),
-    setProducts: () => dispatch(fetchProducts()),
-    quantityOfProducts: (productId, quantity) =>
-      dispatch(quantityOfProducts(productId, quantity)),
-    removeFromCart: (productId) => dispatch(removeFromCart(productId)),
-  };
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     fetchCart: () => dispatch(fetchCart()),
+//     setProducts: () => dispatch(fetchProducts()),
+//     quantityOfProducts: (productId, quantity) =>
+//       dispatch(quantityOfProducts(productId, quantity)),
+//     removeFromCart: (productId) => dispatch(removeFromCart(productId)),
+//   };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+ export default connect()(Cart);
