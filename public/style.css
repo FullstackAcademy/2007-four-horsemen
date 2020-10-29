@@ -31,7 +31,7 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   list-style-type: none;
-  padding: 1rem;
+  padding: 0;
 }
 
 .home-models li a {
@@ -40,8 +40,15 @@ a:hover {
 }
 
 .logo {
-  flex: 5;
-  font-size: 20px;
+  flex:3;
+  padding:0;
+
+}
+.lo{
+  width:2rem;
+  height:auto;
+  padding: 0;
+  margin-right: 5rem;
 }
 
 .nav-item {
@@ -59,4 +66,71 @@ a:hover {
   padding: 0;
   border: none;
   background: none;
+}
+
+.white-ride {
+  width: 100%;
+  
+}
+
+.footer-text{
+  text-align: center;
+}
+
+.single-car{
+  background-image: url('hayden-walker-fgpg3KzFrQY-unsplash.jpg');
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:100%;
+  height:auto;
+  padding: .5rem;
+
+}
+
+.inner{
+  text-align: center;
+}
+
+
+.single-model{
+  padding:.3rem;
+}
+.single-description{
+  color: whitesmoke;
+  padding:.3rem;
+}
+.single-price{
+  padding:.3rem;
+}
+
+.add-car-cart{
+  width: 8rem;
+  height: auto;
+  padding: .3rem;
+
+}
+
+.hot-cars{
+  padding:4rem;
+  width: 100%;
+  height: auto;
+}
+
+.hot-car-name{
+  font-family: fantasy;
+  font-size: 2rem;
+  padding: .25rem;
+  text-align: center;
+}
+
+.hot-car-money{
+  padding: .25rem;
+  text-align: center;
+
+}
+
+footer{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }

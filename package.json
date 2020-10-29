@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/FullstackAcademy/2007-four-horsemen#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.5",
     "dayjs": "^1.9.3",
     "express": "^4.17.1",
     "history": "^5.0.0",
@@ -41,6 +42,8 @@
     "@babel/preset-react": "^7.12.1",
     "axios": "^0.20.0",
     "babel-loader": "^8.1.0",
+    "eslint": "^7.12.1",
+    "eslint-plugin-react": "^7.21.5",
     "nodemon": "^2.0.5",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
