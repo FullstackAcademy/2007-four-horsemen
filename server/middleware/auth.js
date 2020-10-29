@@ -14,7 +14,9 @@ const authMiddleware = async (req, res, next) => {
     });
 
     if (!session) {
-      console.log('Invalid session ID - not located in database. Removing cookie.');
+      console.log(
+        'Invalid session ID - not located in database. Removing cookie.'
+      );
       res.clearCookie('sid');
       req.user = null;
     } else {
@@ -25,6 +27,6 @@ const authMiddleware = async (req, res, next) => {
   }
 
   next();
-}
+};
 
 module.exports = authMiddleware;

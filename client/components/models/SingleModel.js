@@ -15,31 +15,31 @@ class SingleModel extends React.Component {
       basket: [],
     };
   }
-  componentDidUpdate(){
-    console.log('didUpdate ', this.state)
+  componentDidUpdate() {
+    console.log('didUpdate ', this.state);
   }
   componentDidMount() {
-    console.log('did', this.state)
+    console.log('did', this.state);
     const model = this.props.products.find(
       (e) => e.id === this.props.match.params.id * 1
     );
-    if(model){
-    this.setState({
-      auto: {
-        model: model.model,
-        description: model.description,
-        price: model.price,
-        image: model.image,
-      },
-    });
-  }
+    if (model) {
+      this.setState({
+        auto: {
+          model: model.model,
+          description: model.description,
+          price: model.price,
+          image: model.image,
+        },
+      });
+    }
   }
   render() {
     const { model, description, price, image } = this.state.auto;
     const mulah = moneyFormatter.format(price);
-    const {auto} = this.state;
-    console.log('render ', auto)
-    console.log('render ', this.state)
+    const { auto } = this.state;
+    console.log('render ', auto);
+    console.log('render ', this.state);
     return (
       <div className="single-car">
         <div className="inner">
@@ -50,7 +50,14 @@ class SingleModel extends React.Component {
           <div className="single-description">{description}</div>
           <div className="single-price">{mulah}</div>
         </div>
-        <button className="add-car-cart" onClick={() => this.setState({basket: [...this.state.basket, auto]})}>Add to Cart</button>
+        <button
+          className="add-car-cart"
+          onClick={() =>
+            this.setState({ basket: [...this.state.basket, auto] })
+          }
+        >
+          Add to Cart
+        </button>
       </div>
     );
   }

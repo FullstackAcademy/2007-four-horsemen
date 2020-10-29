@@ -9,20 +9,19 @@ import {
 } from 'react-router-dom';
 import Models from './models/Models';
 // import Cart from './Cart';
-import User from './User'
+import User from './User';
 import Login from './Login';
 import Header from './Header';
 import Footer from './Footer';
 import SingleModel from './models/SingleModel';
 import Home from './Home';
-import {fetchProducts} from '../store/redux/products'
+import { fetchProducts } from '../store/redux/products';
 
 class Routes extends React.Component {
-  componentDidMount(){
-    this.props.getProducts()
+  componentDidMount() {
+    this.props.getProducts();
   }
   render() {
-
     return (
       <Router>
         <div>

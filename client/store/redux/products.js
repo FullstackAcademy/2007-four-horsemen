@@ -10,18 +10,20 @@ export const setProducts = (products) => {
 };
 
 export const fetchProducts = () => {
-  return async (dispatch) => {
-    const products = await axios.get('/api/products');
+  try {
+    return async (dispatch) => {
+      const products = await axios.get('/api/products');
 
-    dispatch(setProducts(products.data));
-  };
+      dispatch(setProducts(products.data));
+    };
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export default function productsReducer(state = [], action) {
   if (action.type === SET_PRODUCTS) {
     return action.products;
   }
-
   return state;
 }
-
