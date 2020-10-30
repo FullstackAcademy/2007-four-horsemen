@@ -134,3 +134,8 @@ footer{
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
+
+.Cart-image{
+  height: 10rem;
+  width: auto;
+}
