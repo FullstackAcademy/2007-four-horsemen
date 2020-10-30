@@ -44,7 +44,7 @@ class SingleModel extends React.Component {
       <div className="single-car">
         <div className="inner">
           <div className="image-is-64x64">
-            <img src={`../${image}`} alt={model}></img>
+            <img src={image} alt={model}></img>
           </div>
           <div className="single-model">{model}</div>
           <div className="single-description">{description}</div>

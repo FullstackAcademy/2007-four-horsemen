@@ -16,16 +16,20 @@ import Footer from './Footer';
 import SingleModel from './models/SingleModel';
 import Home from './Home';
 import { fetchProducts } from '../store/redux/products';
+import { setSingleUser } from "../store/redux/users"
 
 class Routes extends React.Component {
   componentDidMount() {
     this.props.getProducts();
+    this.props.getUser();
   }
+
   render() {
+    console.log(this.props)
     return (
       <Router>
         <div>
-          <Header />
+          <Header user={this.props.user}/>
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/models" exact component={Models} />
@@ -43,12 +47,13 @@ class Routes extends React.Component {
   }
 }
 
-const mapStateToProps = ({ products }) => {
-  return { products };
+const mapStateToProps = ({ products,user }) => {
+  return { products, user};
 };
 const mapDispatchToProps = (dispatch) => {
   return {
     getProducts: () => dispatch(fetchProducts()),
+    getUser: () => dispatch(setSingleUser())
   };
 };
 

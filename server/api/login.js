@@ -55,6 +55,18 @@ router.post('/login', async (req, res) => {
   }
 });
 
+router.delete('/logout',async (req,res,next) => {
+  try{
+    await Session.destroy({where:{uuid: req.cookies.sid}})
+    req.user = null;
+    res.redirect('/')
+}
+catch(ex){
+    console.log('Please login first before you logout')
+}
+
+});
+
 router.get('/whoami', (req, res, next) => {
   if (req.user) {
     res.send(req.user);

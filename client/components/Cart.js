@@ -35,6 +35,7 @@ class Cart extends React.Component {
     this.props.removeFromCart(productId);
   }
 
+
   render() {
     console.log('cart render ', this.props)
     //const orderedProducts = this.props.cart//.cart
@@ -93,11 +94,15 @@ class Cart extends React.Component {
 const mapStateToProps = ({ orderedProducts, products }) => {
   return {
     orderedProducts,
+
     products,
     // cart: state.cart,
     // products: state.product//.list,
   };
 };
+
+
+
 
 const mapDispatchToProps = (dispatch) => {
   return {
