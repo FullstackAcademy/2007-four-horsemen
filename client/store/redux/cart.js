@@ -2,6 +2,9 @@ import axios from 'axios';
 
 ////////////ACTION TYPE/////////////////
 const ADD_TO_CART = 'ADD_TO_CART';
+const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+const ADD_QUANTITY = 'ADD_QUANTITY';
+const SUBTRACT_QUANTITY = 'SUBTRACT_QUANTITY';
 
 //////////ACTION CREATORS//////////////
 export const addToCart = (product, id) => {
@@ -12,6 +15,29 @@ export const addToCart = (product, id) => {
   };
 };
 
+export const removeFromCart = (id) => {
+  return {
+    type: REMOVE_FROM_CART,
+    id,
+  };
+};
+
+export const addQuantity = (id) => {
+  return {
+    type: ADD_QUANTITY,
+    id,
+  };
+};
+
+export const subtractQuantity = (id) => {
+  return {
+    type: SUBTRACT_QUANTITY,
+    id,
+  };
+};
+
+
+////////////////////////////CART REDUCER///////////////////////
 const initialState = {
   items: [],
   addedProducts: [],
@@ -19,8 +45,8 @@ const initialState = {
 };
 
 export default function cartReducer(state = initialState, action) {
-  let { addedProducts, items } = state;
-  console.log(state.addedProducts);
+  let { addedProducts, items, total } = state;
+  //console.log(state.addedProducts);
   if (action.type === ADD_TO_CART) {
     let theProduct = action.product;
     let existedProduct = state.addedProducts.find(
@@ -37,7 +63,7 @@ export default function cartReducer(state = initialState, action) {
         total: state.total + theProduct.price,
       };
     } else {
-      console.log('bolony');
+      //console.log('bolony');
       theProduct.quantity += 1;
       let newTotal = state.total + theProduct.price;
       return {
@@ -48,8 +74,33 @@ export default function cartReducer(state = initialState, action) {
     }
   }
 
+  if(action.type == REMOVE_FROM_CART){
+    let removeProduct = addedProducts.find( p => p.id === action.id);
+    let updateProducts = addedProducts.filter( p => p.id !== action.id);
+    let updateTotal = total - removeProduct.price * removeProduct.quantity;
+    
+    return {
+      items,
+      addedProducts: updateProducts,
+      total: updateTotal
+    }
+  }
+
   return state;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // export const GET_CART_ITEMS = 'GET_CART_ITEMS';
 // const UPDATE_CART = 'UPDATE_CART';
