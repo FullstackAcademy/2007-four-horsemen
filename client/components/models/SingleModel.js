@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { moneyFormatter } from '../../utils';
+import { addToCart } from '../../store/redux/cart';
 
 class SingleModel extends React.Component {
   constructor(props) {
@@ -14,12 +15,10 @@ class SingleModel extends React.Component {
       },
       basket: [],
     };
+    this.handleClick = this.handleClick.bind(this)
   }
   componentDidUpdate() {
-    console.log('didUpdate ', this.state);
-  }
-  componentDidMount() {
-    console.log('did', this.state);
+
     const model = this.props.products.find(
       (e) => e.id === this.props.match.params.id * 1
     );
@@ -30,16 +29,24 @@ class SingleModel extends React.Component {
           description: model.description,
           price: model.price,
           image: model.image,
+          id: this.props.match.params.id * 1
         },
       });
     }
   }
+
+  handleClick (auto, id) {
+    this.props.addToCart(auto, id);
+
+  }
+
+
   render() {
+    
     const { model, description, price, image } = this.state.auto;
     const mulah = moneyFormatter.format(price);
     const { auto } = this.state;
-    console.log('render ', auto);
-    console.log('render ', this.state);
+
     return (
       <div className="single-car">
         <div className="inner">
@@ -53,7 +60,7 @@ class SingleModel extends React.Component {
         <button
           className="add-car-cart"
           onClick={() =>
-            this.setState({ basket: [...this.state.basket, auto] })
+            this.handleClick( auto, this.props.match.params.id * 1 )
           }
         >
           Add to Cart
@@ -67,6 +74,6 @@ const mapStateToProps = ({ products }) => {
   return { products };
 };
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return { addToCart: (product, id) => dispatch(addToCart(product, id)) } ;
 };
 export default connect(mapStateToProps, mapDispatchToProps)(SingleModel);

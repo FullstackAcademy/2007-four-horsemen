@@ -14,18 +14,22 @@ import Login from './Login';
 import Header from './Header';
 import Footer from './Footer';
 import SingleModel from './models/SingleModel';
-import Home from './Home';
+
+import Cart from './Cart';
+
 import { fetchProducts } from '../store/redux/products';
 import { setSingleUser } from "../store/redux/users"
+
 
 class Routes extends React.Component {
   componentDidMount() {
     this.props.getProducts();
+
     this.props.getUser();
   }
 
   render() {
-    console.log(this.props)
+
     return (
       <Router>
         <div>
@@ -37,6 +41,7 @@ class Routes extends React.Component {
             {/* <Route path="/cart" exact component={Cart} /> */}
             <Route path="/login" exact component={Login} />
             <Route path="/user" exact component={User} />
+            <Route path="/cart" exact component={Cart} />
             {/*<Route path="/checkout" exact component={Checkout} /> */}
             {/* <Route path="/signup" exact component={Signup} /> */}
           </Switch>

@@ -3,7 +3,6 @@ import { moneyFormatter } from '../../utils';
 
 const Model = (props) => {
   const model = props.product;
-
   const pic = model.image;
   const mulah = moneyFormatter.format(model.price);
   if (!model) {
