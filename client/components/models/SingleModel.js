@@ -18,10 +18,7 @@ class SingleModel extends React.Component {
     this.handleClick = this.handleClick.bind(this)
   }
   componentDidUpdate() {
-    //console.log('didUpdate ', this.state);
-  }
-  componentDidMount() {
-    //console.log('did', this.state);
+
     const model = this.props.products.find(
       (e) => e.id === this.props.match.params.id * 1
     );
@@ -40,6 +37,7 @@ class SingleModel extends React.Component {
 
   handleClick (auto, id) {
     this.props.addToCart(auto, id);
+
   }
 
 
@@ -48,13 +46,12 @@ class SingleModel extends React.Component {
     const { model, description, price, image } = this.state.auto;
     const mulah = moneyFormatter.format(price);
     const { auto } = this.state;
-    // console.log('render ', auto.id);
-    // console.log('render ', this.state);
+
     return (
       <div className="single-car">
         <div className="inner">
           <div className="image-is-64x64">
-            <img src={`../${image}`} alt={model}></img>
+            <img src={image} alt={model}></img>
           </div>
           <div className="single-model">{model}</div>
           <div className="single-description">{description}</div>

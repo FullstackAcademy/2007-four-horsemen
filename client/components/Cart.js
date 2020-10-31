@@ -24,6 +24,7 @@ class Cart extends Component {
     subtractQuantity(id);
   }
 
+
   render() {
     const { cart } = this.props;
     console.log('render in Cart ', this.props)
@@ -97,8 +98,18 @@ class Cart extends Component {
 const mapStateToProps = ({ cart }) => {
   return {
     cart,
+
+    orderedProducts,
+
+    products,
+    // cart: state.cart,
+    // products: state.product//.list,
+
   };
 };
+
+
+
 
 const mapDispatchToProps = (dispatch) => {
   return {
