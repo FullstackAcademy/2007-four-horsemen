@@ -47,7 +47,7 @@ class Cart extends React.Component {
           <button>Proceed To Checkout</button>
         </Link>
         <ul>
-          {orderedProducts.map((orderedProduct) => (
+          {orderedProducts.map(orderedProduct => (
             <div key={orderedProduct.productId}>
               <ProductInCart
                 product={products.find(

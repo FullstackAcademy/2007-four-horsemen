@@ -27,10 +27,10 @@ class Routes extends React.Component {
             <Route path="/" exact component={Home} />
             <Route path="/models" exact component={Models} />
             <Route path="/models/:id" exact component={SingleModel} />
-            <Route path="/orders/cart" exact component={Cart} />
+            <Route path="/cart" exact component={Cart} />
             <Route path="/orders" exact component={Orders} />
             <Route path="/login" exact component={Login} />
-            {/*<Route path="/orders/checkout" exact component={Checkout} /> */}
+            {/*<Route path="/orders/checkout" exact component={CheckoutView} /> */}
             {/* <Route path="/signup" exact component={Signup} /> */}
           </Switch>
           <Footer />
