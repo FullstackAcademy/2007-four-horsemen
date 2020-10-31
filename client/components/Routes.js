@@ -12,6 +12,7 @@ import Models from './models/Models';
 import User from './User';
 import Login from './Login';
 import Header from './Header';
+import Orders from './Orders';
 import Footer from './Footer';
 import SingleModel from './models/SingleModel';
 import Home from './Home';
@@ -31,11 +32,10 @@ class Routes extends React.Component {
             <Route path="/" exact component={Home} />
             <Route path="/models" exact component={Models} />
             <Route path="/models/:id" exact component={SingleModel} />
-            {/* <Route path="/cart" exact component={Cart} /> */}
-            <Route path="/login" exact component={Login} />
-            <Route path="/user" exact component={User} />
             <Route path="/cart" exact component={Cart} />
-            {/*<Route path="/checkout" exact component={Checkout} /> */}
+            <Route path="/orders" exact component={Orders} />
+            <Route path="/login" exact component={Login} />
+            {/*<Route path="/orders/checkout" exact component={CheckoutView} /> */}
             {/* <Route path="/signup" exact component={Signup} /> */}
           </Switch>
           <Footer />
