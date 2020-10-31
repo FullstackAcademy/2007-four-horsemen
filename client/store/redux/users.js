@@ -2,6 +2,7 @@ import axios from 'axios';
 
 ////////ACTION TYPES//////////
 const SET_USERS = 'SET_USERS';
+const SET_SINGLEUSER = 'SET_SINGLEUSER';
 const CREATE_USER = 'CREATE_USER';
 const UPDATE_USER = 'UPDATE_USER';
 const DELETE_USER = 'DELETE_USER';
@@ -12,7 +13,14 @@ const _setUsers = (users) => {
     type: SET_USERS,
     users,
   };
-};
+};///////fetch all users /////admins
+
+const _setSingleUser = (user) =>{
+  return {
+    type: SET_SINGLEUSER,
+    user
+  }
+}
 
 const _createUser = (user) => {
   return {
@@ -37,14 +45,20 @@ const _deleteUser = (id) => {
 
 ///////THUNK CREATORS////////
 
-export default setUsers = () => {
+export const setUsers = () => {
   return async (dispatch) => {
     const { data } = axios.get('/api/users');
     dispatch(_setUsers(data));
   };
 };
+export const setSingleUser = () => {
+  return async (dispatch) => {
+    const { data } = await axios.get('/api/auth/whoami');
+    dispatch(_setSingleUser(data));
+  };
+};
 
-export default createUser = ({ user, history }) => {
+export const createUser = ({ user, history }) => {
   return async (dispatch) => {
     const { data } = axios.post('/api/users', { user });
     dispatch(_createUser(data));
@@ -52,7 +66,7 @@ export default createUser = ({ user, history }) => {
   };
 };
 
-export default updateUser = ({ user, id, history }) => {
+export const updateUser = ({ user, id, history }) => {
   return async (dispatch) => {
     const { data } = axios.put(`/api/users/${id}`, { user });
     dispatch(_updateUser(data));
@@ -60,8 +74,8 @@ export default updateUser = ({ user, id, history }) => {
   };
 };
 
-export default deleteUser = ({ id, history }) => {
-  return async (disaptch) => {
+export const deleteUser = ({ id, history }) => {
+  return async (dispatch) => {
     axios.delete(`/api/users/${id}`);
     dispatch(_deleteUser(id));
     history.push('/users');
@@ -70,20 +84,23 @@ export default deleteUser = ({ id, history }) => {
 
 ////////USERS REDUCER//////////
 
-const initialState = [];
 
-export default function (state = initialState, action) {
-  if (action.type === SET_USERS) {
-    state = action.users;
+
+export default function usersReducer (state = [], action) {
+  // if (action.type === SET_USERS) {
+  //   state = action.users;
+  // }
+  if (action.type === SET_SINGLEUSER) {
+    return action.user;
   }
-  if (action.type === CREATE_USER) {
-    state = [action.user, ...state];
-  }
-  if (action.type === UPDATE_USER) {
-    state = state.map((user) => (user.id === action.id ? action.user : user));
-  }
-  if (action.type === DELETE_USER) {
-    state = state.filter((user) => user.id !== action.id * 1);
-  }
+  // if (action.type === CREATE_USER) {
+  //   state = [action.user, ...state];
+  // }
+  // if (action.type === UPDATE_USER) {
+  //   state = state.map((user) => (user.id === action.id ? action.user : user));
+  // }
+  // if (action.type === DELETE_USER) {
+  //   state = state.filter((user) => user.id !== action.id * 1);
+  // }
   return state;
 }

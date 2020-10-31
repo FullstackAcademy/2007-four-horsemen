@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
   Route,
@@ -6,18 +7,22 @@ import {
   Switch,
   useLocation,
 } from 'react-router-dom';
-import Models from './Models';
-import Cart from './Cart';
+import Models from './models/Models';
+// import Cart from './Cart';
+import User from './User';
 import Login from './Login';
 import Header from './Header';
 import Orders from './Orders';
 import Footer from './Footer';
-import SingleModel from './SingleModel';
-import Checkout from './Checkout';
+import SingleModel from './models/SingleModel';
 import Home from './Home';
-import Model from './Model';
+import Cart from './Cart';
+import { fetchProducts } from '../store/redux/products';
 
 class Routes extends React.Component {
+  componentDidMount() {
+    this.props.getProducts();
+  }
   render() {
     return (
       <Router>
@@ -40,4 +45,13 @@ class Routes extends React.Component {
   }
 }
 
-export default Routes;
+const mapStateToProps = ({ products }) => {
+  return { products };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getProducts: () => dispatch(fetchProducts()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Routes);

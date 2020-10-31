@@ -1,14 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchProducts } from '../store/redux/products';
+import { fetchProducts } from '../../store/redux/products';
 import Model from './Model';
-import SingleModel from './SingleModel';
 
 class Models extends React.Component {
-  componentDidMount() {
-    this.props.getProducts();
-  }
 
   render() {
     //console.log(this.props)
@@ -18,8 +14,8 @@ class Models extends React.Component {
           <div className="cars">
             {this.props.products.map((product) => {
               return (
-                <Link product={product} key={product.id}to={`/models/${product.id}`}>
-                  <Model product={product} />
+                <Link to={`/models/${product.id}`} key={product.id}>
+                <Model product={product} />
                 </Link>
               );
             })}

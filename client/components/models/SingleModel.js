@@ -1,11 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+<<<<<<< HEAD:client/components/models/SingleModel.js
+import { moneyFormatter } from '../../utils';
+import { addToCart } from '../../store/redux/cart';
+=======
 import { moneyFormatter } from '../utils';
 import AddToCart from './AddToCart'
+>>>>>>> newcart:client/components/SingleModel.js
 
 class SingleModel extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       auto: {
         model: '',
@@ -15,31 +20,41 @@ class SingleModel extends React.Component {
       },
       basket: [],
     };
-    console.log(this.state)
+    this.handleClick = this.handleClick.bind(this)
   }
-  componentDidUpdate(){
-    console.log('didUpdate ', this.state)
+  componentDidUpdate() {
+    //console.log('didUpdate ', this.state);
   }
   componentDidMount() {
-    console.log('did', this.state)
+    //console.log('did', this.state);
     const model = this.props.products.find(
       (e) => e.id === this.props.match.params.id * 1
     );
-    this.setState({
-      auto: {
-        model: model.model,
-        description: model.description,
-        price: model.price,
-        image: model.image,
-      },
-    });
+    if (model) {
+      this.setState({
+        auto: {
+          model: model.model,
+          description: model.description,
+          price: model.price,
+          image: model.image,
+          id: this.props.match.params.id * 1
+        },
+      });
+    }
   }
+
+  handleClick (auto, id) {
+    this.props.addToCart(auto, id);
+  }
+
+
   render() {
+    
     const { model, description, price, image } = this.state.auto;
     const mulah = moneyFormatter.format(price);
-    const {auto} = this.state;
-    console.log('render ', auto)
-    console.log('render ', this.state)
+    const { auto } = this.state;
+    // console.log('render ', auto.id);
+    // console.log('render ', this.state);
     return (
       <div className="single-car">
         <div className="inner">
@@ -50,16 +65,28 @@ class SingleModel extends React.Component {
           <div className="single-description">{description}</div>
           <div className="single-price">{mulah}</div>
         </div>
+<<<<<<< HEAD:client/components/models/SingleModel.js
+        <button
+          className="add-car-cart"
+          onClick={() =>
+            this.handleClick( auto, this.props.match.params.id * 1 )
+          }
+        >
+          Add to Cart
+        </button>
+=======
         <AddToCart model={model}/>
         {/* <button className="add-car-cart" onClick={() => this.setState({basket: [...this.state.basket, auto]})}>Add to Cart</button> */}
+>>>>>>> newcart:client/components/SingleModel.js
       </div>
     );
   }
 }
+
 const mapStateToProps = ({ products }) => {
   return { products };
 };
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return { addToCart: (product, id) => dispatch(addToCart(product, id)) } ;
 };
 export default connect(mapStateToProps, mapDispatchToProps)(SingleModel);

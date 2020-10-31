@@ -31,6 +31,13 @@ const Header = () => {
             </NavLink>
           </button>
         </li>
+        <li className="nav-login">
+          <button className="login-button" type="submit">
+            <NavLink to="/user">
+              <i className="fas fa-user"></i>
+            </NavLink>
+          </button>
+        </li>
         <li className="nav-cart">
           <button className="cart-button" type="submit" >
          
