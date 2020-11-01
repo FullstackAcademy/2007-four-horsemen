@@ -6,7 +6,7 @@ router.get('/', isAdmin, async (req, res, next) => {
   try {
     const users = await User.findAll({
       attributes: {
-        exclude: ['password', 'hasAccount', 'phoneNum', 'isAdmin'],
+        exclude: ['password', 'address', 'phoneNum'],
       },
     });
     res.send(users);

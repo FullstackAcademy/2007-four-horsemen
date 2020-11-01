@@ -1,6 +1,6 @@
 // middleware for verification of user for admin privileges
 
-const isAdmin = (req, res, next) => {
+const isAdmin = async (req, res, next) => {
   try {
     if (req.user && req.user.isAdmin) {
       next();

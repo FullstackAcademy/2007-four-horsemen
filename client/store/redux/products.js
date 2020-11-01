@@ -4,7 +4,7 @@ const SET_PRODUCTS = 'SET_PRODUCTS';
 
 export const setProducts = (products) => {
   return {
-    type: 'SET_PRODUCTS',
+    type: SET_PRODUCTS,
     products,
   };
 };
@@ -13,7 +13,6 @@ export const fetchProducts = () => {
   try {
     return async (dispatch) => {
       const products = await axios.get('/api/products');
-
       dispatch(setProducts(products.data));
     };
   } catch (err) {
