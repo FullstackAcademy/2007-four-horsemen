@@ -1,14 +1,13 @@
 const Sequelize = require('sequelize');
-const { DATE, ENUM } = Sequelize;
+const { DATE, ENUM, STRING, INTEGER } = Sequelize;
 const db = require('../conn');
 
 const Order = db.define('order', {
-  payment_date: {
-    type: DATE(6),
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-    },
+  total: {
+    type: INTEGER,
+  },
+  session_id: {
+    type: STRING,
   },
 
   order_date: {
@@ -19,27 +18,14 @@ const Order = db.define('order', {
     },
   },
 
-  shipping_date: {
-    type: DATE(6),
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-    },
-  },
-
-  shipping_method: {
-    type: ENUM('FedEx', 'USPS', 'UPS'),
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-    },
+  shipping_address: {
+    type: STRING,
   },
 
   order_status: {
-    type: ENUM('processing', 'cancelled', 'completed'),
+    type: ENUM('cart', 'created', 'processing', 'cancelled', 'completed'),
+    allowNull: false,
   },
 });
 
 module.exports = Order;
-
-//add status with ENUM('PROCESSING', 'CANCELLED', 'COMPLETED')

@@ -7,33 +7,37 @@ import {
   Switch,
   useLocation,
 } from 'react-router-dom';
-import Models from './models/Models';
-// import Cart from './Cart';
-import User from './User'
+import AllProducts from './products/AllProducts';
+import User from './User';
 import Login from './Login';
 import Header from './Header';
 import Footer from './Footer';
-import SingleModel from './models/SingleModel';
+import SingleProduct from './products/SingleProduct';
 import Home from './Home';
-import {fetchProducts} from '../store/redux/products'
+import Cart from './Cart';
+import { fetchProducts } from '../store/redux/products';
+import { setSingleUser } from '../store/redux/users';
 
 class Routes extends React.Component {
-  componentDidMount(){
-    this.props.getProducts()
-  }
-  render() {
+  componentDidMount() {
+    this.props.getProducts();
 
+    this.props.getUser();
+  }
+
+  render() {
     return (
       <Router>
         <div>
-          <Header />
+          <Header user={this.props.user} />
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/models" exact component={Models} />
-            <Route path="/models/:id" exact component={SingleModel} />
+            <Route path="/models" exact component={AllProducts} />
+            <Route path="/models/:id" exact component={SingleProduct} />
             {/* <Route path="/cart" exact component={Cart} /> */}
             <Route path="/login" exact component={Login} />
             <Route path="/user" exact component={User} />
+            <Route path="/cart" exact component={Cart} />
             {/*<Route path="/checkout" exact component={Checkout} /> */}
             {/* <Route path="/signup" exact component={Signup} /> */}
           </Switch>
@@ -44,12 +48,13 @@ class Routes extends React.Component {
   }
 }
 
-const mapStateToProps = ({ products }) => {
-  return { products };
+const mapStateToProps = ({ products, user }) => {
+  return { products, user };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
     getProducts: () => dispatch(fetchProducts()),
+    getUser: () => dispatch(setSingleUser()),
   };
 };
 

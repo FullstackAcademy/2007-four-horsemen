@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const { STRING, BOOLEAN, INTEGER } = Sequelize;
 const db = require('../conn');
+const bcrypt = require('bcrypt');
 
 const User = db.define('user', {
   name: {
@@ -17,10 +18,6 @@ const User = db.define('user', {
     validate: {
       isEmail: true,
       notEmpty: true,
-    },
-    unique: {
-      args: true,
-      msg: 'Email address is already taken!',
     },
   },
 
@@ -63,6 +60,10 @@ const User = db.define('user', {
     validate: {
       notEmpty: true,
     },
+    // set(chars) {
+    //   const hash = bcrypt.hashSync(chars, 10);
+    //   this.setDataValue('password', hash);
+    // },
   },
 
   isAdmin: {
