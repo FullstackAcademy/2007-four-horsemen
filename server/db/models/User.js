@@ -19,10 +19,6 @@ const User = db.define('user', {
       isEmail: true,
       notEmpty: true,
     },
-    unique: {
-      args: true,
-      msg: 'Email address is already taken!',
-    },
   },
 
   address: {

@@ -4,23 +4,21 @@ const { User, Session } = require('../db').models;
 const A_WEEK_IN_SECONDS = 60 * 60 * 24 * 7;
 
 router.post('/login', async (req, res) => {
-  const { username, password } = req.body;
+  try {
+    const { username, password } = req.body;
 
-  if (typeof username !== 'string' || typeof password !== 'string') {
-    res.status(400).send({
-      message: 'Username and password must both be strings.',
-    });
-  } else {
-    try {
+    if (typeof username !== 'string' || typeof password !== 'string') {
+      res.status(400).send({
+        message: 'Username and password must both be strings.',
+      });
+    } else {
       const foundUser = await User.findOne({
         where: {
           username,
         },
         include: [Session],
       });
-
       // const comparisonResult = await bcrypt.compare(password, foundUser.password);
-
       if (password !== foundUser.password) {
         throw new Error('Mismatched password!');
       }
@@ -45,33 +43,35 @@ router.post('/login', async (req, res) => {
       } else {
         res.sendStatus(404);
       }
-    } catch (e) {
-      console.log('Error while logging user in.');
-      console.error(e);
-      res.status(500).send({
-        message: e.message,
-      });
     }
+  } catch (e) {
+    console.log('Error while logging user in.');
+    console.error(e);
+    res.status(500).send({
+      message: e.message,
+    });
   }
 });
 
-router.delete('/logout',async (req,res,next) => {
-  try{
-    await Session.destroy({where:{uuid: req.cookies.sid}})
+router.delete('/logout', async (req, res, next) => {
+  try {
+    await Session.destroy({ where: { uuid: req.cookies.sid } });
     req.user = null;
-    res.redirect('/')
-}
-catch(ex){
-    console.log('Please login first before you logout')
-}
-
+    res.redirect('/');
+  } catch (ex) {
+    console.log('Please login first before you logout');
+  }
 });
 
-router.get('/whoami', (req, res, next) => {
-  if (req.user) {
-    res.send(req.user);
-  } else {
-    res.sendStatus(401);
+router.get('/whoami', async (req, res, next) => {
+  try {
+    if (req.user) {
+      res.send(req.user);
+    } else {
+      res.sendStatus(401);
+    }
+  } catch (err) {
+    next(err);
   }
 });
 

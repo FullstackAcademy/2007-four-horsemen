@@ -1,38 +1,35 @@
-import React,{ useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
+const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  const Login = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+  const onLoginSubmit = async (e) => {
+    e.preventDefault();
 
-    const onLoginSubmit = (e) => {
-      e.preventDefault();
-  
-      return axios.post('/api/auth/login', { username, password })
-        .then((res) => {
-          console.log(res.data);
-          refreshPage()
+    return await axios
+      .post('/api/auth/login', { username, password })
+      .then((res) => {
+        // console.log(res.data);
+        refreshPage();
+      })
+      .catch((err) => {
+        window.alert('Wrong username or password!!!!');
+      });
+  };
+  function refreshPage() {
+    window.location.reload(false);
+    window.location.replace('/');
+  }
 
-        })
-        .catch((err) => {
-          window.alert('Wrong username or password!!!!')
-        });
-    }
-    function refreshPage() {
-      window.location.reload(false);
-      window.location.replace("/")
-    }
-
-    return (
-      <>
+  return (
+    <>
       <h1>Login</h1>
       <form onSubmit={onLoginSubmit}>
         <label>
           Username
-          <input
-            onChange={({ target: { value } }) => setUsername(value)}
-          />
+          <input onChange={({ target: { value } }) => setUsername(value)} />
         </label>
         <label>
           Password
@@ -44,7 +41,7 @@ import axios from 'axios';
         <button>Login</button>
       </form>
     </>
-  )
-    }
+  );
+};
 
-    export default Login
+export default Login;

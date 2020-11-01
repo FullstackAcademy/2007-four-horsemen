@@ -7,20 +7,16 @@ import {
   Switch,
   useLocation,
 } from 'react-router-dom';
-import Models from './models/Models';
-
+import AllProducts from './products/AllProducts';
 import User from './User';
 import Login from './Login';
 import Header from './Header';
 import Footer from './Footer';
-import SingleModel from './models/SingleModel';
-import Home from './Home'
-
+import SingleProduct from './products/SingleProduct';
+import Home from './Home';
 import Cart from './Cart';
-
 import { fetchProducts } from '../store/redux/products';
-import { setSingleUser } from "../store/redux/users"
-
+import { setSingleUser } from '../store/redux/users';
 
 class Routes extends React.Component {
   componentDidMount() {
@@ -30,15 +26,14 @@ class Routes extends React.Component {
   }
 
   render() {
-
     return (
       <Router>
         <div>
-          <Header user={this.props.user}/>
+          <Header user={this.props.user} />
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/models" exact component={Models} />
-            <Route path="/models/:id" exact component={SingleModel} />
+            <Route path="/models" exact component={AllProducts} />
+            <Route path="/models/:id" exact component={SingleProduct} />
             {/* <Route path="/cart" exact component={Cart} /> */}
             <Route path="/login" exact component={Login} />
             <Route path="/user" exact component={User} />
@@ -53,13 +48,13 @@ class Routes extends React.Component {
   }
 }
 
-const mapStateToProps = ({ products,user }) => {
-  return { products, user};
+const mapStateToProps = ({ products, user }) => {
+  return { products, user };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
     getProducts: () => dispatch(fetchProducts()),
-    getUser: () => dispatch(setSingleUser())
+    getUser: () => dispatch(setSingleUser()),
   };
 };
 
