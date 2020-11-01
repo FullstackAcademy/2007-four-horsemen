@@ -1,7 +1,6 @@
 import React,{ useState } from 'react';
 import axios from 'axios';
-import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+
 
   const Login = () => {
     const [username, setUsername] = useState('');
@@ -17,13 +16,14 @@ import { Link, Redirect } from 'react-router-dom';
 
         })
         .catch((err) => {
-          console.error(err);
+          window.alert('Wrong username or password!!!!')
         });
     }
     function refreshPage() {
       window.location.reload(false);
       window.location.replace("/")
     }
+
     return (
       <>
       <h1>Login</h1>
