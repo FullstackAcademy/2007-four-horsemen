@@ -17,6 +17,7 @@ import Footer from './Footer';
 import SingleModel from './models/SingleModel';
 import Home from './Home';
 import Cart from './Cart';
+import CheckoutView from './CheckoutView'
 import { fetchProducts } from '../store/redux/products';
 
 class Routes extends React.Component {
@@ -35,7 +36,7 @@ class Routes extends React.Component {
             <Route path="/cart" exact component={Cart} />
             <Route path="/orders" exact component={Orders} />
             <Route path="/login" exact component={Login} />
-            {/*<Route path="/orders/checkout" exact component={CheckoutView} /> */}
+            <Route path="/checkout" exact component={CheckoutView} />
             {/* <Route path="/signup" exact component={Signup} /> */}
           </Switch>
           <Footer />

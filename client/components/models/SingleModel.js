@@ -1,12 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-<<<<<<< HEAD:client/components/models/SingleModel.js
 import { moneyFormatter } from '../../utils';
 import { addToCart } from '../../store/redux/cart';
-=======
-import { moneyFormatter } from '../utils';
-import AddToCart from './AddToCart'
->>>>>>> newcart:client/components/SingleModel.js
 
 class SingleModel extends React.Component {
   constructor(props) {
@@ -17,6 +12,7 @@ class SingleModel extends React.Component {
         description: '',
         price: 0,
         image: '',
+        clicked:false,
       },
       basket: [],
     };
@@ -43,8 +39,9 @@ class SingleModel extends React.Component {
     }
   }
 
-  handleClick (auto, id) {
-    this.props.addToCart(auto, id);
+  async handleClick (auto, id) {
+   await this.props.addToCart(auto, id);
+   this.setState({clicked:true})
   }
 
 
@@ -65,7 +62,6 @@ class SingleModel extends React.Component {
           <div className="single-description">{description}</div>
           <div className="single-price">{mulah}</div>
         </div>
-<<<<<<< HEAD:client/components/models/SingleModel.js
         <button
           className="add-car-cart"
           onClick={() =>
@@ -74,10 +70,7 @@ class SingleModel extends React.Component {
         >
           Add to Cart
         </button>
-=======
-        <AddToCart model={model}/>
-        {/* <button className="add-car-cart" onClick={() => this.setState({basket: [...this.state.basket, auto]})}>Add to Cart</button> */}
->>>>>>> newcart:client/components/SingleModel.js
+        { this.state.clicked && <div >Added To Cart!</div> }
       </div>
     );
   }

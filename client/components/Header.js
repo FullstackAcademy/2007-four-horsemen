@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import store from '../store/redux'
 
 const Header = () => {
   return (
@@ -44,7 +45,15 @@ const Header = () => {
             <NavLink to="/cart">
               <i className="fas fa-shopping-cart"></i>
             </NavLink>
+            {/* {(props.addedProducts.length && props.addedProducts.reduce((a, b) => {
+                if(typeof b === 'object'){
+                  return a + b.quantity
+                }
+                return a + b}, 0)
+              )} */}
+            
           </button>
+          {/* <span>{store.addedProducts.length}</span> */}
         </li>
         <li className="nav-logout">
           <button className="logout-button" type="submit">
@@ -57,5 +66,11 @@ const Header = () => {
     </nav>
   );
 };
+
+// const mapState =state =>{
+//   return {
+//     addedProducts:state.addedProducts,
+//   }
+// }
 
 export default connect()(Header);
