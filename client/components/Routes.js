@@ -8,12 +8,13 @@ import {
   useLocation,
 } from 'react-router-dom';
 import Models from './models/Models';
-// import Cart from './Cart';
+
 import User from './User';
 import Login from './Login';
 import Header from './Header';
 import Footer from './Footer';
 import SingleModel from './models/SingleModel';
+import Home from './Home'
 
 import Cart from './Cart';
 

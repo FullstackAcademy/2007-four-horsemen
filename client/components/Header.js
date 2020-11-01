@@ -61,7 +61,7 @@ const Header = (props) => {
           </button>
         </li>
         <li className="nav-logout">
-          <button className="logout-button" type="submit" onClick = {()=>{return axios.delete('/api/auth/logout')}}>
+          <button className="logout-button" type="submit" onClick = {()=>{ window.location.reload(false); return axios.delete('/api/auth/logout')}}>
             <NavLink to="/">
               <i className="fas fa-sign-out-alt"></i>
             </NavLink>

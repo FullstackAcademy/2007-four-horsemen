@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
   const Login = () => {
     const [username, setUsername] = useState('');
@@ -13,10 +13,16 @@ import { Link } from 'react-router-dom';
       return axios.post('/api/auth/login', { username, password })
         .then((res) => {
           console.log(res.data);
+          refreshPage()
+
         })
         .catch((err) => {
           console.error(err);
         });
+    }
+    function refreshPage() {
+      window.location.reload(false);
+      window.location.replace("/")
     }
     return (
       <>
