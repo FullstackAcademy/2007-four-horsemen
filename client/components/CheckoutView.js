@@ -1,15 +1,21 @@
 import React from 'react'
-//import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { makeNewOrder, clearCart } from '../store'
 import Payment from './Payment';
 
 const CheckoutView = (props) => {
-  const { handleSubmit, successPayment } =props
- const cart = props.cart.product
+  const { handleSubmit, successPayment,cart ,product} =props
+ //const cart = props.cart.product
+ //const {cart,product}=props
+//  const model = props.product;
+//   const pic = model.image;
+//   const mulah = moneyFormatter.format(model.price);
 
  
+//cart.addedProducts.map((p)=>{
+
+//})
 
   return (
     <div >
@@ -18,25 +24,30 @@ const CheckoutView = (props) => {
       <div>
         <div >
           <h2 >Complete Your Order</h2>
+         
           <div >
 
             <div >
-              {props.cart.length && props.cart.map((element, index) => (
-
-                <div key={element.id} >
+              {//props.cart.length && props.cart.map((p) => (
+                   cart.addedProducts.map((p)=>(
+                <div  >
                   <div >
-                    <img src={element.product.image} />
+                    <img src={p.image} />
                   </div>
                   <div >
-                    <h4 >{element.product.name}</h4>
+                    <h4 >{p.model}</h4>
                     <p>
                       
-                      Subtotal: ${element.product.price * 1}
+                      Subtotal: ${p.price * 1}
                     </p>
                   </div>
                 </div>
 
               ))}
+               {/* <div >
+                    <img src={pic} />
+                  </div> */}
+              
 
             </div>
 
@@ -69,7 +80,7 @@ const CheckoutView = (props) => {
                 <Payment
                   name={'Confirm purchase'}
                   description={"This is only a test page, enter 4242 4242 4242 4242 for credit card"}
-                  //amount={props.cart.map(el => el.product.price * 1).reduce((a,b) => a+b, 0)}
+                  amount={cart.addedProducts.map(p=>p.price)}//amount={props.cart.map(el => el.product.price * 1).reduce((a,b) => a+b, 0)}
                   successPayment={successPayment}
                 />
               </form>
@@ -92,7 +103,7 @@ const mapDispatch = (dispatch) => {
             
             let order = {
                 //status: 'CREATED', 
-                items: cart.map((element, index) => ({
+                items: cart.addedProducts.map((element) => ({
                     product: element.product, 
                     price: element.product.price
                 })),
@@ -108,10 +119,10 @@ const mapDispatch = (dispatch) => {
     }
 }
 
-const mapState = (state) => {
+const mapState = ({cart,user}) => {
   return {
-    cart: state.cart,
-    user: state.user
+    cart,
+    user
   }
 }
 
