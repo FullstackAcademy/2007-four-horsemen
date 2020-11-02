@@ -127,7 +127,11 @@ async function seed() {
           'https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/model_detail/huracan/evo_rwd/10_22/s/huracan_evo_rwd_s_2_m.jpg',
       }),
       Product.create({
+<<<<<<< HEAD
         name: 'Huracan Evo RWD Spyder',
+=======
+        model: 'Huracan Evo RWD Spyder',
+>>>>>>> f7386cbab558d79378c18d30bda996f721c08c16
         description:
           'The Huracán EVO RWD Spyder is dedicated to those who believe in the pure pleasure and excitement of driving, an experience heightened by the adrenaline that comes from open-top performance. Discovering new roads with the wind in your hair, heart racing with the sound of the engine, gives you an unparalleled feeling of freedom as you accelerate toward new emotions. The magic unfolds as you “return to rear-wheel drive” and immerse yourself in the tactile sensations and the mechanical purity of a Lamborghini.',
         price: 250000,
