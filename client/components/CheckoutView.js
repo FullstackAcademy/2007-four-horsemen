@@ -80,7 +80,7 @@ const CheckoutView = (props) => {
                 <Payment
                   name={'Confirm purchase'}
                   description={"This is only a test page, enter 4242 4242 4242 4242 for credit card"}
-                  amount={cart.addedProducts.map(p=>p.price)}//amount={props.cart.map(el => el.product.price * 1).reduce((a,b) => a+b, 0)}
+                  amount={cart.addedProducts.map(p=>p.price*p.quantity).reduce((a,b)=>a+b,0)}//amount={props.cart.map(el => el.product.price * 1).reduce((a,b) => a+b, 0)}
                   successPayment={successPayment}
                 />
               </form>
