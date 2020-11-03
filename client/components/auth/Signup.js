@@ -21,18 +21,28 @@ class SignUp extends React.Component{
      create(ev){
         const {username,name,password,phoneNum,email,address} = this.state;
         ev.preventDefault();
-        try{this.props.createUser({
+        if( username ==='' 
+            || name ==='' 
+            || password ==='' 
+            || phoneNum === 0
+            || email ===''
+            || address ===''){
+            window.alert('please enter vaild information!!!');
+        }
+        else{
+            this.props.createUser({
             username: username,
             password: password,
             address: address,
             phoneNum: phoneNum,
             name: name,
             email: email,
-            })}
-        catch(err){
-            console.log('please enter vaild info')
-        }
-        
+            hasAccount: true
+            })
+            window.alert('Created!')
+            window.location.replace('/login');
+
+            }
     }
     render(){
         const {username,name,password,phoneNum,email,address} = this.state;

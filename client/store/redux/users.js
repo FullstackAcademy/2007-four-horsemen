@@ -66,7 +66,7 @@ export const createUser = (user) => {
       dispatch(_createUser(data));
     };
   } catch (err) {
-    console.log(err);
+    console.log('please enter vaild info');
   }
 };
 
