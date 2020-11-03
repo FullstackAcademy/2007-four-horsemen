@@ -1,12 +1,13 @@
 const router = require('express').Router();
-const  { Cart }  = require('../db').models
-//console.log('what it is', Cart)
+const  { models: { Cart } }  = require('../db');
+console.log('what it is', Cart);
+//const {Cart} = require('../db').modules();
 
 router.get('/', async (req, res, next) => {
     try{
         const cart = await Cart.findAll();
         console.log('cart api ', cart)
-        res.send(cart)
+        res.send('hello')
     } catch(err) {
         next(err)
     }   

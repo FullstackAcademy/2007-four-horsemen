@@ -9,19 +9,19 @@ const SUBTRACT_QUANTITY = 'SUBTRACT_QUANTITY';
 
 
 //////////ACTION CREATORS//////////////
-export const addToCart = (product, id) => {
+export const addToCart = (product) => {
   return {
     type: ADD_TO_CART,
     product,
-    id,
+    
   };
 
 };
 
-export const removeFromCart = (id) => {
+export const removeFromCart = (product) => {
   return {
     type: REMOVE_FROM_CART,
-    id,
+    product
   };
 };
 
@@ -81,6 +81,7 @@ export default function cartReducer(state = initialState, action) {
 
   
   if(action.type == REMOVE_FROM_CART){
+    console.log('heyyy ', addedProducts)
     let removeProduct = addedProducts.find( p => p.id === action.id);
     let updateProducts = addedProducts.filter( p => p.id !== action.id);
     let updateTotal = total - removeProduct.price * removeProduct.quantity;

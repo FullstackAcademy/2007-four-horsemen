@@ -24,24 +24,18 @@ class SingleProduct extends React.Component {
           <div className="single-description">{description}</div>
           <div className="single-price">{priceInUsd}</div>
         </div>
-        <button
-          className="add-car-cart"
-          onClick={(id) => addToCart(product, id)}
-        >
-          Add to Cart
-        </button>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ product }) => {
-  return { product };
+const mapStateToProps = ({ product, cart }) => {
+  return { product, cart };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
     getProduct: (id) => dispatch(fetchSingleProduct(id)),
-    addToCart: (product, id) => dispatch(addToCart(product, id)),
+    addToCart: (product) => dispatch(addToCart(product)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct);

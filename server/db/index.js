@@ -40,5 +40,6 @@ module.exports = {
     User,
     Review,
     Session,
+    Cart
   },
 };
