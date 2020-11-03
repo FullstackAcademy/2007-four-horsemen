@@ -38,4 +38,15 @@ router.delete('/:id', isAdmin, async (req, res, next) => {
     next(err);
   }
 });
+
+router.post('/', async(req,res,next) =>{
+  try{
+    console.log(req.body)
+    const newUser = await User.create(req.body.user);
+    res.status(201).send(newUser)
+  }
+  catch(err){
+    next(err)
+  }
+})
 module.exports = router;

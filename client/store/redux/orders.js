@@ -13,7 +13,7 @@ export const fetchAllOrders = () => {
     try {
         return async (dispatch) => {
           const orders = await axios.get('/api/orders/');
-          dispatch(setProducts(orders.data));
+          dispatch(setAllOrders(orders.data));
         };
       } catch (err) {
         console.log(err);

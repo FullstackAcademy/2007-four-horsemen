@@ -7,16 +7,27 @@ import {
   Switch,
   useLocation,
 } from 'react-router-dom';
-import AllProducts from './products/AllProducts';
-import User from './User';
-import Login from './Login';
+
 import Header from './Header';
 import Footer from './Footer';
-import SingleProduct from './products/SingleProduct';
 import Home from './Home';
+
+import User from './auth/User';
+import Login from './auth/Login';
+import Signup from './auth/Signup';
+
+import AllProducts from './products/AllProducts';
+import SingleProduct from './products/SingleProduct';
 import Cart from './Cart';
+
 import { fetchProducts } from '../store/redux/products';
 import { setSingleUser } from '../store/redux/users';
+
+const NoMatch = ()=>{
+  return(
+    <h3>404 - Not found</h3>
+  )
+}
 
 class Routes extends React.Component {
   componentDidMount() {
@@ -39,7 +50,8 @@ class Routes extends React.Component {
             <Route path="/user" exact component={User} />
             <Route path="/cart" exact component={Cart} />
             {/*<Route path="/checkout" exact component={Checkout} /> */}
-            {/* <Route path="/signup" exact component={Signup} /> */}
+            <Route path="/signup" exact component={Signup} />
+            <NoMatch/>
           </Switch>
           <Footer />
         </div>

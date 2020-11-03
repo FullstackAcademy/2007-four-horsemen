@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { NavLink } from 'react-router-dom';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -40,6 +41,9 @@ const Login = () => {
         </label>
         <button>Login</button>
       </form>
+      <NavLink to = "/signup">
+        <button>Sign Up</button>
+      </NavLink>
     </>
   );
 };
