@@ -60,7 +60,7 @@ export const setSingleUser = () => {
 
 export const createUser = (user) => {
   try {
-    console.log(user)
+    console.log(user);
     return async (dispatch) => {
       const { data } = axios.post('/api/users', { user });
       dispatch(_createUser(data));
@@ -70,7 +70,7 @@ export const createUser = (user) => {
   }
 };
 
-export const updateUser = ({ user, id}) => {
+export const updateUser = ({ user, id }) => {
   try {
     return async (dispatch) => {
       const { data } = axios.put(`/api/users/${id}`, { user });

@@ -57,10 +57,9 @@ const Header = (props) => {
                 }
                 return a + b}, 0)
               )} */}
-              <NavLink to="/cart">
+            <NavLink to="/cart">
               <i className="fas fa-shopping-cart"></i>
             </NavLink>
-            
           </button>
           {/* <span>{store.addedProducts.length}</span> */}
         </li>
@@ -83,6 +82,5 @@ const Header = (props) => {
     </nav>
   );
 };
-
 
 export default connect()(Header);

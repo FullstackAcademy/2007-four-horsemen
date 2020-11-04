@@ -7,9 +7,6 @@
 body {
   font-family: sans-serif;
   font-size: 16px;
-    /* background-image: url('./lambo-background.jpg');
-    background-repeat: no-repeat;
-    background-size: cover; */
 }
 
 nav {
@@ -40,13 +37,12 @@ a:hover {
 }
 
 .logo {
-  flex:3;
-  padding:0;
-
+  flex: 3;
+  padding: 0;
 }
-.lo{
-  width:2rem;
-  height:auto;
+.lo {
+  width: 2rem;
+  height: auto;
   padding: 0;
   margin-right: 5rem;
 }
@@ -70,86 +66,81 @@ a:hover {
 
 .white-ride {
   width: 100%;
-  
 }
 
-.footer-text{
+.footer-text {
   text-align: center;
 }
 
-.single-car{
+.single-car {
   background-image: url('hayden-walker-fgpg3KzFrQY-unsplash.jpg');
   display: flex;
   flex-direction: column;
   align-items: center;
-  width:100%;
-  height:auto;
-  padding: .5rem;
-
+  width: 100%;
+  height: auto;
+  padding: 0.5rem;
 }
 
-.inner{
+.inner {
   text-align: center;
 }
 
-
-.single-model{
-  padding:.3rem;
+.single-model {
+  padding: 0.3rem;
 }
-.single-description{
+.single-description {
   color: whitesmoke;
-  padding:.3rem;
+  padding: 0.3rem;
 }
-.single-price{
-  padding:.3rem;
+.single-price {
+  padding: 0.3rem;
 }
 
-.add-car-cart{
+.add-car-cart {
   width: 8rem;
   height: auto;
-  padding: .3rem;
-
+  padding: 0.3rem;
 }
 
-.hot-cars{
-  padding:4rem;
+.hot-cars {
+  padding: 4rem;
   width: 100%;
   height: auto;
 }
 
-.hot-car-name{
+.hot-car-name {
   font-family: fantasy;
   font-size: 2rem;
-  padding: .25rem;
+  padding: 0.25rem;
   text-align: center;
 }
 
-.hot-car-money{
-  padding: .25rem;
+.hot-car-money {
+  padding: 0.25rem;
   text-align: center;
-
 }
 
-footer{
+footer {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
 
-.Cart-image{
+.Cart-image {
   height: 15rem;
   width: auto;
 }
 
-.Cart-container{
+.Cart-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-li{
+li {
   list-style: none;
 }
 
-h3{
+h3 {
   text-align: center;
 }
