@@ -7,28 +7,31 @@ import {
   Switch,
   useLocation,
 } from 'react-router-dom';
-import Models from './models/Models';
-// import Cart from './Cart';
+import AllProducts from './products/AllProducts';
 import User from './User';
 import Login from './Login';
 import Header from './Header';
 import Orders from './Orders';
 import Footer from './Footer';
-import SingleModel from './models/SingleModel';
+import SingleProduct from './products/SingleProduct';
 import Home from './Home';
 import Cart from './Cart';
 import CheckoutView from './CheckoutView'
 import { fetchProducts } from '../store/redux/products';
+import { setSingleUser } from '../store/redux/users';
 
 class Routes extends React.Component {
   componentDidMount() {
     this.props.getProducts();
+
+    this.props.getUser();
   }
+
   render() {
     return (
       <Router>
         <div>
-          <Header />
+          <Header user={this.props.user} />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/models" exact component={Models} />
@@ -46,12 +49,13 @@ class Routes extends React.Component {
   }
 }
 
-const mapStateToProps = ({ products }) => {
-  return { products };
+const mapStateToProps = ({ products, user }) => {
+  return { products, user };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
     getProducts: () => dispatch(fetchProducts()),
+    getUser: () => dispatch(setSingleUser()),
   };
 };
 

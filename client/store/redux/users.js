@@ -2,7 +2,7 @@ import axios from 'axios';
 
 ////////ACTION TYPES//////////
 const SET_USERS = 'SET_USERS';
-const SET_SINGLEUSER = 'SET_SINGLEUSER';
+const SET_SINGLE_USER = 'SET_SINGLEUSER';
 const CREATE_USER = 'CREATE_USER';
 const UPDATE_USER = 'UPDATE_USER';
 const DELETE_USER = 'DELETE_USER';
@@ -13,14 +13,14 @@ const _setUsers = (users) => {
     type: SET_USERS,
     users,
   };
-};///////fetch all users /////admins
+}; ///////fetch all users /////admins
 
-const _setSingleUser = (user) =>{
+const _setSingleUser = (user) => {
   return {
-    type: SET_SINGLEUSER,
-    user
-  }
-}
+    type: SET_SINGLE_USER,
+    user,
+  };
+};
 
 const _createUser = (user) => {
   return {
@@ -59,48 +59,60 @@ export const setSingleUser = () => {
 };
 
 export const createUser = ({ user, history }) => {
-  return async (dispatch) => {
-    const { data } = axios.post('/api/users', { user });
-    dispatch(_createUser(data));
-    history.push('/users');
-  };
+  try {
+    return async (dispatch) => {
+      const { data } = axios.post('/api/users', { user });
+      dispatch(_createUser(data));
+      history.push('/users');
+    };
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const updateUser = ({ user, id, history }) => {
-  return async (dispatch) => {
-    const { data } = axios.put(`/api/users/${id}`, { user });
-    dispatch(_updateUser(data));
-    history.push('/users');
-  };
+  try {
+    return async (dispatch) => {
+      const { data } = axios.put(`/api/users/${id}`, { user });
+      dispatch(_updateUser(data));
+      history.push('/users');
+    };
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const deleteUser = ({ id, history }) => {
-  return async (dispatch) => {
-    axios.delete(`/api/users/${id}`);
-    dispatch(_deleteUser(id));
-    history.push('/users');
-  };
+  try {
+    return async (dispatch) => {
+      axios.delete(`/api/users/${id}`);
+      dispatch(_deleteUser(id));
+      history.push('/users');
+    };
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 ////////USERS REDUCER//////////
 
-
-
-export default function usersReducer (state = [], action) {
-  // if (action.type === SET_USERS) {
-  //   state = action.users;
-  // }
-  if (action.type === SET_SINGLEUSER) {
+export default function usersReducer(state = [], action) {
+  if (action.type === SET_USERS) {
+    return action.users;
+  }
+  if (action.type === SET_SINGLE_USER) {
     return action.user;
   }
-  // if (action.type === CREATE_USER) {
-  //   state = [action.user, ...state];
-  // }
-  // if (action.type === UPDATE_USER) {
-  //   state = state.map((user) => (user.id === action.id ? action.user : user));
-  // }
-  // if (action.type === DELETE_USER) {
-  //   state = state.filter((user) => user.id !== action.id * 1);
-  // }
+  if (action.type === CREATE_USER) {
+    return [...state, action.user];
+  }
+  if (action.type === UPDATE_USER) {
+    return state.map((user) =>
+      user.id === action.user.id ? action.user : user
+    );
+  }
+  if (action.type === DELETE_USER) {
+    return state.filter((user) => user.id !== action.user.id);
+  }
   return state;
 }

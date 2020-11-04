@@ -5,9 +5,11 @@ import axios from 'axios'
 
 ////////////ACTION TYPE/////////////////
 const ADD_TO_CART = 'ADD_TO_CART';
+
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 const ADD_QUANTITY = 'ADD_QUANTITY';
 const SUBTRACT_QUANTITY = 'SUBTRACT_QUANTITY';
+
 
 //////////ACTION CREATORS//////////////
 export const addToCart = (product, id) => {
@@ -16,6 +18,7 @@ export const addToCart = (product, id) => {
     product,
     id,
   };
+
 };
 
 export const removeFromCart = (id) => {
@@ -38,6 +41,7 @@ export const subtractQuantity = (id) => {
     id,
   };
 };
+
 
 
 ////////////////////////////CART REDUCER///////////////////////
@@ -69,6 +73,7 @@ export default function cartReducer(state = initialState, action) {
       //console.log('bolony');
       theProduct.quantity += 1;
       let newTotal = state.total + theProduct.price;
+
       return {
         ...state,
         addedProducts: [...state.addedProducts, theProduct],
@@ -77,6 +82,7 @@ export default function cartReducer(state = initialState, action) {
     }
   }
 
+  
   if(action.type == REMOVE_FROM_CART){
     let removeProduct = addedProducts.find( p => p.id === action.id);
     let updateProducts = addedProducts.filter( p => p.id !== action.id);
@@ -91,20 +97,6 @@ export default function cartReducer(state = initialState, action) {
 
   return state;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // export const GET_CART_ITEMS = 'GET_CART_ITEMS';
 // const UPDATE_CART = 'UPDATE_CART';
 // const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
@@ -189,3 +181,4 @@ export default function cartReducer(state = initialState, action) {
 //       return state;
 //   }
 // }
+

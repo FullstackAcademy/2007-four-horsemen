@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const volleyball = require('volleyball');
 const path = require('path');
-const authMiddleware  = require('./middleware/auth')
+const authMiddleware = require('./middleware/auth');
 const cookieParser = require('cookie-parser');
 
 //logging middleware
