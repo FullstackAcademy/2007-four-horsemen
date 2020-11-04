@@ -58,24 +58,23 @@ export const setSingleUser = () => {
   };
 };
 
-export const createUser = ({ user, history }) => {
+export const createUser = (user) => {
   try {
+    console.log(user)
     return async (dispatch) => {
       const { data } = axios.post('/api/users', { user });
       dispatch(_createUser(data));
-      history.push('/users');
     };
   } catch (err) {
-    console.log(err);
+    console.log('please enter vaild info');
   }
 };
 
-export const updateUser = ({ user, id, history }) => {
+export const updateUser = ({ user, id}) => {
   try {
     return async (dispatch) => {
       const { data } = axios.put(`/api/users/${id}`, { user });
       dispatch(_updateUser(data));
-      history.push('/users');
     };
   } catch (err) {
     console.log(err);

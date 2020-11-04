@@ -12,7 +12,7 @@ const Header = (props) => {
           <NavLink to="/">
             <img
               className="lo"
-              src="lambo-logo.png"
+              src="https://www.lamborghini.com/themes/custom/lambo_facelift_2019/images/logo.png"
               alt="lamborghini logo"
             ></img>
           </NavLink>

@@ -5,14 +5,12 @@ const {
   Product,
   Shipment,
   Cart,
-  Customer,
-  Payment,
 } = require('../server/db/').models;
 
 async function seed() {
   await db.sync({ force: true });
   try {
-    const users = await Promise.all([
+    const [user1,user2,user3,user4,user5,user6] = await Promise.all([
       User.create({
         name: 'Lary',
         address: 'Fulton',
@@ -24,7 +22,9 @@ async function seed() {
       }),
       User.create({
         name: 'Peter',
+        username: 'peter11',
         address: 'Fulton',
+        password: 'password',
         phoneNum: 222333222,
         email: 'peter@email.com',
         hasAccount: false,
@@ -129,7 +129,7 @@ async function seed() {
           'https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/model_detail/huracan/evo_rwd/10_22/s/huracan_evo_rwd_s_2_m.jpg',
       }),
       Product.create({
-        model: 'Huracan Evo RWD Spyder',
+        name: 'Huracan Evo RWD Spyder',
         description:
           'The Huracán EVO RWD Spyder is dedicated to those who believe in the pure pleasure and excitement of driving, an experience heightened by the adrenaline that comes from open-top performance. Discovering new roads with the wind in your hair, heart racing with the sound of the engine, gives you an unparalleled feeling of freedom as you accelerate toward new emotions. The magic unfolds as you “return to rear-wheel drive” and immerse yourself in the tactile sensations and the mechanical purity of a Lamborghini.',
         price: 250000,
@@ -170,28 +170,26 @@ async function seed() {
       }),
     ]);
 
-    const orders = await Promise.all([
+    const [order1,order2] = await Promise.all([
       Order.create({
-        payment_date: '12/04/2019',
+        total: 1000000,
+        session_id: '123456',
         order_date: '12/04/2019',
-        shipping_date: '12/10/2019',
-        shipping_method: 'UPS',
+        shipping_date: '1800 St',
         order_status: 'processing',
       }),
+      Order.create({
+        total: 2000000,
+        session_id: '323456',
+        order_date: '12/04/2019',
+        shipping_date: '1000 St',
+        order_status: 'processing',
+      })
     ]);
-
-    const shipments = await Promise.all([
-      Shipment.create({
-        tracking_num: '11111',
-        shipment_date: '09/23/2020',
-      }),
-    ]);
-    const carts = await Promise.all([
-      Cart.create({
-        session_id: '12345',
-        created_date: '11/11/2020',
-      }),
-    ]);
+      
+    await user4.setOrders(order1)
+    await user2.setOrders(order2)
+    
   } catch (err) {
     console.log(err);
   }
