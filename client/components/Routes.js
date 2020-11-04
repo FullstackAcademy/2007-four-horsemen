@@ -33,7 +33,7 @@ class Routes extends React.Component {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/products" exact component={AllProducts} />
-            <Route path="/products/:id" exact component={SingleProduct} />
+            <Route path="/products/:id"  exact component={SingleProduct} />
             {/* <Route path="/cart" exact component={Cart} /> */}
             <Route path="/login" exact component={Login} />
             <Route path="/user" exact component={User} />

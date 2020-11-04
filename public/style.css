@@ -111,6 +111,12 @@ a:hover {
 
 }
 
+h3{
+  font-family: fantasy;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
 .hot-cars{
   padding:4rem;
   width: 100%;
@@ -135,9 +141,20 @@ footer{
   padding-bottom: 2rem;
 }
 
+.Cart-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Cart-item-image{
+  text-align: center;
+}
+
 .Cart-image{
-  height: 15rem;
-  width: auto;
+  width: 80%;
+  height: auto;
+  
 }
 
 .Cart-container{
@@ -153,3 +170,42 @@ li{
 h3{
   text-align: center;
 }
+.add-car-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+.add-car-cart{
+  width:8rem;
+  
+}
+
+.hot-car-cart-name{
+  font-family: fantasy;
+}
+
+.hot-car-cart-price{
+  text-align: center;
+}
+
+.hot-car-cart-quantity{
+  text-align: center;
+}
+
+.Cart-plus-minus-qty{
+  text-align: center;
+}
+
+.Cart-remove-bttn-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
+/* .Cart-remove-bttn{
+  
+} */

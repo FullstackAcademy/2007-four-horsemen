@@ -6,7 +6,7 @@ import { fetchSingleProduct } from '../../store/redux/singleProduct';
 
 class SingleProduct extends React.Component {
   componentDidMount() {
-    this.props.getProduct(this.props.match.params.id);
+    //this.props.getProduct(this.props.match.params.id);
   }
 
   render() {
