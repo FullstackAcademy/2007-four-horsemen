@@ -28,8 +28,8 @@ Product.hasMany(Review);
 Review.belongsTo(Product);
 
 //ratings
-Product.belongsToMany(Review, { through: 'ratings' });
-Review.belongsToMany(Product, { through: 'ratings' });
+// Product.belongsToMany(Review, { through: 'ratings' });
+// Review.belongsToMany(Product, { through: 'ratings' });
 
 module.exports = {
   db,

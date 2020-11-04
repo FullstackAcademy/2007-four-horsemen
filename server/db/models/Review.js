@@ -8,12 +8,17 @@ const Review = db.define('review', {
     validate: {
       len: [0, 10000],
     },
-    allowNull: false,
+    // allowNull: false,
   },
 
   username: {
     type: STRING,
   },
+
+  // star: {
+  //   type: INTEGER,
+  //   allowNull: true,
+  // },
 });
 
 module.exports = Review;

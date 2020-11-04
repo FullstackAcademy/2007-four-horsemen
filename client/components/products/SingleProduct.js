@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { moneyFormatter } from '../../utils';
 import { addToCart } from '../../store/redux/cart';
 import { fetchSingleProduct } from '../../store/redux/singleProduct';
+import ReviewContent from '../ReviewContent';
 
 class SingleProduct extends React.Component {
   componentDidMount() {
@@ -30,6 +31,12 @@ class SingleProduct extends React.Component {
         >
           Add to Cart
         </button>
+        <div>
+          <ReviewContent
+            className="review-content"
+            productId={this.props.match.params.id}
+          />
+        </div>
       </div>
     );
   }

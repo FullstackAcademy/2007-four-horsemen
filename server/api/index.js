@@ -4,6 +4,8 @@ router.use('/products', require('./products'));
 
 router.use('/users', require('./users'));
 
+router.use('/reviews', require('./reviews'));
+
 router.use('/auth', require('./login'));
 
 router.use((req, res, next) => {
