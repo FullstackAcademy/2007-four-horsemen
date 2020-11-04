@@ -50,17 +50,21 @@ const Header = (props) => {
         )}
 
         <li className="nav-cart">
-          <button className="cart-button" type="submit" /*key={product.id} */>
+          <button className="cart-button" type="submit">
             {/* {(props.cart.length && props.cart.reduce((a, b) => {
                 if(typeof b === 'object'){
                   return a + b.quantity
                 }
                 return a + b}, 0)
               )} */}
+              <NavLink to="/cart">
+              <i className="fas fa-shopping-cart"></i>
+            </NavLink>
             
           </button>
           {/* <span>{store.addedProducts.length}</span> */}
         </li>
+
         <li className="nav-logout">
           <button
             className="logout-button"
