@@ -12,11 +12,7 @@ const Header = (props) => {
           <NavLink to="/">
             <img
               className="lo"
-<<<<<<< HEAD
-              src="https://www.lamborghini.com/themes/custom/lambo_facelift_2019/images/logo.png"
-=======
               src="lambo-logo.png"
->>>>>>> checkout
               alt="lamborghini logo"
             ></img>
           </NavLink>
@@ -61,6 +57,9 @@ const Header = (props) => {
                 }
                 return a + b}, 0)
               )} */}
+              <NavLink to="/cart">
+                <i className="fas fa-shopping-cart"></i>
+              </NavLink>
             
           </button>
           {/* <span>{store.addedProducts.length}</span> */}
