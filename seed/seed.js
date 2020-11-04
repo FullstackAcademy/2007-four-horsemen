@@ -22,7 +22,9 @@ async function seed() {
       }),
       User.create({
         name: 'Peter',
+        username: 'peter11',
         address: 'Fulton',
+        password: 'password',
         phoneNum: 222333222,
         email: 'peter@email.com',
         hasAccount: false,
@@ -68,7 +70,8 @@ async function seed() {
         isAdmin: true,
       }),
     ]);
-    const products = await Promise.all([
+
+    const Products = await Promise.all([
       Product.create({
         name: 'Aventador S',
         description:
@@ -166,7 +169,7 @@ async function seed() {
       }),
     ]);
 
-    const [order1] = await Promise.all([
+    const [order1,order2] = await Promise.all([
       Order.create({
         total: 1000000,
         session_id: '123456',
@@ -174,9 +177,17 @@ async function seed() {
         shipping_date: '1800 St',
         order_status: 'processing',
       }),
+      Order.create({
+        total: 2000000,
+        session_id: '323456',
+        order_date: '12/04/2019',
+        shipping_date: '1000 St',
+        order_status: 'processing',
+      })
     ]);
       
     await user4.setOrders(order1)
+    await user2.setOrders(order2)
     
   } catch (err) {
     console.log(err);

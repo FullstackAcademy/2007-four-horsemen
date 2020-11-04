@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 
 const Header = (props) => {
   const user = props.user;
@@ -11,7 +12,7 @@ const Header = (props) => {
           <NavLink to="/">
             <img
               className="lo"
-              src="lambo-logo.png"
+              src="https://www.lamborghini.com/themes/custom/lambo_facelift_2019/images/logo.png"
               alt="lamborghini logo"
             ></img>
           </NavLink>
