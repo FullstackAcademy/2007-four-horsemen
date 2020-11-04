@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Order = require('../db/models/Order');
+const User = require('../db/models/User');
 
 router.post('/', async (req, res, next) => {
   try {
@@ -20,7 +21,7 @@ router.get('/myorders:id',async(req,res,next)=>{
 })
 router.get('/',async(req,res,next)=>{
   try{
-    res.send(await Order.findAll({order:['id']}))
+    res.send(await Order.findAll({order:['id'],include:{model:User}}))
   }
   catch(err){
     next(err);

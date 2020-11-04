@@ -3,6 +3,13 @@ import {connect} from 'react-redux'
 import {setSingleUser} from '../../store/redux/users'
 import {fetchMyOrders} from '../../store/redux/orders'
 import {fetchAllOrders} from '../../store/redux/orders'
+import {setUsers} from '../../store/redux/allUsers'
+
+import Popup from 'reactjs-popup'
+import ViewMyOrders from './ViewMyOrders'
+import ViewAllOrders from './ViewAllOrders'
+import ViewAllUsers from './ViewAllUsers'
+
 
 
 class  User extends React.Component{
@@ -14,7 +21,8 @@ class  User extends React.Component{
             if(this.props.user.isAdmin)
             {   
                 await this.props.getAllOrders()
-            
+                await this.props.getAllUsers()
+                
             }
             else
             {
@@ -23,7 +31,6 @@ class  User extends React.Component{
         }
 
         render(){
-
         return(
             
             <div>
@@ -33,33 +40,36 @@ class  User extends React.Component{
                 <li>
                     EMAIL: {this.props.user.email}
                 </li>
+                {this.props.user.isAdmin ?
                 <div>
-                 Orders:
+                <Popup trigger={<button> View All Orders</button>} position="right center" modal >
+                <ViewAllOrders orders = {this.props.orders} />
+                </Popup>
+                <Popup trigger={<button> View All Users</button>} position="right center" modal >
+                <ViewAllUsers users = {this.props.users}/>
+                </Popup>
                 </div>
-                <li>
-                    {this.props.orders.map(order => {
-                        return(
-                            <div>
-                                <li>{order.id}</li>
-                                <li>{order.order_date}</li>
-                            </div>
-                        )
-                    })}
-                </li>
+                :
+                <Popup trigger={<button> View My Orders</button>} position="right center" modal >
+                <ViewMyOrders orders = {this.props.orders} />
+                </Popup>
+                }
+
             </div>
         )
         }
 }
 
-const mapStateToProps=({user,orders})=>{
-    return {user,orders};
+const mapStateToProps=({user,users,orders})=>{
+    return {user,users,orders};
 }
 
 const mapDispatchToProps = (dispatch) =>{
     return{
         getUser: () => dispatch(setSingleUser()),
         getOrders: (id) => dispatch(fetchMyOrders(id)),
-        getAllOrders: () => dispatch(fetchAllOrders())
+        getAllOrders: () => dispatch(fetchAllOrders()),
+        getAllUsers: ()=>dispatch(setUsers())
     }
 }
 
