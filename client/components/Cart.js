@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { moneyFormatter } from '../utils';
 import { Link } from 'react-router-dom';
 import {
+  fetchCart,
+  quantityOfProducts,
   removeFromCart,
   addQuantity,
   subtractQuantity,
@@ -30,11 +32,15 @@ class Cart extends Component {
     const arr = [];
     let cartOrder = cart.addedProducts.length ? (
       cart.addedProducts.map((p) => {
+        console.log(p.model)
         if (!arr.includes(p.id)) {
           arr.push(p.id);
-
+               
           return (
             <li className="Cart-item" key={p.id}>
+              <Link to="/checkout">
+                  <button>Proceed To Checkout</button>
+                </Link>
               <div className="Cart-item-image">
                 <img className="Cart-image" src={p.image} alt={p.model} />
               </div>
