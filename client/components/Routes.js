@@ -1,20 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-} from 'react-router-dom';
-
-import AllProducts from './products/AllProducts';
-import User from './User';
-import Login from './Login';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './Header';
 import Orders from './Orders';
 import Footer from './Footer';
-import SingleProduct from './products/SingleProduct';
 import Home from './Home';
+
+import User from './auth/User';
+import Login from './auth/Login';
+// import Signup from './auth/Signup';
+
+import AllProducts from './products/AllProducts';
+import SingleProduct from './products/SingleProduct';
 import Cart from './Cart';
+import CheckoutView from './CheckoutView';
+import { fetchProducts } from '../store/redux/products';
+import { setSingleUser } from '../store/redux/users';
 
 
 const NoMatch = ()=>{
@@ -22,9 +23,6 @@ const NoMatch = ()=>{
     <h3>404 - Not found</h3>
   )
 }
-import CheckoutView from './CheckoutView'
-import { fetchProducts } from '../store/redux/products';
-import { setSingleUser } from '../store/redux/users';
 
 class Routes extends React.Component {
   componentDidMount() {
