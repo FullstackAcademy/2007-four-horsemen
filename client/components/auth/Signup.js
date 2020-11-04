@@ -56,7 +56,8 @@ class SignUp extends React.Component{
             </label>
             <label>
             Password:
-            <input value = {password} onChange = {ev=> this.setState({password :ev.target.value})}/>
+            <input value = {password} onChange = {ev=> this.setState({password :ev.target.value})}
+             type="password"/>
             </label>
             <label>
             Full Name:
@@ -72,7 +73,8 @@ class SignUp extends React.Component{
             </label>
             <label>
             Email:
-            <input value = {email} onChange = {ev=> this.setState({email :ev.target.value})}/>
+            <input value = {email} onChange = {ev=> this.setState({email :ev.target.value})}
+            />
             </label>
              <button>Create</button>
             </form>

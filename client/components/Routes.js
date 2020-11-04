@@ -3,9 +3,7 @@ import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Switch,
-  useLocation,
 } from 'react-router-dom';
 
 import Header from './Header';
@@ -14,7 +12,7 @@ import Home from './Home';
 
 import User from './auth/User';
 import Login from './auth/Login';
-import Signup from './auth/Signup';
+// import Signup from './auth/Signup';
 
 import AllProducts from './products/AllProducts';
 import SingleProduct from './products/SingleProduct';
@@ -50,7 +48,7 @@ class Routes extends React.Component {
             <Route path="/user" exact component={User} />
             <Route path="/cart" exact component={Cart} />
             {/*<Route path="/checkout" exact component={Checkout} /> */}
-            <Route path="/signup" exact component={Signup} />
+            {/* <Route path="/signup" exact component={Signup} /> */}
             <NoMatch/>
           </Switch>
           <Footer />
