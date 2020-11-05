@@ -18,10 +18,8 @@ class AllProducts extends React.Component {
 
 
   render() {
-    console.log(window.localStorage);
-    console.log(this.state)
+    
     const {cart} = this.state;
-    console.log(cart)
     
     return (
       <div>

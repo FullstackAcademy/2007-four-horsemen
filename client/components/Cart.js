@@ -2,50 +2,59 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { moneyFormatter } from '../utils';
 import { Link } from 'react-router-dom';
-import {
-  removeFromCart,
-  addQuantity,
-  subtractQuantity,
-} from '../store/redux/cart';
+// import {
+//   removeFromCart,
+//   addQuantity,
+//   subtractQuantity,
+// } from '../store/redux/cart';
 
 class Cart extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   console.log('super', props);
-  //   this.state = {
-  //     addedProducts: props.cart.addedProducts,
-  //   };
-  //}
+  constructor(props) {
+    super(props);
+    this.state = {
+      cart: [],
+    };
+  }
 
-  // componentDidMount() {
-  //   const { addedProducts } = this.props.cart;
-  //   console.log(addedProducts);
-  //   console.log('cDm ', this.props.cart.addedProducts);
-  //   //this.setState({ addedProducts: addedProducts })
-  //   console.log('setSTate ', this.state);
-  // }
+  componentDidMount() {
+    const cart = JSON.parse(window.localStorage.getItem('cart'));
+    this.setState({ cart });
+  }
+
   _removeFromCart(id) {
     const { removeFromCart } = this.props;
     removeFromCart(id);
   }
 
-  _addQuantity(id) {
-    const { addQuantity } = this.props;
-    addQuantity(id);
+  _addQuantity(p) {
+    let updateProduct = this.state.cart.map((car) => {
+      if (car.id === p.id) {
+        car.inventory_quantity += 1;
+        return car;
+      }
+      return car;
+    });
+    this.setState({ cart: updateProduct });
+    window.localStorage.setItem('cart', JSON.stringify(this.state.cart));
   }
 
-  _subtractQuantity(id) {
-    const { subtractQuantity } = this.props;
-    subtractQuantity(id);
+  _subtractQuantity(p) {
+    let minusQty = this.state.cart.map((car) => {
+      if (car.id === p.id) {
+        car.inventory_quantity === 0 ? 0 : (car.inventory_quantity -= 1);
+        return car;
+      }
+      return car;
+    });
+    this.setState({ car: minusQty });
+    window.localStorage.setItem('cart', JSON.stringify(this.state.cart));
   }
 
   render() {
-    //console.log(window.localStorage)
+    
     const cart = JSON.parse(window.localStorage.getItem('cart'));
-    console.log('what it is', cart);
-
-    // console.log('render in Cart ', this.props);
     const arr = [];
+
     let cartOrder = cart.length ? (
       cart.map((p) => {
         if (!arr.includes(p.id)) {
@@ -60,17 +69,17 @@ class Cart extends Component {
                 <p className="hot-car-cart-name">
                   <b>{p.name}</b>
                 </p>
-                <p className='hot-car-cart-price'>
+                <p className="hot-car-cart-price">
                   <b>Price: {moneyFormatter.format(p.price)}</b>
                 </p>
-                <p className='hot-car-cart-quantity'>
-                  <b>Quantity: {p.quantity}</b>
+                <p className="hot-car-cart-quantity">
+                  <b>Quantity: {p.inventory_quantity}</b>
                 </p>
                 <div className="Cart-plus-minus-qty">
                   <Link to="/cart">
                     <i
                       onClick={() => {
-                        this._addQuantity(p.id);
+                        this._addQuantity(p);
                       }}
                     >
                       [ + ]
@@ -79,22 +88,22 @@ class Cart extends Component {
                   <Link to="/cart">
                     <i
                       onClick={() => {
-                        this._subtractQuantity(p.id);
+                        this._subtractQuantity(p);
                       }}
                     >
                       [ - ]
                     </i>
                   </Link>
                 </div>
-                <div className='Cart-remove-bttn-div'>
-                <button
-                  className="Cart-remove-bttn"
-                  onClick={() => {
-                    this._removeFromCart(p.id);
-                  }}
-                >
-                  Remove
-                </button>
+                <div className="Cart-remove-bttn-div">
+                  <button
+                    className="Cart-remove-bttn"
+                    onClick={() => {
+                      this._removeFromCart(p.id);
+                    }}
+                  >
+                    Remove
+                  </button>
                 </div>
               </div>
             </li>
@@ -113,7 +122,6 @@ class Cart extends Component {
         </div>
       </div>
     );
-
   }
 }
 
@@ -123,12 +131,12 @@ class Cart extends Component {
 //   };
 // };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addQuantity: (id) => dispatch(addQuantity(id)),
-    subtractQuantity: (id) => dispatch(subtractQuantity(id)),
-    removeFromCart: (id) => dispatch(removeFromCart(id)),
-  };
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     addQuantity: (id) => dispatch(addQuantity(id)),
+//     subtractQuantity: (id) => dispatch(subtractQuantity(id)),
+//     removeFromCart: (id) => dispatch(removeFromCart(id)),
+//   };
+// };
 
-export default connect(null, mapDispatchToProps)(Cart);
+export default connect()(Cart);
