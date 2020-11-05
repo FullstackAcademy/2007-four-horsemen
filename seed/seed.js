@@ -10,7 +10,7 @@ const {
 async function seed() {
   await db.sync({ force: true });
   try {
-    const [user1,user2,user3,user4,user5,user6] = await Promise.all([
+    const [user1, user2, user3, user4, user5, user6] = await Promise.all([
       User.create({
         name: 'Lary',
         address: 'Fulton',
@@ -77,7 +77,8 @@ async function seed() {
         description:
           'Following the Miura, Islero, Countach and Urraco, today’s most iconic Lamborghini reflects the heritage of the historic S models into the Aventador S. The exclusive design and a V12 engine that develops an extraordinary 740 hp combine with the most sophisticated technology available, LDVA (Lamborghini Dinamica Veicolo Attiva, Lamborghini Active Vehicle Dynamics).',
         price: 425000,
-        image: 'download.jpeg',
+        image:
+          'https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/model_detail/aventador/s/overview/08_27_aven_over3_m.jpg',
       }),
       Product.create({
         name: 'Aventador S Roadster',
@@ -169,7 +170,9 @@ async function seed() {
       }),
     ]);
 
-    const [order1,order2] = await Promise.all([
+
+    const [order1, order2] = await Promise.all([
+
       Order.create({
         total: 1000000,
         session_id: '123456',

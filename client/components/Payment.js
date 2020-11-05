@@ -1,34 +1,36 @@
-import React from 'react'
+
+import React from 'react';
+
 import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
 
-const STRIPE_PUBLISHABLE = process.env.NODE_ENV === 'production'
-  ? 'pk_live_Tqebmm9chI8ljgVt2JPVzyod'
-  : 'pk_test_Tqebmm9chI8ljgVt2JPVzyod';
-const PAYMENT_SERVER_URL = process.env.NODE_ENV === 'production'
-  ? '/api/stripe'
-  : '/api/stripe';
+const STRIPE_PUBLISHABLE =
+  process.env.NODE_ENV === 'production'
+    ? 'pk_live_Tqebmm9chI8ljgVt2JPVzyod'
+    : 'pk_test_Tqebmm9chI8ljgVt2JPVzyod';
+const PAYMENT_SERVER_URL =
+  process.env.NODE_ENV === 'production' ? '/api/stripe' : '/api/stripe';
 
 const CURRENCY = 'USD';
 
-const fromEuroToCent = amount => amount * 100;
+const fromEuroToCent = (amount) => amount * 100;
 
-const errorPayment = data => {
+const errorPayment = (data) => {
   alert('Payment Error');
 };
 
-const onToken = (amount, description, successPayment) => token =>
-  axios.post(PAYMENT_SERVER_URL,
-    {
+const onToken = (amount, description, successPayment) => (token) =>
+  axios
+    .post(PAYMENT_SERVER_URL, {
       description,
       source: token.id,
       currency: CURRENCY,
-      amount: fromEuroToCent(amount)
+      amount: fromEuroToCent(amount),
     })
     .then(successPayment)
     .catch(errorPayment);
 
-const Payment = ({ name, description, amount, successPayment }) =>
+const Payment = ({ name, description, amount, successPayment }) => (
   <StripeCheckout
     bitcoin
     name={name}
@@ -38,5 +40,6 @@ const Payment = ({ name, description, amount, successPayment }) =>
     currency={CURRENCY}
     stripeKey={STRIPE_PUBLISHABLE}
   />
+);
 
 export default Payment;
