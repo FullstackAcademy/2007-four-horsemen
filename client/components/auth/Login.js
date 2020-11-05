@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 // import { NavLink } from 'react-router-dom';
+
 import Popup from 'reactjs-popup';
 import Signup from './Signup';
+
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -18,6 +20,7 @@ const Login = () => {
       })
       .catch((err) => {
         window.alert('Wrong username or password!!!!');
+
       });
   };
   function refreshPage() {
@@ -45,8 +48,10 @@ const Login = () => {
       {/* <NavLink to = "/signup">
         <button>Sign Up</button>
       </NavLink> */}
+
       <Popup trigger={<button> signup</button>} position="right center" modal>
         <Signup />
+
       </Popup>
     </>
   );

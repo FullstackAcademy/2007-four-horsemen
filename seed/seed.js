@@ -170,25 +170,28 @@ async function seed() {
       }),
     ]);
 
+
     const [order1, order2] = await Promise.all([
+
       Order.create({
         total: 1000000,
         session_id: '123456',
         order_date: '12/04/2019',
-        shipping_date: '1800 St',
+        shipping_address: '1800 St',
         order_status: 'processing',
       }),
       Order.create({
         total: 2000000,
         session_id: '323456',
         order_date: '12/04/2019',
-        shipping_date: '1000 St',
+        shipping_address: '1000 St',
         order_status: 'processing',
-      }),
+      })
     ]);
-
-    await user4.setOrders(order1);
-    await user2.setOrders(order2);
+      
+    await user4.setOrders(order1)
+    await user2.setOrders(order2)
+    
   } catch (err) {
     console.log(err);
   }

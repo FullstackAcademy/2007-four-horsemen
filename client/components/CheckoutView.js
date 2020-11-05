@@ -1,7 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { makeNewOrder, clearCart } from '../store';
+
+import React from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+// import { makeNewOrder, clearCart } from '../store'
+
 import Payment from './Payment';
 
 const CheckoutView = (props) => {
