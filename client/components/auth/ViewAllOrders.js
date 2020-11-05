@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react';
+import axios from 'axios';
 
 const ViewAllOrders = (props) =>{
 
     const orders = props.orders
-    console.log(orders)
+    const [status, setStatus] = useState('');
+    const [orderId, setOrderId] = useState('');
+    const changeStatus = async(ev) =>{
+        ev.preventDefault();
+        const order_status = status
+        return await axios.put(`/api/orders/${orderId}`,{order_status})
+        .then(() => {
+            window.location.reload(false);
+          })
+          .catch((err) => {
+            console.log(err);
+    
+          });
+    }
     return (<ul>
             {orders.map(order => {
                 return(
@@ -23,9 +37,17 @@ const ViewAllOrders = (props) =>{
                        <div>
                            Shipping Address : {order.shipping_address}
                        </div>
-                       <div>
-                           Order Statues : {order.order_status}
-                       </div>
+                       <label for = 'order_status'>
+                           Order Status : {order.order_status}
+                       </label>
+                       <form onSubmit = {changeStatus}>
+                       <select onChange={({target:{value}}) => setStatus(value)} >
+                           <option value = 'processing'>Processing the Shippment </option>
+                           <option value = 'completed'>Mark as Completed</option>
+                           <option value = 'cancelled'>Cancel it </option>
+                       </select>
+                       <button onClick = {()=> setOrderId(order.id)}>Update</button>
+                       </form>
                    </li>
                 )
             } )}

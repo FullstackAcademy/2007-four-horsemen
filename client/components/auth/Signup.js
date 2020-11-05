@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import { createUser } from '../../store/redux/users';
 
 class SignUp extends React.Component {
@@ -87,6 +88,7 @@ class SignUp extends React.Component {
           <label>
             Email:
             <input
+              type = 'email'
               value={email}
               onChange={(ev) => this.setState({ email: ev.target.value })}
             />
