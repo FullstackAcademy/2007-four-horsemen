@@ -41,7 +41,7 @@ export const fetchMyOrders = (id) => {
   }
 };
 
-export default function OrdersReducer(state = [], action) {
+export default function ordersReducer(state = [], action) {
   if (action.type === SET_ALLORDERS) {
     return action.orders;
   }
