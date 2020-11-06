@@ -15,12 +15,14 @@ import SingleProduct from './products/SingleProduct';
 import Cart from './Cart';
 import CheckoutView from './CheckoutView';
 
+
 import { fetchProducts } from '../store/redux/products';
 import { setSingleUser } from '../store/redux/users';
 
 const NoMatch = () => {
   return <h3>404 - Not found</h3>;
 };
+
 
 class Routes extends React.Component {
   componentDidMount() {
@@ -46,7 +48,9 @@ class Routes extends React.Component {
             <Route path="/login" exact component={Login} />
             <Route path="/checkout" exact component={CheckoutView} />
             {/* <Route path="/signup" exact component={Signup} /> */}
+
             <NoMatch />
+
           </Switch>
           <Footer />
         </div>

@@ -14,8 +14,9 @@ export const fetchAllOrders = () => {
     return async (dispatch) => {
       const orders = await axios.get('/api/orders/');
       dispatch(setAllOrders(orders.data));
-    };
-  } catch (err) {
+      }
+    }
+    catch (err) {
     console.log(err);
   }
 };
@@ -41,7 +42,7 @@ export const fetchMyOrders = (id) => {
   }
 };
 
-export default function OrdersReducer(state = [], action) {
+export default function ordersReducer(state = [], action) {
   if (action.type === SET_ALLORDERS) {
     return action.orders;
   }

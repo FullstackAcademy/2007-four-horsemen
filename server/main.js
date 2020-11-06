@@ -6,7 +6,6 @@ const {
 } = require('./db');
 
 const init = async () => {
-  try {
     await db.sync().then(() => {
       app.listen(PORT, () =>
         console.log(`
@@ -16,9 +15,7 @@ const init = async () => {
         `)
       );
     });
-  } catch (err) {
-    console.log(err);
-  }
+
 };
 
 init();

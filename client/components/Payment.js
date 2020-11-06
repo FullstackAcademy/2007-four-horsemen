@@ -1,11 +1,11 @@
+
 import React from 'react';
+
 import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
 
 const STRIPE_PUBLISHABLE =
-  process.env.NODE_ENV === 'production'
-    ? 'pk_live_Tqebmm9chI8ljgVt2JPVzyod'
-    : 'pk_test_Tqebmm9chI8ljgVt2JPVzyod';
+  process.env.NODE_ENV === 'production';
 const PAYMENT_SERVER_URL =
   process.env.NODE_ENV === 'production' ? '/api/stripe' : '/api/stripe';
 
