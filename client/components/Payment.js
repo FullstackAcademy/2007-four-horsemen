@@ -1,13 +1,10 @@
-
 import React from 'react';
-
 import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
 
 const STRIPE_PUBLISHABLE =
-  process.env.NODE_ENV === 'production';
-const PAYMENT_SERVER_URL =
-  process.env.NODE_ENV === 'production' ? '/api/stripe' : '/api/stripe';
+  process.env.NODE_ENV === 'pk_test_TYooMQauvdEDq54NiTphI7jx';
+
 
 const CURRENCY = 'USD';
 

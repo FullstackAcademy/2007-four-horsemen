@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const Header = (props) => {
   const user = props.user;
+  console.log(props)
   return (
     <nav>
       <ul className="home-models">

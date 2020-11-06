@@ -35,6 +35,7 @@ class Routes extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <Router >
         <div>
