@@ -42,20 +42,12 @@ function refreshPage() {
 
 
   return (
-
-    
     <div className='bodyback'>
-      
-
-      <div >
-        <div  >
           <h2 >Complete Your Order</h2>
-         
-          <div >
-
-            <div  >
+            <div>
               {//props.cart.length && props.cart.map((p) => (
                    cart.addedProducts.map((p)=>(
+
                 <div  key={p.id}>
                   <div >
                     <img src={p.image} />
@@ -68,6 +60,7 @@ function refreshPage() {
                     </p>
 
                   </div>
+                </div>
                 ))
               }
               {/* <div >
@@ -81,7 +74,7 @@ function refreshPage() {
                 <br />
               </p>
 
-
+              <form onSubmit = {handleSubmit}>
                 <div class="input-container">
                 <i class="fa fa-user icon"></i>
                   <label> Name</label>
@@ -119,12 +112,7 @@ function refreshPage() {
                 /> */}
               </form>
             </div>
-          </div>
-        </div>
-      </div>
     </div>
-
-
   );
 };
 
