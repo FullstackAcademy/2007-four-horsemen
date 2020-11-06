@@ -9,17 +9,18 @@ import {
 } from '../store/redux/cart';
 
 class Cart extends Component {
-  _removeFromCart(id) {
+  removeFCart(id) {
     const { removeFromCart } = this.props;
     removeFromCart(id);
   }
 
-  _addQuantity(id) {
+  addQty(id) {
+    console.log('hi')
     const { addQuantity } = this.props;
     addQuantity(id);
   }
 
-  _subtractQuantity(id) {
+  subtractQty(id) {
     const { subtractQuantity } = this.props;
     subtractQuantity(id);
   }
@@ -54,7 +55,7 @@ class Cart extends Component {
                   <Link to="/cart">
                     <i
                       onClick={() => {
-                        this._addQuantity(p.id);
+                        this.addQty(p.id);
                       }}
                     >
                       [ + ]
@@ -63,7 +64,7 @@ class Cart extends Component {
                   <Link to="/cart">
                     <i
                       onClick={() => {
-                        this._subtractQuantity(p.id);
+                        this.subtractQty(p.id);
                       }}
                     >
                       [ - ]
@@ -73,7 +74,7 @@ class Cart extends Component {
                 <button
                   className="Cart-remove-bttn"
                   onClick={() => {
-                    this._removeFromCart(p.id);
+                    this.removeFCart(p.id);
                   }}
                 >
                   Remove
@@ -86,7 +87,7 @@ class Cart extends Component {
     ) : (
       <p>Empty</p>
     );
-
+    console.log(this.props.cart.items);
     return (
       <div className="Cart-container">
         <div>

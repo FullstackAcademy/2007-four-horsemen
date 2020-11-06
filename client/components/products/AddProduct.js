@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+
 const AddProduct =()=>{
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
@@ -16,6 +17,7 @@ const AddProduct =()=>{
         })
         .catch((err) => {
           window.alert('try again!');
+
     
         });
     };
