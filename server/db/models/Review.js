@@ -1,10 +1,23 @@
 const Sequelize = require('sequelize');
-const { ARRAY, TEXT } = Sequelize;
+const { STRING, TEXT, DATE } = Sequelize;
 const db = require('../conn');
 
 const Review = db.define('review', {
   feedback: {
-    type: ARRAY(TEXT),
+    type: TEXT,
+    validate: {
+      len: [0, 10000],
+      notEmpty: true,
+    },
+    allowNull: false,
+  },
+
+  username: {
+    type: STRING,
+  },
+
+  date: {
+    type: DATE(6),
   },
 });
 

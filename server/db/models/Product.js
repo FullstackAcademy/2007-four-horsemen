@@ -9,7 +9,7 @@ const Product = db.define('product', {
     primaryKey: true,
   },
 
-  model: {
+  name: {
     type: STRING,
     allowNull: false,
     validate: {
