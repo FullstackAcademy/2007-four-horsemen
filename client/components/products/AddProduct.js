@@ -2,20 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 class AddProduct extends Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             name:'',
             description:'',
             price:'',
-            image:''        }
+            image:''}
         this.add = this.add.bind(this)
-    
+
     }
     add(ev){
-       
+
     }
-    
+
     render(){
         return(
             <div>
@@ -27,17 +27,17 @@ class AddProduct extends Component{
             </div>
         )
     }
-    
+
 }
 
 
 const mapStateToProps = () => {
     return {};
   };
-  
+
   const mapDispatchToProps = (dispatch) => {
     return {
     }};
   };
-  
+
   export default connect(mapStateToProps, mapDispatchToProps)(AddProduct);
