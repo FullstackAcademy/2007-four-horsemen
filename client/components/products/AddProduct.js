@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 class AddProduct extends Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             name:'',
             description:'',
