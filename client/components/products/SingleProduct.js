@@ -10,8 +10,9 @@ import ReviewsList from '../ReviewsList';
 import Rating from '../Rating';
 
 class SingleProduct extends React.Component {
+
   async componentDidMount() {
-    await Promise.all[
+    Promise.all[
       (this.props.getProduct(this.props.match.params.id),
       this.props.getUser(),
       this.props.getReviews())
@@ -72,9 +73,11 @@ class SingleProduct extends React.Component {
   }
 }
 
-const mapStateToProps = ({ product, user, reviews }) => {
-  return { product, user, reviews };
+
+const mapStateToProps = ({ product, user, reviews, cart }) => {
+  return { product, user, reviews, cart };
 };
+
 const mapDispatchToProps = (dispatch) => {
   return {
     getProduct: (id) => dispatch(fetchSingleProduct(id)),

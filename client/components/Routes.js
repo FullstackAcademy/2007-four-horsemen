@@ -38,8 +38,8 @@ class Routes extends React.Component {
           <Header user={this.props.user} />
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/models" exact component={AllProducts} />
-            <Route path="/models/:id" exact component={SingleProduct} />
+            <Route path="/products" exact component={AllProducts} />
+            <Route path="/products/:id"  exact component={SingleProduct} />
             {/* <Route path="/cart" exact component={Cart} /> */}
             <Route path="/login" exact component={Login} />
             <Route path="/user" exact component={User} />
