@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import Payment from './Payment';
+import TakeMoney from './Payment';
 
 const CheckoutView = (props) => {
   const {successPayment, cart, user } = props;
@@ -99,15 +99,9 @@ function refreshPage() {
                 </div>
                 <br />
                 <div>Grand Total : ${cart.total}</div>
-                {/* <button>Payment</button> */}
-                <Payment
-                  name={'Confirm purchase'}
-
-                  description={"This is only a test page, enter 4242 4242 4242 4242 for credit card"}
-                  amount={cart.addedProducts.map(p=>p.price*p.quantity).reduce((a,b)=>a+b,0)}
-
-                  successPayment={successPayment}
-                />
+                <button>
+                  Checkout
+                 </button>
               </form>
             </div>
     </div>
