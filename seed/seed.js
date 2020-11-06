@@ -175,9 +175,15 @@ async function seed() {
         order_date: '12/04/2019',
         shipping_date: '12/10/2019',
         shipping_method: 'UPS',
-        order_status: 'processing',
+        order_status: 'CREATED',
       }),
     ]);
+
+    // const orders = await Promise.all([
+    //   Order.create({
+    //   status: "CREATED", items: []}),
+      
+    // ]);
 
     const shipments = await Promise.all([
       Shipment.create({

@@ -14,11 +14,13 @@ import Login from './Login';
 import Header from './Header';
 import Orders from './Orders';
 import Footer from './Footer';
+//import history  from './history'
 import SingleModel from './models/SingleModel';
 import Home from './Home';
 import Cart from './Cart';
 import CheckoutView from './CheckoutView'
 import { fetchProducts } from '../store/redux/products';
+//import sucpayment from './sucpayment'
 
 class Routes extends React.Component {
   componentDidMount() {
@@ -26,7 +28,7 @@ class Routes extends React.Component {
   }
   render() {
     return (
-      <Router>
+      <Router >
         <div>
           <Header />
           <Switch>
@@ -37,6 +39,7 @@ class Routes extends React.Component {
             <Route path="/orders" exact component={Orders} />
             <Route path="/login" exact component={Login} />
             <Route path="/checkout" exact component={CheckoutView} />
+            
             {/* <Route path="/signup" exact component={Signup} /> */}
           </Switch>
           <Footer />
