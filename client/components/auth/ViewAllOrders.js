@@ -9,7 +9,7 @@ const ViewAllOrders = (props) =>{
     const changeStatus = async(ev) =>{
         ev.preventDefault();
         const order_status = status
-        return await axios.put(`/api/orders/${orderId}`,{order_status})
+        await axios.put(`/api/orders/${orderId}`,{order_status})
         .then(() => {
             window.location.reload(false);
           })

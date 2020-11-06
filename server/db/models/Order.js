@@ -26,6 +26,7 @@ const Order = db.define('order', {
     type: ENUM('cart', 'created', 'processing', 'cancelled', 'completed'),
     allowNull: false,
   },
+
 });
 
 module.exports = Order;

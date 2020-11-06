@@ -23,7 +23,6 @@ class SingleProduct extends React.Component {
     const { name, description, price, image } = this.props.product;
     const { addToCart } = this.props;
     const priceInUsd = moneyFormatter.format(price);
-    console.log(reviews);
     return (
       <div className="app">
         <div className="details">

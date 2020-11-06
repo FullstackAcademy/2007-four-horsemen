@@ -87,7 +87,7 @@ class Cart extends Component {
     ) : (
       <p>Empty</p>
     );
-
+    console.log(this.props.cart.items);
     return (
       <div className="Cart-container">
         <div>
