@@ -9,6 +9,7 @@ import Popup from 'reactjs-popup'
 import ViewMyOrders from './ViewMyOrders'
 import ViewAllOrders from './ViewAllOrders'
 import ViewAllUsers from './ViewAllUsers'
+// import AddProduct from '../products/AddProduct'
 
 
 
@@ -35,11 +36,18 @@ class  User extends React.Component{
             
             <div>
                 <li>
-                    USER: {this.props.user.name}
+                    My Name: {this.props.user.name}
                 </li>
                 <li>
-                    EMAIL: {this.props.user.email}
+                    My EMAIL: {this.props.user.email}
                 </li>
+                <li>
+                    My Address: {this.props.user.email}
+                </li>
+                <li>
+                    My Phone Number: {this.props.user.email}
+                </li>
+                
                 {this.props.user.isAdmin ?
                 <div>
                 <Popup trigger={<button> View All Orders</button>} position="right center" modal >
@@ -47,6 +55,9 @@ class  User extends React.Component{
                 </Popup>
                 <Popup trigger={<button> View All Users</button>} position="right center" modal >
                 <ViewAllUsers users = {this.props.users}/>
+                </Popup>
+                <Popup trigger={<button> Upload New Model!!</button>} position="right center" modal >
+                {/* <AddProduct/> */}
                 </Popup>
                 </div>
                 :

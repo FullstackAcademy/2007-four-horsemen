@@ -1,22 +1,18 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-// import { makeNewOrder, clearCart } from '../store'
+
 
 import Payment from './Payment';
 
 const CheckoutView = (props) => {
   const { handleSubmit, successPayment, cart, product } = props;
-  //const cart = props.cart.product
-  //const {cart,product}=props
-  //  const model = props.product;
-  //   const pic = model.image;
-  //   const mulah = moneyFormatter.format(model.price);
+  // const [total, setTotal] = useState('');
+  // const [order_date, setData] = useState('');
+  // const [shipping_address, setAddress] = useState('')
+  // const [order_status, setStatus] = useState('processing');
+  
 
-  //cart.addedProducts.map((p)=>{
-
-  //})
 
   return (
     <div>
@@ -27,7 +23,6 @@ const CheckoutView = (props) => {
           <div>
             <div>
               {
-                //props.cart.length && props.cart.map((p) => (
                 cart.addedProducts.map((p) => (
                   <div>
                     <div>

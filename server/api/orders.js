@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const Order = require('../db/models/Order');
 const User = require('../db/models/User');
+const isAdmin = require('../middleware/adminAuth');
 
 router.post('/', async (req, res, next) => {
   try {
@@ -32,7 +33,7 @@ router.get('/myorders:id', async (req, res, next) => {
   }
 });
 
-router.get('/',async(req,res,next)=>{
+router.get('/',isAdmin,async(req,res,next)=>{
   try{
     res.send(await Order.findAll({order:['id'],include:{model:User}}))
   }
