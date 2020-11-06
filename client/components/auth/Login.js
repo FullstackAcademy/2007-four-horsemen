@@ -13,7 +13,7 @@ const Login = () => {
   const onLoginSubmit = async (e) => {
     e.preventDefault();
 
-    return await axios
+      return await axios
       .post('/api/auth/login', { username, password })
       .then((res) => {
         refreshPage();

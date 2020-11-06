@@ -6,7 +6,6 @@ const ReviewsList = (props) => {
   const productReview = reviews.filter(
     (review) => review.productId === productId * 1
   );
-  console.log(productReview);
 
   return (
     <div>

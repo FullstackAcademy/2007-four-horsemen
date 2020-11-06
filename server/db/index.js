@@ -1,7 +1,5 @@
 const db = require('./conn');
 const Order = require('./models/Order');
-
-const Cart = require('./models/Cart');
 const Product = require('./models/Product');
 const User = require('./models/User');
 const Review = require('./models/Review');
@@ -14,8 +12,8 @@ Session.belongsTo(User);
 
 //orders
 Order.belongsTo(User);
-Product.belongsToMany(Order, { through: Cart });
-Order.belongsToMany(Product, { through: Cart });
+Product.belongsToMany(Order, { through: 'cart' });
+Order.belongsToMany(Product, { through: 'cart'});
 
 //reviews
 User.hasMany(Review);
