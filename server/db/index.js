@@ -12,8 +12,7 @@ Session.belongsTo(User);
 
 //orders
 Order.belongsTo(User);
-Product.belongsToMany(Order, { through: 'cart' });
-Order.belongsToMany(Product, { through: 'cart'});
+
 
 //reviews
 User.hasMany(Review);
