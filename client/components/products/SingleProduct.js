@@ -3,39 +3,88 @@ import { connect } from 'react-redux';
 import { moneyFormatter } from '../../utils';
 import { addToCart } from '../../store/redux/cart';
 import { fetchSingleProduct } from '../../store/redux/singleProduct';
+import { setSingleUser } from '../../store/redux/users';
+import { getReviews } from '../../store/redux/reviews';
+import ReviewForm from '../ReviewForm';
+import ReviewsList from '../ReviewsList';
+import Rating from '../Rating';
 
 class SingleProduct extends React.Component {
-  componentDidMount() {
-    //this.props.getProduct(this.props.match.params.id);
+
+  async componentDidMount() {
+    Promise.all[
+      (this.props.getProduct(this.props.match.params.id),
+      this.props.getUser(),
+      this.props.getReviews())
+    ];
   }
 
   render() {
-    const { product } = this.props;
+    const { product, reviews } = this.props;
     const { name, description, price, image } = this.props.product;
     const { addToCart } = this.props;
     const priceInUsd = moneyFormatter.format(price);
+    console.log(reviews);
     return (
-      <div className="single-car">
-        <div className="inner">
-          <div className="image-is-64x64">
-            <img src={image} alt={name}></img>
+      <div className="app">
+        <div className="details">
+          <div className="big-img">
+            <img className="single-car" src={image} alt={name}></img>
           </div>
-          <div className="single-model">{name}</div>
-          <div className="single-description">{description}</div>
-          <div className="single-price">{priceInUsd}</div>
+          <div className="box">
+            <div className="row">
+              <h2>{name}</h2>
+            </div>
+            <p>
+              <span>
+                <Rating totalStars={5} />
+              </span>
+            </p>
+            <p>
+              <span>({reviews.length} customer reviews)</span>
+            </p>
+            <p>{description}</p>
+            <h4>
+              <span>{priceInUsd}</span>
+            </h4>
+            <button className="cart" onClick={(id) => addToCart(product, id)}>
+              Add to Cart
+            </button>
+          </div>
+        </div>
+        <div className="review-form">
+          {this.props.user.length !== 0 && (
+            <ReviewForm
+              productId={this.props.match.params.id}
+              userId={this.props.user.id}
+            />
+          )}
+        </div>
+        <div className="reviews-list">
+          <h3>Reviews: </h3>
+          <hr />
+          <ReviewsList
+            reviews={reviews}
+            productId={this.props.match.params.id}
+          />
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ product, cart }) => {
-  return { product, cart };
+
+const mapStateToProps = ({ product, user, reviews, cart }) => {
+  return { product, user, reviews, cart };
 };
+
 const mapDispatchToProps = (dispatch) => {
   return {
     getProduct: (id) => dispatch(fetchSingleProduct(id)),
-    addToCart: (product) => dispatch(addToCart(product)),
+    addToCart: (product, id) => dispatch(addToCart(product, id)),
+    getUser: () => dispatch(setSingleUser()),
+    getReviews: () => dispatch(getReviews()),
   };
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct);

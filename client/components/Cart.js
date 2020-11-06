@@ -55,13 +55,18 @@ class Cart extends Component {
     const cart = JSON.parse(window.localStorage.getItem('cart'));
     const arr = [];
 
+
     let cartOrder = cart.length ? (
       cart.map((p) => {
+
         if (!arr.includes(p.id)) {
           arr.push(p.id);
 
           return (
             <li className="Cart-item" key={p.id}>
+              <Link to="/checkout">
+                <button>Proceed To Checkout</button>
+              </Link>
               <div className="Cart-item-image">
                 <img className="Cart-image" src={p.image} alt={p.model} />
               </div>

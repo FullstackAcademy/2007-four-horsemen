@@ -1,19 +1,13 @@
 import axios from 'axios';
 
 ////////ACTION TYPES//////////
-const SET_USERS = 'SET_USERS';
+
 const SET_SINGLE_USER = 'SET_SINGLEUSER';
 const CREATE_USER = 'CREATE_USER';
 const UPDATE_USER = 'UPDATE_USER';
 const DELETE_USER = 'DELETE_USER';
 
-////////ACTION CREATORS///////
-const _setUsers = (users) => {
-  return {
-    type: SET_USERS,
-    users,
-  };
-}; ///////fetch all users /////admins
+
 
 const _setSingleUser = (user) => {
   return {
@@ -45,12 +39,7 @@ const _deleteUser = (id) => {
 
 ///////THUNK CREATORS////////
 
-export const setUsers = () => {
-  return async (dispatch) => {
-    const { data } = axios.get('/api/users');
-    dispatch(_setUsers(data));
-  };
-};
+
 export const setSingleUser = () => {
   return async (dispatch) => {
     const { data } = await axios.get('/api/auth/whoami');
@@ -58,24 +47,22 @@ export const setSingleUser = () => {
   };
 };
 
-export const createUser = ({ user, history }) => {
+export const createUser = (user) => {
   try {
+    console.log(user);
     return async (dispatch) => {
       const { data } = axios.post('/api/users', { user });
       dispatch(_createUser(data));
-      history.push('/users');
     };
   } catch (err) {
-    console.log(err);
+    console.log('please enter vaild info');
   }
 };
-
-export const updateUser = ({ user, id, history }) => {
+export const updateUser = ({ user, id }) => {
   try {
     return async (dispatch) => {
       const { data } = axios.put(`/api/users/${id}`, { user });
       dispatch(_updateUser(data));
-      history.push('/users');
     };
   } catch (err) {
     console.log(err);
@@ -97,9 +84,7 @@ export const deleteUser = ({ id, history }) => {
 ////////USERS REDUCER//////////
 
 export default function usersReducer(state = [], action) {
-  if (action.type === SET_USERS) {
-    return action.users;
-  }
+
   if (action.type === SET_SINGLE_USER) {
     return action.user;
   }

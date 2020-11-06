@@ -1,6 +1,6 @@
 const db = require('./conn');
 const Order = require('./models/Order');
-// const Payment = require('./models/Payment');
+
 const Cart = require('./models/Cart');
 const Product = require('./models/Product');
 const User = require('./models/User');
@@ -17,10 +17,6 @@ Order.belongsTo(User);
 Product.belongsToMany(Order, { through: Cart });
 Order.belongsToMany(Product, { through: Cart });
 
-//payments
-// Order.hasMany(Payment);
-// Payment.belongsTo(Order);
-
 //reviews
 User.hasMany(Review);
 Review.belongsTo(User);
@@ -35,7 +31,6 @@ module.exports = {
   db,
   models: {
     Order,
-    // Payment,
     Product,
     User,
     Review,
