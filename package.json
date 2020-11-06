@@ -39,6 +39,7 @@
     "redux-thunk": "^2.3.0",
     "semantic-ui-css": "^2.4.1",
     "sequelize": "^6.3.5",
+    "stripe": "^8.119.0",
     "volleyball": "^1.5.1"
   },
   "devDependencies": {

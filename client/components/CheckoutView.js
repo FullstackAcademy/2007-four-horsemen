@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+
 
 
 // import Payment from './Payment';
@@ -40,23 +42,31 @@ function refreshPage() {
 
 
   return (
-    <div>
-      <div>
-        <div>
-          <h2>Complete Your Order</h2>
 
-          <div>
-            <div>
-              {
-                cart.addedProducts.map((p) => (
-                  <div>
-                    <div>
-                      <img src={p.image} />
-                    </div>
-                    <div>
-                      <h4>{p.model}</h4>
-                      <p>Subtotal: ${p.price * 1}</p>
-                    </div>
+    
+    <div className='bodyback'>
+      
+
+      <div >
+        <div  >
+          <h2 >Complete Your Order</h2>
+         
+          <div >
+
+            <div  >
+              {//props.cart.length && props.cart.map((p) => (
+                   cart.addedProducts.map((p)=>(
+                <div  key={p.id}>
+                  <div >
+                    <img src={p.image} />
+                  </div>
+                  <div >
+                    <h4 >{p.model}</h4>
+                    <p>
+                      
+                      Subtotal: ${p.price * 1}
+                    </p>
+
                   </div>
                 ))
               }
@@ -70,24 +80,29 @@ function refreshPage() {
                 Enter your details below!
                 <br />
               </p>
-              <form
-                onSubmit={handleSubmit}
-              >
-                <div>
+
+
+                <div class="input-container">
+                <i class="fa fa-user icon"></i>
                   <label> Name</label>
                   <input onChange={({ target: { value } }) => setName(value)}  />
                 </div>
 
-                <div>
+                <div class="input-container" >
+                <i class="fa fa-envelope icon"></i>
                   <label> Email</label>
                   <input type="email" onChange={({ target: { value } }) => setEmail(value)}  />
                 </div>
+
                 <br />
-                <div>
+                <div class="input-container">
+                <i class="fa fa-home icon"></i>
                   <label> Address</label>
                   <input onChange={({ target: { value } }) => setAddress(value)}  />
                 </div>
-                <div>
+
+                <div class="input-container">
+                <i class="fa fa-phone icon"></i>
                   <label> Phone</label>
                   <input onChange={({ target: { value } }) => setPhone(value)}  />
                 </div>
@@ -96,12 +111,10 @@ function refreshPage() {
                 <button>Payment</button>
                 {/* <Payment
                   name={'Confirm purchase'}
-                  description={
-                    'This is only a test page, enter 4242 4242 4242 4242 for credit card'
-                  }
-                  amount={cart.addedProducts
-                    .map((p) => p.price * p.quantity)
-                    .reduce((a, b) => a + b, 0)} //amount={props.cart.map(el => el.product.price * 1).reduce((a,b) => a+b, 0)}
+
+                  description={"This is only a test page, enter 4242 4242 4242 4242 for credit card"}
+                  amount={cart.addedProducts.map(p=>p.price*p.quantity).reduce((a,b)=>a+b,0)}
+
                   successPayment={successPayment}
                 /> */}
               </form>
@@ -110,6 +123,8 @@ function refreshPage() {
         </div>
       </div>
     </div>
+
+
   );
 };
 
@@ -118,6 +133,7 @@ const mapDispatchToProps = (dispatch) => {
 
   };
 };
+
 
 const mapStateToProps = ({ cart, user }) => {
   return {

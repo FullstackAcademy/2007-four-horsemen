@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './Header';
 import Orders from './Orders';
 import Footer from './Footer';
+
 import Home from './Home';
 
 import User from './auth/User';
@@ -17,11 +18,13 @@ import CheckoutView from './CheckoutView';
 
 
 import { fetchProducts } from '../store/redux/products';
+
 import { setSingleUser } from '../store/redux/users';
 
 const NoMatch = () => {
   return <h3>404 - Not found</h3>;
 };
+
 
 
 class Routes extends React.Component {
@@ -33,7 +36,7 @@ class Routes extends React.Component {
 
   render() {
     return (
-      <Router>
+      <Router >
         <div>
           <Header user={this.props.user} />
           <Switch>
@@ -47,6 +50,7 @@ class Routes extends React.Component {
             <Route path="/orders" exact component={Orders} />
             <Route path="/login" exact component={Login} />
             <Route path="/checkout" exact component={CheckoutView} />
+            
             {/* <Route path="/signup" exact component={Signup} /> */}
 
             <NoMatch />
