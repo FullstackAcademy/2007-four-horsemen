@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { createUser } from '../../store/redux/users';
 
 class SignUp extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       name: '',
       address: '',
@@ -47,18 +47,19 @@ class SignUp extends React.Component {
     const { username, name, password, phoneNum, email, address } = this.state;
     return (
       <>
-        <h1>Create Your Account</h1>
-        <form onSubmit={this.create}>
+        <h1 className='pop-title'>Create Account</h1>
+        <div className='pop-container'>
+        <form className='pop-form' onSubmit={this.create}>
           <label>
             Username:
-            <input
+            <input className='pop-input'
               value={username}
               onChange={(ev) => this.setState({ username: ev.target.value })}
             />
           </label>
           <label>
             Password:
-            <input
+            <input className='pop-input'
               value={password}
               onChange={(ev) => this.setState({ password: ev.target.value })}
               type="password"
@@ -66,35 +67,38 @@ class SignUp extends React.Component {
           </label>
           <label>
             Full Name:
-            <input
+            <input className='pop-input'
               value={name}
               onChange={(ev) => this.setState({ name: ev.target.value })}
             />
           </label>
           <label>
             Phone Number:
-            <input
+            <input className='pop-input'
               value={phoneNum}
               onChange={(ev) => this.setState({ phoneNum: ev.target.value })}
             />
           </label>
           <label>
             address:
-            <input
+            <input className='pop-input'
               value={address}
               onChange={(ev) => this.setState({ address: ev.target.value })}
             />
           </label>
           <label>
             Email:
-            <input
+            <input className='pop-input'
               type = 'email'
               value={email}
               onChange={(ev) => this.setState({ email: ev.target.value })}
             />
           </label>
-          <button>Create</button>
+          <div className='pop-bttn-div'>
+          <button className='pop-bttn'>Create</button>
+          </div>
         </form>
+        </div>
       </>
     );
   }

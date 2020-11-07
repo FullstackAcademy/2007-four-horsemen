@@ -30,29 +30,37 @@ const Login = () => {
 
   return (
     <>
-      <h1>Login</h1>
-      <form onSubmit={onLoginSubmit}>
-        <label>
+    <main className='login-container'>
+    <div className='login-container'>
+      <h1 className='login-title'>Login</h1>
+      <div >
+      <form className='login-form-div' onSubmit={onLoginSubmit}>
+        <label className='login-username'>
           Username
-          <input onChange={({ target: { value } }) => setUsername(value)} />
+          <input className='login-input' onChange={({ target: { value } }) => setUsername(value)} />
         </label>
-        <label>
+        <label className='login-password'>
           Password
-          <input
+          <input className='login-input'
             onChange={({ target: { value } }) => setPassword(value)}
             type="password"
           />
         </label>
-        <button>Login</button>
+        <div className='login-bttn-div'>
+        <button className='login-bttn'>Login</button>
+        </div>
       </form>
+      </div>
       {/* <NavLink to = "/signup">
         <button>Sign Up</button>
       </NavLink> */}
 
-      <Popup trigger={<button> signup</button>} position="right center" modal>
+      <Popup trigger={<button className='login-bttn'> signup</button>} position="right center" modal>
         <Signup />
 
       </Popup>
+      </div>
+      </main>
     </>
   );
 };
