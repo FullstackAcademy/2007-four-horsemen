@@ -25,50 +25,50 @@ class SingleProduct extends React.Component {
     const { addToCart } = this.props;
     const priceInUsd = moneyFormatter.format(price);
     return (
-      <div className="app">
-        <div>
+      <div>
+        <div className="app">
           <NavLink to={`/models/`}>
             <button className="back-button" type="submit">
               Back to Models
             </button>
           </NavLink>
-        </div>
-        <div className="details">
-          <div className="big-img">
-            <img className="single-car" src={image} alt={name}></img>
-          </div>
-          <div className="box">
-            <div className="row">
-              <h2>{name}</h2>
+          <div className="details">
+            <div className="big-img">
+              <img className="single-car" src={image} alt={name}></img>
             </div>
-            <Rating totalStars={5} />
-            <p>
-              <span>({reviews.length} customer reviews)</span>
-            </p>
-            <p>{description}</p>
-            <h4>
-              <span>{priceInUsd}</span>
-            </h4>
-            <button className="cart" onClick={(id) => addToCart(product, id)}>
-              Add to Cart
-            </button>
+            <div className="box">
+              <div className="row">
+                <h2>{name}</h2>
+              </div>
+              <Rating totalStars={5} />
+              <p>
+                <span>({reviews.length} customer reviews)</span>
+              </p>
+              <p>{description}</p>
+              <h4>
+                <span>{priceInUsd}</span>
+              </h4>
+              <button className="cart" onClick={(id) => addToCart(product, id)}>
+                Add to Cart
+              </button>
+            </div>
           </div>
-        </div>
-        <div className="review-form">
-          {this.props.user.length !== 0 && (
-            <ReviewForm
-              productId={this.props.match.params.id}
-              userId={this.props.user.id}
-            />
-          )}
-        </div>
-        <div className="reviews-list">
-          <h3>Reviews: </h3>
-          <hr />
-          <ReviewsList
-            reviews={reviews}
-            productId={this.props.match.params.id}
-          />
+          <div className="review-form">
+            {this.props.user.length !== 0 && (
+              <ReviewForm
+                productId={this.props.match.params.id}
+                userId={this.props.user.id}
+              />
+            )}
+            <div className="reviews-list">
+              <h3 className="reviews-header">Reviews: </h3>
+              <hr />
+              <ReviewsList
+                reviews={reviews}
+                productId={this.props.match.params.id}
+              />
+            </div>
+          </div>
         </div>
       </div>
     );

@@ -6,7 +6,7 @@ const ReviewsList = (props) => {
   const productReview = reviews.filter(
     (review) => review.productId === productId * 1
   );
-
+  console.log(props);
   return (
     <div>
       {productReview.map((review) => {
@@ -20,14 +20,23 @@ const ReviewsList = (props) => {
           '/' +
           date.getFullYear();
         return (
-          <ul key={review.id}>
-            <li>{review.username}</li>
-            <li>
-              <small>{formattedDate}</small>
-            </li>
-            <li>{review.feedback}</li>
-            <hr />
-          </ul>
+          <div key={review.id} className="container">
+            <img
+              src="https://brighterwriting.com/wp-content/uploads/icon-user-default-420x420.png"
+              alt="Avatar"
+            />
+            <p>
+              <span>
+                <strong>{review.username}</strong>
+              </span>
+              <span className="date-formatted">
+                <small>{formattedDate}</small>
+              </span>
+            </p>
+            <div className="feedback">
+              <p>{review.feedback}</p>
+            </div>
+          </div>
         );
       })}
     </div>
