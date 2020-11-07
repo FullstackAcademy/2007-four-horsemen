@@ -28,14 +28,11 @@ class Cart extends Component {
 
   render() {
     const { cart } = this.props;
-
     const arr = [];
-
-    let cartOrder = cart.length ? (
-      cart.map((p) => {
+    const cartOrder = cart.addedProducts.length ? (
+      cart.addedProducts.map((p) => {
         if (!arr.includes(p.id)) {
           arr.push(p.id);
-
           return (
             <li className="Cart-item" key={p.id}>
               <Link to="/checkout">
@@ -58,7 +55,7 @@ class Cart extends Component {
                   <Link to="/cart">
                     <i
                       onClick={() => {
-                        this._addQuantity(p);
+                        this.addQty(p);
                       }}
                     >
                       [ + ]
@@ -67,7 +64,7 @@ class Cart extends Component {
                   <Link to="/cart">
                     <i
                       onClick={() => {
-                        this._subtractQuantity(p);
+                        this.subtractQty(p);
                       }}
                     >
                       [ - ]
@@ -78,7 +75,7 @@ class Cart extends Component {
                   <button
                     className="Cart-remove-bttn"
                     onClick={() => {
-                      this._removeFromCart(p.id);
+                      this.removeFCart(p.id);
                     }}
                   >
                     Remove

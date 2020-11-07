@@ -52,6 +52,7 @@ const CheckoutView = (props) => {
             <div>
               <img src={p.image} />
             </div>
+          </div>))}
             <div>
 
               <p>
@@ -91,7 +92,8 @@ const CheckoutView = (props) => {
                  </button>
               </form>
             </div>
-    </div>
+        </div>
+        </div>
   );
 };
 

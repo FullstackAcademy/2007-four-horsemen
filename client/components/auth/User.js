@@ -59,7 +59,7 @@ class User extends React.Component {
               position="right center"
               modal
             >
-              {/* <AddProduct/> */}
+              <AddProduct/>
             </Popup>
             </div>
           </div>
