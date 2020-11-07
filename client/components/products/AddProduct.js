@@ -17,8 +17,6 @@ const AddProduct =()=>{
         })
         .catch((err) => {
           window.alert('try again!');
-
-    
         });
     };
     function refreshPage() {
@@ -26,7 +24,6 @@ const AddProduct =()=>{
       window.location.replace('/');
     }
     
-
         return(
             <div>
                 <p>Add New Model</p>
@@ -50,10 +47,9 @@ const AddProduct =()=>{
                     <button>Add Product</button>
                 </form>
             </div>
-        )
-        
-    
+        )    
 }
 
   
   export default AddProduct;
+

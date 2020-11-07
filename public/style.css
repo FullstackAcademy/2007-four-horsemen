@@ -53,6 +53,7 @@ a:hover {
 
 .nav-item {
   flex: 4;
+  font-size: 1.33em;
 }
 
 .nav-search {
@@ -162,13 +163,13 @@ h3 {
   text-align: center;
 }
 
-
-.container{
-  max-width:960px
+.container {
+  max-width: 960px;
 }
 
-
-* {box-sizing: border-box;}
+* {
+  box-sizing: border-box;
+}
 
 /* Style the input container */
 .input-container {
@@ -212,15 +213,15 @@ h3 {
   opacity: 1;
 }
 
-.bodyback{
-  background-image: url("2214 (1).gif");
+.bodyback {
+  background-image: url('2214 (1).gif');
   display: flex;
-  
+
   align-items: center;
-  width:100%;
-  height:auto;
-  padding: .5rem;
-  background-color:grey
+  width: 100%;
+  height: auto;
+  padding: 0.5rem;
+  background-color: grey;
 }
 
 .app {
@@ -280,6 +281,16 @@ h3 {
   outline: none;
   margin-right: 5px;
   cursor: pointer;
+}
+
+.back-button {
+  background: goldenrod;
+  color: white;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px 25px;
+  margin-top: 15px;
 }
 
 .box p {
@@ -365,5 +376,3 @@ textarea {
 [data-popup='tooltip'].popup-overlay {
   background: transparent;
 }
-
-

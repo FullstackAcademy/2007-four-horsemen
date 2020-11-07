@@ -6,8 +6,9 @@ const ADD_TO_CART = 'ADD_TO_CART';
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 const ADD_QUANTITY = 'ADD_QUANTITY';
 const SUBTRACT_QUANTITY = 'SUBTRACT_QUANTITY';
-
+const GET_CART_ITEMS = 'GET_CART';
 //////////ACTION CREATORS//////////////
+
 export const addToCart = (product, id) => {
   return {
     type: ADD_TO_CART,

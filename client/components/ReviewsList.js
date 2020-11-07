@@ -20,7 +20,7 @@ const ReviewsList = (props) => {
           '/' +
           date.getFullYear();
         return (
-          <ul>
+          <ul key={review.id}>
             <li>{review.username}</li>
             <li>
               <small>{formattedDate}</small>
