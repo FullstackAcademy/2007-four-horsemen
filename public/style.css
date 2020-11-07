@@ -1,3 +1,8 @@
+html
+
+
+
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -71,6 +76,7 @@ a:hover {
 
 .white-ride {
   width: 100%;
+  height:auto
 }
 
 .footer-text {
@@ -376,3 +382,103 @@ textarea {
 [data-popup='tooltip'].popup-overlay {
   background: transparent;
 }
+.login-container{
+  padding-top: 2rem;
+  height: 80vh;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  
+}
+
+.login-title{
+  padding-top:1rem;
+  padding-bottom: 1rem;
+}
+
+.login-form-div{
+  display: flex;
+  flex-flow: column;
+  align-items:center;
+}
+
+.login-input{
+ padding:.25rem;
+ width:100%
+
+}
+
+.login-bttn-div{
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 0%;
+  padding-left: 0%;
+  text-align: center;
+}
+
+.login-bttn{
+  width: 50%;
+  padding:.25rem;
+}
+
+.pop-title{
+  text-align: center;
+  padding:1rem;
+}
+
+.pop-container{
+  padding-right:2rem;
+  padding-left:2rem;
+}
+.pop-form{
+  display: flex;
+  flex-flow: column;
+  align-content: center
+}
+
+.pop-input{
+  width: 100%;
+  padding:.25rem;
+}
+
+.pop-bttn-div{
+  
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 0%;
+  padding-left: 0%;
+  text-align: center;
+}
+
+.pop-bttn{
+  width: 60%;
+  padding:.5rem;
+}
+
+label{
+  padding:.5rem;
+}
+
+.users-container{
+  height: 80vh;
+  padding:2rem;
+  display: flex;
+  flex-flow: column;
+  align-content: center;
+}
+
+li{
+  padding:.25rem;
+}
+
+.user-bttn-div{
+  padding:.25rem;
+  
+}
+
+.user-btn{
+  width:20%
+}
+
+
