@@ -60,10 +60,6 @@ const User = db.define('user', {
     validate: {
       notEmpty: true,
     },
-    // set(chars) {
-    //   const hash = bcrypt.hashSync(chars, 10);
-    //   this.setDataValue('password', hash);
-    // },
   },
 
   isAdmin: {
