@@ -25,6 +25,7 @@
     "cookie-parser": "^1.4.5",
     "dayjs": "^1.9.3",
     "express": "^4.17.1",
+    "heroku": "^7.47.0",
     "history": "^5.0.0",
     "node": "^14.14.0",
     "pg": "^8.4.1",
@@ -36,9 +37,11 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
     "semantic-ui-css": "^2.4.1",
     "sequelize": "^6.3.5",
+    "stripe": "^8.119.0",
     "volleyball": "^1.5.1"
   },
   "devDependencies": {

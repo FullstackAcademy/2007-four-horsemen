@@ -6,7 +6,6 @@ const ReviewsList = (props) => {
   const productReview = reviews.filter(
     (review) => review.productId === productId * 1
   );
-  console.log(productReview);
 
   return (
     <div>
@@ -21,7 +20,7 @@ const ReviewsList = (props) => {
           '/' +
           date.getFullYear();
         return (
-          <ul>
+          <ul key={review.id}>
             <li>{review.username}</li>
             <li>
               <small>{formattedDate}</small>

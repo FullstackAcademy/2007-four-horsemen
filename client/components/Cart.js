@@ -9,12 +9,14 @@ import {
 } from '../store/redux/cart';
 
 class Cart extends Component {
+
   removeFCart(id) {
     const { removeFromCart } = this.props;
     removeFromCart(id);
   }
 
   addQty(id) {
+
     const { addQuantity } = this.props;
     addQuantity(id);
   }
@@ -26,19 +28,16 @@ class Cart extends Component {
 
   render() {
     const { cart } = this.props;
-    console.log('render in Cart ', this.props);
+    console.log('render in Cart ', cart);
+    console.log(window.localStorage);
     const arr = [];
-    let cartOrder = cart.addedProducts.length ? (
+    const cartOrder = cart.addedProducts.length ? (
       cart.addedProducts.map((p) => {
-        console.log(p.model);
         if (!arr.includes(p.id)) {
           arr.push(p.id);
 
           return (
             <li className="Cart-item" key={p.id}>
-              <Link to="/checkout">
-                <button>Proceed To Checkout</button>
-              </Link>
               <div className="Cart-item-image">
                 <img className="Cart-image" src={p.image} alt={p.model} />
               </div>
@@ -92,6 +91,9 @@ class Cart extends Component {
         <div>
           <h3>Your Order:</h3>
           <ul>{cartOrder}</ul>
+          <Link to="/checkout">
+            <button>Proceed To Checkout</button>
+          </Link>
         </div>
       </div>
     );

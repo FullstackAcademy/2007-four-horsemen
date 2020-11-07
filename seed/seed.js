@@ -177,6 +177,7 @@ async function seed() {
         total: 1000000,
         session_id: '123456',
         order_date: '12/04/2019',
+
         shipping_address: '1800 St',
         order_status: 'processing',
       }),
@@ -188,6 +189,7 @@ async function seed() {
         order_status: 'processing',
       })
     ]);
+
       
     await user4.setOrders(order1)
     await user2.setOrders(order2)

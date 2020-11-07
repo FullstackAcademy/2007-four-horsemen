@@ -5,6 +5,7 @@ import { addToCart } from '../../store/redux/cart';
 import { fetchSingleProduct } from '../../store/redux/singleProduct';
 import { setSingleUser } from '../../store/redux/users';
 import { getReviews } from '../../store/redux/reviews';
+import { NavLink } from 'react-router-dom';
 import ReviewForm from '../ReviewForm';
 import ReviewsList from '../ReviewsList';
 import Rating from '../Rating';
@@ -23,9 +24,15 @@ class SingleProduct extends React.Component {
     const { name, description, price, image } = this.props.product;
     const { addToCart } = this.props;
     const priceInUsd = moneyFormatter.format(price);
-    console.log(reviews);
     return (
       <div className="app">
+        <div>
+          <NavLink to={`/models/`}>
+            <button className="back-button" type="submit">
+              Back to Models
+            </button>
+          </NavLink>
+        </div>
         <div className="details">
           <div className="big-img">
             <img className="single-car" src={image} alt={name}></img>
@@ -34,11 +41,7 @@ class SingleProduct extends React.Component {
             <div className="row">
               <h2>{name}</h2>
             </div>
-            <p>
-              <span>
-                <Rating totalStars={5} />
-              </span>
-            </p>
+            <Rating totalStars={5} />
             <p>
               <span>({reviews.length} customer reviews)</span>
             </p>

@@ -5,7 +5,6 @@ import axios from 'axios';
 import Popup from 'reactjs-popup';
 import Signup from './Signup';
 
-
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -13,14 +12,13 @@ const Login = () => {
   const onLoginSubmit = async (e) => {
     e.preventDefault();
 
-    return await axios
+    await axios
       .post('/api/auth/login', { username, password })
       .then((res) => {
         refreshPage();
       })
       .catch((err) => {
         window.alert('Wrong username or password!!!!');
-
       });
   };
   function refreshPage() {
@@ -57,7 +55,6 @@ const Login = () => {
 
       <Popup trigger={<button className='login-bttn'> signup</button>} position="right center" modal>
         <Signup />
-
       </Popup>
       </div>
       </main>

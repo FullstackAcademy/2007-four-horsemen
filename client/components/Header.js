@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const Header = (props) => {
   const user = props.user;
+  console.log(props)
   return (
     <nav>
       <ul className="home-models">
@@ -23,19 +24,12 @@ const Header = (props) => {
         <li className="nav-item">
           <NavLink to="/models">Models</NavLink>
         </li>
-        <li className="nav-search">
-          <button className="search-button" type="submit">
-            <NavLink to="/search">
-              <i className="fas fa-search"></i>
-            </NavLink>
-          </button>
-        </li>
 
         {user.length === 0 ? (
           <li className="nav-login">
             <button className="login-button" type="submit">
               <NavLink to="/login">
-                <i className="fas fa-user"></i>
+                <i className="fas fa-user fa-lg"></i>
               </NavLink>
             </button>
           </li>
@@ -43,7 +37,7 @@ const Header = (props) => {
           <li className="nav-login">
             <button className="login-button" type="submit">
               <NavLink to="/user">
-                <i className="fas fa-user"></i>
+                <i className="fas fa-user fa-lg"> Hello, {user.name}!</i>
               </NavLink>
             </button>
           </li>
@@ -51,19 +45,10 @@ const Header = (props) => {
 
         <li className="nav-cart">
           <button className="cart-button" type="submit">
-            {/* {(props.cart.length && props.cart.reduce((a, b) => {
-                if(typeof b === 'object'){
-                  return a + b.quantity
-                }
-                return a + b}, 0)
-              )} */}
-
             <NavLink to="/cart">
-              <i className="fas fa-shopping-cart"></i>
+              <i className="fas fa-shopping-cart fa-lg"></i>
             </NavLink>
-
           </button>
-          {/* <span>{store.addedProducts.length}</span> */}
         </li>
 
         <li className="nav-logout">
@@ -76,7 +61,7 @@ const Header = (props) => {
             }}
           >
             <NavLink to="/">
-              <i className="fas fa-sign-out-alt"></i>
+              <i className="fas fa-sign-out-alt fa-lg"></i>
             </NavLink>
           </button>
         </li>

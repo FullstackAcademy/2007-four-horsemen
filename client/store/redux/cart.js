@@ -6,8 +6,9 @@ const ADD_TO_CART = 'ADD_TO_CART';
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 const ADD_QUANTITY = 'ADD_QUANTITY';
 const SUBTRACT_QUANTITY = 'SUBTRACT_QUANTITY';
-
+const GET_CART_ITEMS = 'GET_CART';
 //////////ACTION CREATORS//////////////
+
 export const addToCart = (product, id) => {
   return {
     type: ADD_TO_CART,
@@ -46,30 +47,29 @@ const initialState = {
 
 export default function cartReducer(state = initialState, action) {
   let { addedProducts, items, total } = state;
-  //console.log(state.addedProducts);
+
   if (action.type === ADD_TO_CART) {
-    let theProduct = action.product;
-    let existedProduct = state.addedProducts.find(
-      (p) => p.id === action.id * 1
+    let existedProduct = addedProducts.find(
+      (p) => p.id === action.product.id * 1
     );
 
     if (!existedProduct) {
-      theProduct.quantity = 1;
-      //theProduct.quantity ? theProduct.quantity += 1 : theProduct.quantity = 1;
+      action.product.quantity = 1;
+
+      console.log(action.product);
       return {
-        // ...state,
-        addedProducts: [...addedProducts, theProduct],
-        items: [...items, theProduct],
-        total: state.total + theProduct.price,
+        ...state,
+        addedProducts: [...addedProducts, action.product],
+        items: [...items, action.product],
+        total: state.total + action.product.price,
       };
     } else {
-      //console.log('bolony');
-      theProduct.quantity += 1;
-      let newTotal = state.total + theProduct.price;
+      action.product.quantity += 1;
+      let newTotal = state.total + action.product.price;
 
       return {
         ...state,
-        addedProducts: [...state.addedProducts, theProduct],
+        addedProducts: [...addedProducts, action.product],
         total: newTotal,
       };
     }

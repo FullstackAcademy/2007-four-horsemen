@@ -5,11 +5,12 @@ import { fetchMyOrders } from '../../store/redux/orders';
 import { fetchAllOrders } from '../../store/redux/orders';
 import { setUsers } from '../../store/redux/allUsers';
 
-import Popup from 'reactjs-popup';
-import ViewMyOrders from './ViewMyOrders';
-import ViewAllOrders from './ViewAllOrders';
-import ViewAllUsers from './ViewAllUsers';
-// import AddProduct from '../products/AddProduct'
+
+import Popup from 'reactjs-popup'
+import ViewMyOrders from './ViewMyOrders'
+import ViewAllOrders from './ViewAllOrders'
+import ViewAllUsers from './ViewAllUsers'
+import AddProduct from '../products/AddProduct'
 
 class User extends React.Component {
   constructor() {
@@ -32,7 +33,6 @@ class User extends React.Component {
         <li>My EMAIL: {this.props.user.email}</li>
         <li>My Address: {this.props.user.email}</li>
         <li>My Phone Number: {this.props.user.email}</li>
-
         {this.props.user.isAdmin ? (
           <div className='user-bttns'>
             <div className='user-bttn-div'>

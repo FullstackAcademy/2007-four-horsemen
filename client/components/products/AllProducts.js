@@ -12,7 +12,7 @@ class AllProducts extends React.Component {
           <div className="cars">
             {this.props.products.map((product) => {
               return (
-                <NavLink to={`/models/${product.id}`} key={product.id}>
+                <NavLink key={product.id} to={`/models/${product.id}`}>
                   <Product product={product} />
                 </NavLink>
               );
