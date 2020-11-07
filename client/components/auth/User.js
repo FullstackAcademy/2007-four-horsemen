@@ -9,7 +9,7 @@ import Popup from 'reactjs-popup'
 import ViewMyOrders from './ViewMyOrders'
 import ViewAllOrders from './ViewAllOrders'
 import ViewAllUsers from './ViewAllUsers'
-// import AddProduct from '../products/AddProduct'
+import AddProduct from '../products/AddProduct'
 
 
 
@@ -57,7 +57,7 @@ class  User extends React.Component{
                 <ViewAllUsers users = {this.props.users}/>
                 </Popup>
                 <Popup trigger={<button> Upload New Model!!</button>} position="right center" modal >
-                {/* <AddProduct/> */}
+                <AddProduct/>
                 </Popup>
                 </div>
                 :
