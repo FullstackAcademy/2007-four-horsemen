@@ -9,9 +9,6 @@ import {
 } from '../store/redux/cart';
 
 class Cart extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   removeFCart(id) {
     const { removeFromCart } = this.props;
@@ -19,6 +16,7 @@ class Cart extends Component {
   }
 
   addQty(id) {
+
     const { addQuantity } = this.props;
     addQuantity(id);
   }

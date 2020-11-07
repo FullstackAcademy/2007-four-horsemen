@@ -17,4 +17,14 @@ router.get('/:id', async (req, res, next) => {
     next(err);
   }
 });
+
+router.post('/', async(req,res,next)=>{
+  try{
+    const newProduct = await Product.create(req.body)
+    res.status(201).send(newProduct);
+  }catch (err) {
+    next(err);
+  }
+})
+
 module.exports = router;
